@@ -75,12 +75,13 @@ void displayQueue(Queue q)
     }
     else
     {
-        int i;
         printf("[");
-        for (i = IDX_HEAD(q); i != IDX_TAIL(q); i = (i + 1) % CAPACITY)
+        int i = IDX_HEAD(q);
+        while (i != IDX_TAIL(q))
         {
-            printf("%d,", q.buffer[i]);
+            printf("{%s, %d}, ", q.buffer[i].name, q.buffer[i].price);
+            i = (i + 1) % CAPACITY;
         }
-        printf("%d]\n", TAIL(q));
+        printf("{%s, %d}]\n", q.buffer[i].name, q.buffer[i].price);
     }
 }
