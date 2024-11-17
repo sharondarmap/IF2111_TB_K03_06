@@ -5,12 +5,12 @@
 #define QUEUE_H
 
 #include "boolean.h"
+#include "barang.h"
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
-
 /* Definisi elemen dan address */
-typedef int ElType;
+typedef Barang ElType;
 typedef struct
 {
     ElType buffer[CAPACITY];
