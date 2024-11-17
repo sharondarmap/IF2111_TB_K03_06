@@ -7,7 +7,7 @@ int main() {
 
     // 1. STARTWORD dan ADVWORD
     printf("\n[TEST: STARTWORD dan ADVWORD]\n");
-    printf("Masukkan input (akhiri dengan '.' untuk MARK): ");
+    printf("Masukkan input: ");
     STARTWORD();
 
     while (!isEndWord) {

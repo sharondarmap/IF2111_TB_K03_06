@@ -6,7 +6,7 @@ int main() {
     printf("=== DRIVER MESIN KARAKTER ===\n\n");
 
     printf("[TEST: START]\n");
-    printf("Silakan masukkan teks berakhiran '%c' (MARK): ", MARK);
+    printf("Masukkan input: ");
     START(); 
 
     printf("\n\n[TEST: ADV]\n");
