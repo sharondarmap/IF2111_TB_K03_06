@@ -48,4 +48,34 @@ void CopyWord();
 
 boolean isEndWord();
 
+int WordToInt(Word w);
+/* Mengonversi Word menjadi integer
+   I.S. : Word valid yang berisi angka
+   F.S. : Mengembalikan nilai integer dari Word */
+
+Word IntToWord(int num);
+/* Mengonversi integer menjadi Word
+   I.S. : Integer valid
+   F.S. : Mengembalikan Word yang merepresentasikan angka */
+
+Word StringToWord(char *str);
+/* Mengonversi string menjadi Word
+   I.S. : String valid
+   F.S. : Mengembalikan Word yang merepresentasikan string */
+
+char* WordToString(Word w);
+/* Mengonversi Word menjadi string
+   I.S. : Word valid
+   F.S. : Mengembalikan string yang merepresentasikan Word */
+
+void PrintWord(Word w);
+/* Mencetak Word ke layar
+   I.S. : Word valid
+   F.S. : Word dicetak ke layar tanpa tambahan karakter */
+
+boolean IsWordEqual(Word w1, Word w2);
+/* Membandingkan dua Word
+   I.S. : Dua Word valid
+   F.S. : Mengembalikan true jika kedua Word sama */
+
 #endif
