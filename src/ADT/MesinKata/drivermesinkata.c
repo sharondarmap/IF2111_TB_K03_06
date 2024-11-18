@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mesinkata.c"
+#include "../MesinKarakter/mesinkarakter.c"
 
 int main() {
     printf("=== DRIVER MESIN KATA ===\n");
@@ -20,7 +21,7 @@ int main() {
 
     // 2. CopyWord
     printf("\n[TEST: CopyWord]\n");
-    printf("Masukkan input untuk CopyWord (akhiri dengan '.'): ");
+    printf("Masukkan input untuk CopyWord: ");
     STARTWORD();
     printf("Kata pertama yang disalin: ");
     PrintWord(currentWord);
