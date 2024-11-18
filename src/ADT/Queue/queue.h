@@ -10,10 +10,10 @@
 #define IDX_UNDEF -1
 #define CAPACITY 100
 /* Definisi elemen dan address */
-typedef Barang ElType;
+typedef Barang ElType2;
 typedef struct
 {
-    ElType buffer[CAPACITY];
+    ElType2 buffer[CAPACITY];
     int idxHead;
     int idxTail;
 } Queue;
@@ -44,12 +44,12 @@ int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val);
+void enqueue(Queue *q, ElType2 val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(Queue *q, ElType *val);
+void dequeue(Queue *q, ElType2 *val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";

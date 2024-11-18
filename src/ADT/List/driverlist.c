@@ -12,7 +12,7 @@ int main() {
 
     // Cek apakah list kosong
     printf("\n[TEST: IsEmpty]\n");
-    if (IsEmpty(L1)) {
+    if (IsEmptyList(L1)) {
         printf("List kosong.\n");
     }
 
@@ -23,53 +23,53 @@ int main() {
     User u3 = {"Sharon", "mypassword", 750};
     User u4 = {"Gita", "hello789", 600};
 
-    InsertFirst(&L1, u1);
+    InsertFirstList(&L1, u1);
     printf("Setelah InsertFirst:\n");
     PrintList(L1);
 
-    InsertLast(&L1, u2);
+    InsertLastList(&L1, u2);
     printf("Setelah InsertLast:\n");
     PrintList(L1);
 
-    InsertAt(&L1, u3, 1);
+    InsertAtList(&L1, u3, 1);
     printf("Setelah InsertAt indeks 1:\n");
     PrintList(L1);
 
     // Hapus elemen dari list
     printf("\n[TEST: DeleteFirst, DeleteLast, DeleteAt]\n");
-    DeleteFirst(&L1);
+    DeleteFirstList(&L1);
     printf("Setelah DeleteFirst:\n");
     PrintList(L1);
 
-    DeleteLast(&L1);
+    DeleteLastList(&L1);
     printf("Setelah DeleteLast:\n");
     PrintList(L1);
 
-    DeleteAt(&L1, 0);
+    DeleteAtList(&L1, 0);
     printf("Setelah DeleteAt indeks 0:\n");
     PrintList(L1);
 
     // Tes Concat
     printf("\n[TEST: Concat]\n");
     List L2 = MakeList();
-    InsertLast(&L2, u4);
-    InsertLast(&L2, u3);
+    InsertLastList(&L2, u4);
+    InsertLastList(&L2, u3);
     printf("L2:\n");
     PrintList(L2);
 
-    List L3 = Concat(L1, L2);
+    List L3 = ConcatList(L1, L2);
     printf("Setelah Concat L1 dan L2:\n");
     PrintList(L3);
 
     // Tes Search
     printf("\n[TEST: Search]\n");
-    if (Search(L3, "Gita")) {
+    if (SearchList(L3, "Gita")) {
         printf("Gita ditemukan di list.\n");
     } else {
         printf("Gita tidak ditemukan di list.\n");
     }
 
-    if (Search(L3, "Harfhan")) {
+    if (SearchList(L3, "Harfhan")) {
         printf("Harfhan ditemukan di list.\n");
     } else {
         printf("Harfhan tidak ditemukan di list.\n");

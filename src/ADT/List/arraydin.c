@@ -9,7 +9,7 @@
  */
 ArrayDin MakeArrayDin() {
     ArrayDin array;
-    array.A = (ElType *) malloc(InitialSize * sizeof(ElType));
+    array.A = (ElType2 *) malloc(InitialSize * sizeof(ElType2));
     array.Capacity = InitialSize;
     array.Neff = 0;
     return array;
@@ -39,7 +39,7 @@ int Length(ArrayDin array) {
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i) {
+ElType2 Get(ArrayDin array, IdxType i) {
     return array.A[i];
 }
 
@@ -56,13 +56,13 @@ int GetCapacity(ArrayDin array) {
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  * Jika array penuh, maka array akan diperbesar sebanyak InitialSize.
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i) {
+void InsertAt(ArrayDin *array, ElType2 el, IdxType i) {
     int length = Length(*array);
     int capacity = GetCapacity(*array);
 
     if (length == capacity) {
         int desiredCapacity = capacity + InitialSize;
-        ElType *arr = (ElType *) malloc(desiredCapacity * sizeof(ElType));
+        ElType2 *arr = (ElType2 *) malloc(desiredCapacity * sizeof(ElType2));
         for (int a = 0; a < length; a++) {
             arr[a] = Get(*array, a);
         }
@@ -84,7 +84,7 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i) {
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el) {
+void InsertLast(ArrayDin *array, ElType2 el) {
     int insertAt = Length(*array);
     InsertAt(array, el, insertAt);
 }
@@ -93,7 +93,7 @@ void InsertLast(ArrayDin *array, ElType el) {
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el) {
+void InsertFirst(ArrayDin *array, ElType2 el) {
     InsertAt(array, el, 0);
 }
 
@@ -147,7 +147,7 @@ void PrintArrayDin(ArrayDin array) {
     }
 }
 
-void PrintElType(ElType el) {
+void PrintElType(ElType2 el) {
     printf("{%s, %d}", el.name, el.price);
 }
 
@@ -158,7 +158,7 @@ void PrintElType(ElType el) {
 void ReverseArrayDin(ArrayDin *array) {
     int length = Length(*array);
     for (int i = 0; i < length / 2; i++) {
-        ElType temp = array->A[i];
+        ElType2 temp = array->A[i];
         array->A[i] = array->A[length - i - 1];
         array->A[length - i - 1] = temp;
     }
@@ -182,7 +182,7 @@ ArrayDin CopyArrayDin(ArrayDin array) {
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-int compareElType(ElType a, ElType b) {
+int compareElType(ElType2 a, ElType2 b) {
     int i = 0;
     while (a.name[i] != '\0' && b.name[i] != '\0') {
         if (a.name[i] != b.name[i]) {
@@ -196,7 +196,7 @@ int compareElType(ElType a, ElType b) {
     return a.price == b.price;
 }
 
-IdxType SearchArrayDin(ArrayDin array, ElType el) {
+IdxType SearchArrayDin(ArrayDin array, ElType2 el) {
     for (int i = 0; i < array.Neff; i++) {
         if (compareElType(array.A[i], el)) {
             return i;

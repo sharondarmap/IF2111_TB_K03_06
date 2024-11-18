@@ -26,68 +26,68 @@ List MakeList();
 /* F.S. Terbentuk List kosong dengan semua elemen diinisialisasi sebagai kosong */
 
 /* ********* FUNGSI PENGECEKAN ********* */
-boolean IsEmpty(List L);
+boolean IsEmptyList(List L);
 /* Mengembalikan true jika List kosong (tidak ada elemen) */
 
-int Length(List L);
+int LengthList(List L);
 /* Mengembalikan banyaknya elemen efektif dalam List */
 
 /* ********* AKSES ELEMEN ********* */
-ElType Get(List L, IdxType i);
+ElType GetList(List L, IdxType i);
 /* Mengembalikan elemen pada indeks ke-i */
 
-void Set(List *L, IdxType i, ElType v);
+void SetList(List *L, IdxType i, ElType v);
 /* Mengubah elemen pada indeks ke-i menjadi elemen baru v */
 
 /* ********* INDEKS ********* */
-IdxType FirstIdx(List L);
+IdxType FirstIdxList(List L);
 /* Mengembalikan indeks pertama dalam List */
 
-IdxType LastIdx(List L);
+IdxType LastIdxList(List L);
 /* Mengembalikan indeks terakhir elemen dalam List */
 
-boolean IsIdxValid(List L, IdxType i);
+boolean IsIdxValidList(List L, IdxType i);
 /* Mengembalikan true jika indeks i berada dalam range 0 hingga MaxEl-1 */
 
-boolean IsIdxEff(List L, IdxType i);
+boolean IsIdxEffList(List L, IdxType i);
 /* Mengembalikan true jika indeks i efektif (ada elemen di posisi tersebut) */
 
 /* ********* OPERASI PADA LIST ********* */
-boolean Search(List L, char *name);
+boolean SearchList(List L, char *name);
 /* Mencari elemen berdasarkan name */
 /* Mengembalikan true jika elemen dengan nama tertentu ditemukan */
 
-void InsertFirst(List *L, ElType X);
+void InsertFirstList(List *L, ElType X);
 /* Menambahkan elemen di awal List */
 /* I.S. List terdefinisi, tidak penuh */
 /* F.S. Elemen baru ditambahkan di awal List, elemen lainnya bergeser */
 
-void InsertAt(List *L, ElType X, IdxType i);
+void InsertAtList(List *L, ElType X, IdxType i);
 /* Menambahkan elemen di indeks i */
 /* I.S. List terdefinisi, tidak penuh, dan indeks i valid */
 /* F.S. Elemen baru ditambahkan di indeks i, elemen lainnya bergeser */
 
-void InsertLast(List *L, ElType X);
+void InsertLastList(List *L, ElType X);
 /* Menambahkan elemen di akhir List */
 /* I.S. List terdefinisi, tidak penuh */
 /* F.S. Elemen baru ditambahkan di akhir List */
 
-void DeleteFirst(List *L);
+void DeleteFirstList(List *L);
 /* Menghapus elemen pertama dari List */
 /* I.S. List tidak kosong */
 /* F.S. Elemen pertama dihapus, elemen lainnya bergeser */
 
-void DeleteAt(List *L, IdxType i);
+void DeleteAtList(List *L, IdxType i);
 /* Menghapus elemen pada indeks i */
 /* I.S. List tidak kosong, indeks i valid */
 /* F.S. Elemen di indeks i dihapus, elemen lainnya bergeser */
 
-void DeleteLast(List *L);
+void DeleteLastList(List *L);
 /* Menghapus elemen terakhir dari List */
 /* I.S. List tidak kosong */
 /* F.S. Elemen terakhir dihapus */
 
-List Concat(List L1, List L2);
+List ConcatList(List L1, List L2);
 /* Menggabungkan dua List menjadi satu List baru */
 /* I.S. L1 dan L2 terdefinisi */
 /* F.S. List baru yang berisi elemen dari L1 diikuti elemen dari L2 */

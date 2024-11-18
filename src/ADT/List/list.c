@@ -33,11 +33,11 @@ List MakeList() {
     return L;
 }
 
-boolean IsEmpty(List L) {
+boolean IsEmptyList(List L) {
     return (L.A[0].money == -1);
 }
 
-int Length(List L) {
+int LengthList(List L) {
     int i = 0;
     while (i < MaxEl && L.A[i].money != -1) {
         i++;
@@ -45,34 +45,34 @@ int Length(List L) {
     return i;
 }
 
-User Get(List L, IdxType i) {
+User GetList(List L, IdxType i) {
     return L.A[i];
 }
 
-void Set(List *L, IdxType i, User u) {
+void SetList(List *L, IdxType i, User u) {
     (*L).A[i] = u;
 }
 
-IdxType FirstIdx(List L) {
+IdxType FirstIdxList(List L) {
     return 0;
 }
 
-IdxType LastIdx(List L) {
-    return Length(L) - 1;
+IdxType LastIdxList(List L) {
+    return LengthList(L) - 1;
 }
 
-boolean IsIdxValid(List L, IdxType i) {
+boolean IsIdxValidList(List L, IdxType i) {
     return (i >= 0 && i < MaxEl);
 }
 
-boolean IsIdxEff(List L, IdxType i) {
-    return (i >= FirstIdx(L) && i <= LastIdx(L));
+boolean IsIdxEffList(List L, IdxType i) {
+    return (i >= FirstIdxList(L) && i <= LastIdxList(L));
 }
 
-boolean Search(List L, char *name) {
-    int i = FirstIdx(L);
+boolean SearchList(List L, char *name) {
+    int i = FirstIdxList(L);
     boolean found = false;
-    while (i <= LastIdx(L) && !found) {
+    while (i <= LastIdxList(L) && !found) {
         if (CompareStrings(L.A[i].name, name)) { // Menggunakan CompareStrings
             found = true;
         }
@@ -81,36 +81,36 @@ boolean Search(List L, char *name) {
     return found;
 }
 
-void InsertFirst(List *L, User u) {
-    IdxType i = LastIdx(*L);
-    while (i >= FirstIdx(*L)) {
-        Set(L, i + 1, Get(*L, i));
+void InsertFirstList(List *L, User u) {
+    IdxType i = LastIdxList(*L);
+    while (i >= FirstIdxList(*L)) {
+        SetList(L, i + 1, GetList(*L, i));
         i--;
     }
-    Set(L, FirstIdx(*L), u);
+    SetList(L, FirstIdxList(*L), u);
 }
 
-void InsertAt(List *L, User u, IdxType i) {
-    IdxType j = LastIdx(*L);
+void InsertAtList(List *L, User u, IdxType i) {
+    IdxType j = LastIdxList(*L);
     while (j >= i) {
-        Set(L, j + 1, Get(*L, j));
+        SetList(L, j + 1, GetList(*L, j));
         j--;
     }
-    Set(L, i, u);
+    SetList(L, i, u);
 }
 
-void InsertLast(List *L, User u) {
-    if (IsEmpty(*L)) {
-        InsertFirst(L, u);
+void InsertLastList(List *L, User u) {
+    if (IsEmptyList(*L)) {
+        InsertFirstList(L, u);
     } else {
-        Set(L, LastIdx(*L) + 1, u);
+        SetList(L, LastIdxList(*L) + 1, u);
     }
 }
 
-void DeleteFirst(List *L) {
-    IdxType i = FirstIdx(*L);
-    while (i < LastIdx(*L)) {
-        Set(L, i, Get(*L, i + 1));
+void DeleteFirstList(List *L) {
+    IdxType i = FirstIdxList(*L);
+    while (i < LastIdxList(*L)) {
+        SetList(L, i, GetList(*L, i + 1));
         i++;
     }
     (*L).A[i].name[0] = '\0';
@@ -118,9 +118,9 @@ void DeleteFirst(List *L) {
     (*L).A[i].money = -1;
 }
 
-void DeleteAt(List *L, IdxType i) {
-    while (i < LastIdx(*L)) {
-        Set(L, i, Get(*L, i + 1));
+void DeleteAtList(List *L, IdxType i) {
+    while (i < LastIdxList(*L)) {
+        SetList(L, i, GetList(*L, i + 1));
         i++;
     }
     (*L).A[i].name[0] = '\0';
@@ -128,27 +128,27 @@ void DeleteAt(List *L, IdxType i) {
     (*L).A[i].money = -1;
 }
 
-void DeleteLast(List *L) {
-    if (!IsEmpty(*L)) {
-        IdxType lastIdx = LastIdx(*L);
+void DeleteLastList(List *L) {
+    if (!IsEmptyList(*L)) {
+        IdxType lastIdx = LastIdxList(*L);
         (*L).A[lastIdx].name[0] = '\0';
         (*L).A[lastIdx].password[0] = '\0';
         (*L).A[lastIdx].money = -1;
     }
 }
 
-List Concat(List L1, List L2) {
+List ConcatList(List L1, List L2) {
     List L3 = MakeList();
     int idx = 0;
 
     // Tambahkan elemen dari L1
-    for (int i = FirstIdx(L1); i <= LastIdx(L1); i++) {
-        Set(&L3, idx++, Get(L1, i));
+    for (int i = FirstIdxList(L1); i <= LastIdxList(L1); i++) {
+        SetList(&L3, idx++, GetList(L1, i));
     }
 
     // Tambahkan elemen dari L2
-    for (int i = FirstIdx(L2); i <= LastIdx(L2); i++) {
-        Set(&L3, idx++, Get(L2, i));
+    for (int i = FirstIdxList(L2); i <= LastIdxList(L2); i++) {
+        SetList(&L3, idx++, GetList(L2, i));
     }
 
     return L3;
@@ -160,9 +160,9 @@ void PrintUser(User u) {
 
 void PrintList(List L) {
     printf("[");
-    for (int i = FirstIdx(L); i <= LastIdx(L); i++) {
+    for (int i = FirstIdxList(L); i <= LastIdxList(L); i++) {
         PrintUser(L.A[i]);
-        if (i < LastIdx(L)) {
+        if (i < LastIdxList(L)) {
             printf(", ");
         }
     }

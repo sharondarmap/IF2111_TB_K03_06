@@ -12,9 +12,9 @@ int main() {
 
     // 2. Menambahkan elemen ke ArrayDin
     printf("[TEST: InsertLast]\n");
-    ElType barang1 = {"Laptop", 10000};
-    ElType barang2 = {"Mouse", 5000};
-    ElType barang3 = {"Keyboard", 7500};
+    ElType2 barang1 = {"Laptop", 10000};
+    ElType2 barang2 = {"Mouse", 5000};
+    ElType2 barang3 = {"Keyboard", 7500};
 
     InsertLast(&arr, barang1);
     InsertLast(&arr, barang2);
@@ -25,7 +25,7 @@ int main() {
 
     // 3. Menambahkan elemen di posisi tertentu
     printf("[TEST: InsertAt]\n");
-    ElType barang4 = {"Monitor", 15000};
+    ElType2 barang4 = {"Monitor", 15000};
     InsertAt(&arr, barang4, 1); // Menambahkan di indeks 1
     printf("Setelah menambahkan elemen di indeks 1:\n");
     PrintArrayDin(arr);

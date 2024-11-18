@@ -35,7 +35,7 @@ int main() {
     printf("[TEST: dequeue]\n");
     Barang val;
     dequeue(&q, &val);
-    printf("Barang yang diambil: %s, %d}\n", val.name, val.price);
+    printf("Barang yang diambil: {%s, %d}\n", val.name, val.price);
     printf("Queue setelah dequeue: ");
     displayQueue(q);
     printf("\n");

@@ -11,9 +11,9 @@
 #define InitialSize 10
 
 typedef int IdxType;
-typedef Barang ElType;
+typedef Barang ElType2;
 typedef struct {
-    ElType *A;
+    ElType2 *A;
     int Capacity;
     int Neff;
 } ArrayDin;
@@ -48,7 +48,7 @@ int Length(ArrayDin array);
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i);
+ElType2 Get(ArrayDin array, IdxType i);
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
@@ -60,19 +60,19 @@ int GetCapacity(ArrayDin array);
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i);
+void InsertAt(ArrayDin *array, ElType2 el, IdxType i);
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el);
+void InsertLast(ArrayDin *array, ElType2 el);
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el);
+void InsertFirst(ArrayDin *array, ElType2 el);
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
@@ -105,7 +105,7 @@ void PrintArrayDin(ArrayDin array);
  * I.S.: el terdefinisi
  * F.S.: elemen el dicetak dalam format "name, price"
  */
-void PrintElType(ElType el);
+void PrintElType(ElType2 el);
 
 /**
  * Fungsi untuk melakukan reverse suatu ArrayDin.
@@ -123,7 +123,7 @@ ArrayDin CopyArrayDin(ArrayDin array);
  * Fungsi pembanding dua elemen ElType
  * Mengembalikan 1 jika sama, 0 jika berbeda
  */
-int compareElType(ElType a, ElType b);
+int compareElType(ElType2 a, ElType2 b);
 
 /**
  * Fungsi untuk melakukan search suatu ArrayDin.
@@ -131,6 +131,6 @@ int compareElType(ElType a, ElType b);
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el);
+IdxType SearchArrayDin(ArrayDin array, ElType2 el);
 
 #endif
