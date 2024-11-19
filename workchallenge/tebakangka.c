@@ -9,11 +9,11 @@ void TebakAngka() {
     int r = rand() % 101; // Random number between 0–100
     int try = 0;
 
-    while (try < 11) {
+    while (try < 10) {
         printf("Tebak angka: ");
-        STARTWORD(); // Prompt for new input
+        STARTWORD(); //setiap pengguna salah memasukkan angka, loop akan kembali ke STARTWORD
 
-        int guessedNumber = WordToInt(currentWord); //Convert word to integer
+        int guessedNumber = WordToInt(currentWord); //meng-convert word ke integer
         printf("Angka yang dimasukkan: ");
         PrintWord(currentWord);
 
@@ -30,12 +30,10 @@ void TebakAngka() {
         printf("Sisa percobaan: %d\n\n", 11 - try);
     }
 
-    if (try == 11) {
+    if (try == 10) {
         printf("Sayang sekali! Angka yang benar adalah: %d\n", r);
     }
 }
-
-
 
 int main(){
     TebakAngka();
