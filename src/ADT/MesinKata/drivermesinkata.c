@@ -11,7 +11,7 @@ int main() {
     printf("Masukkan input: ");
     STARTWORD();
 
-    while (!isEndWord) {
+    while (!isEndWord()) {
         printf("Kata yang dibaca: ");
         PrintWord(currentWord); // Cetak kata yang dibaca
         printf("\nPanjang kata: %d\n", currentWord.Length); // Tampilkan panjang kata
