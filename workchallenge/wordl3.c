@@ -18,14 +18,14 @@ void TandaTebakan(char *guess, Word *wordAns, char grid[5][6], int attempt, char
     // Change answer to char[6], not a single character
     for (int i = 0; i < 5; i++) {
         if (guess[i] == answer[i]) {
-            grid[attempt][i] = guess[i]; // Correct letter in the correct position
+            grid[attempt][i] = guess[i]; //huruf benar di posisi yang benar
         } else if (CharExist(guess[i], wordAns)) {
-            grid[attempt][i] = '#'; // Correct letter in the wrong position
+            grid[attempt][i] = '#'; //huruf benar tetapi posisi salah
         } else {
-            grid[attempt][i] = '*'; // Letter not in the answer
+            grid[attempt][i] = '*'; //huruf tidak ada di jawaban
         }
     }
-    grid[attempt][5] = '\0'; // Null-terminate the row for printing
+    grid[attempt][5] = '\0'; //null row untuk menge-print string
 }
 
 void DisplayGrid(char grid[5][6]) {
@@ -65,9 +65,9 @@ void WORDL3(){
     for (int i = 0; i < 5; i++) {
         answer[i] = solution[r][i];
     }
-    answer[5] = '\0';  // Null-terminate the string
+    answer[5] = '\0';
 
-    Word wordAns = StringToWord(answer); // Convert string to Word struct
+    Word wordAns = StringToWord(answer); //mengubah string ke word
 
     printf("WELCOME TO W0RDL3, YOU HAVE 5 CHANCES TO ANSWER BEFORE YOU LOSE!\n");
     printf(" \n");
@@ -96,33 +96,28 @@ void WORDL3(){
         DisplayGrid(grid);
 
         printf("Masukkan kata tebakan Anda: ");
-        STARTWORD(); // Get the user's guess
+        STARTWORD(); //input jawaban user menggunakan mesinkata
         char guess[6];
         for (int i = 0; i < currentWord.Length; i++) {
             guess[i] = currentWord.TabWord[i];
         }
-        guess[currentWord.Length] = '\0'; // Null-terminate the guess
+        guess[currentWord.Length] = '\0'; // null untuk tahu end of stringnya
 
         if (currentWord.Length != 5) {
             printf("Invalid guess. Please enter exactly 5 letters.\n");
             continue;
         }
 
-        // Provide feedback and update the grid
+        //update grid jawabannya
         TandaTebakan(guess, &wordAns, grid, chances, answer);
 
         if (IsWordEqual(currentWord, wordAns)) {
-            printf("Congratulations! You've guessed the word: %s\n", answer);
+            printf("SELAMAT, ANDA MENEBAK KATA: %s\n", answer);
             return;
         }
 
         chances++;
     }
     DisplayGrid(grid);
-    printf("You've run out of chances! The correct word was: %s\n", answer);
-}
-
-int main(){
-    WORDL3();
-    return 0;
+    printf("OH TIDAK Anda kehabisan kesempatan! Jawaban yang benar adalah: %s\n", answer);
 }
