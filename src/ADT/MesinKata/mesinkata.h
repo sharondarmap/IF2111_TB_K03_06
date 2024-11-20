@@ -78,4 +78,9 @@ boolean IsWordEqual(Word w1, Word w2);
    I.S. : Dua Word valid
    F.S. : Mengembalikan true jika kedua Word sama */
 
+void CopyWordToCharArray(Word src, char *dest);
+/* Menyalin isi Word ke array karakter
+   I.S. : src adalah Word yang valid, dest adalah array karakter yang cukup besar
+   F.S. : dest berisi salinan karakter dari src, diakhiri dengan null-terminator */
+   
 #endif
