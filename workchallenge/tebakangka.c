@@ -34,9 +34,3 @@ void TebakAngka() {
         printf("Sayang sekali! Angka yang benar adalah: %d\n", r);
     }
 }
-
-int main(){
-    TebakAngka();
-
-    return 0;
-}
