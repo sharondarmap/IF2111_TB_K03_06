@@ -53,14 +53,13 @@ void WORDL3(){
     char coba = wordAns.TabWord[0]; //ngambil huruf pertama dari Word kek gini ya bang
 
     printf("WELCOME TO W0RDL3, YOU HAVE 5 CHANCES TO ANSWER BEFORE YOU LOSE!\n");
-
-    printf{"aturan main:\n"
+    printf(" \n");
+    printf("aturan main:\n"
             "1. Terdapat 5 kesempatan.\n"
             "2. Setiap tebakan harus merupakan kata valid 5 huruf bahasa inggris.\n"
             "3. * menunjukkan huruf tidak ada di dalam jawaban\n"
             "4. # menunjukkan huruf ada di dalam jawaban tetapi posisi salah\n"
-            "5. Jika huruf benar dan posisi benar, huruf akan dikembalikan tanpa tanda\n"}
-
+            "5. Jika huruf benar dan posisi benar, huruf akan dikembalikan tanpa tanda\n");
 
     printf("_ _ _ _ _\n"
         "_ _ _ _ _\n"
@@ -73,6 +72,8 @@ void WORDL3(){
     while (chances < 5){
         printf("Masukkan kata tebakan Anda: ");
         STARTWORD();
+
+
 
 
 
