@@ -33,4 +33,16 @@ char GetCC();
 boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
 
+void ADVFILE();
+/* Memajukan pembacaan karakter dari file
+   I.S. : currentChar sembarang
+   F.S. : currentChar adalah karakter berikutnya dari file
+          Jika currentChar adalah karakter terakhir dari file, pita ditutup */
+
+void STARTFILE(char filename[]);
+/* Memulai pembacaan karakter dari file
+   I.S. : filename adalah nama file yang valid
+   F.S. : pita dibuka untuk membaca, currentChar adalah karakter pertama dari file
+          Jika file tidak ditemukan, program akan keluar dengan pesan error */
+
 #endif

@@ -4,6 +4,7 @@
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
+#include <stdlib.h>
 #include "../MesinKarakter/mesinkarakter.h"
 #include "../../boolean.h"
 #include <stdlib.h>
@@ -79,4 +80,5 @@ boolean IsWordEqual(Word w1, Word w2);
    I.S. : Dua Word valid
    F.S. : Mengembalikan true jika kedua Word sama */
 
+   
 #endif
