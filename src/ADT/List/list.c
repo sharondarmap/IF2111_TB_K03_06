@@ -46,6 +46,10 @@ int LengthList(List L) {
 }
 
 User GetList(List L, IdxType i) {
+    if (i < FirstIdxList(L) || i > LastIdxList(L)) {
+        printf("Error: Indeks tidak valid.\n");
+        exit(1); // Menghentikan program jika indeks tidak valid
+    }
     return L.A[i];
 }
 
@@ -70,10 +74,13 @@ boolean IsIdxEffList(List L, IdxType i) {
 }
 
 boolean SearchList(List L, char *name) {
+    if (name == NULL) {
+        return false; // Nama tidak valid
+    }
     int i = FirstIdxList(L);
     boolean found = false;
     while (i <= LastIdxList(L) && !found) {
-        if (CompareStrings(L.A[i].name, name)) { // Menggunakan CompareStrings
+        if (CompareStrings(L.A[i].name, name)) { // Membandingkan nama
             found = true;
         }
         i++;
@@ -167,4 +174,26 @@ void PrintList(List L) {
         }
     }
     printf("]\n");
+}
+
+void CopyWordToCharArray(Word src, char *dest) {
+    int i;
+    for (i = 0; i < src.Length && i < MAX_LEN - 1; i++) {
+        dest[i] = src.TabWord[i];
+    }
+    dest[i] = '\0'; // Tambahkan null-terminator
+}
+
+int SearchUserIndex(List L, char *name) {
+    if (name == NULL) {
+        return -1; // Nama tidak valid
+    }
+    int i = FirstIdxList(L);
+    while (i <= LastIdxList(L)) {
+        if (CompareStrings(L.A[i].name, name)) { // Membandingkan nama
+            return i; // Kembalikan indeks jika ditemukan
+        }
+        i++;
+    }
+    return -1; // Tidak ditemukan
 }
