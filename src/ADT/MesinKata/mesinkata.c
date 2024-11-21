@@ -155,11 +155,3 @@ boolean IsWordEqual(Word w1, Word w2) {
     }
     return true;
 }
-
-void CopyWordToCharArray(Word src, char *dest) {
-    int i;
-    for (i = 0; i < src.Length && i < MAX_LEN - 1; i++) {
-        dest[i] = src.TabWord[i];
-    }
-    dest[i] = '\0'; // Tambahkan null-terminator
-}
