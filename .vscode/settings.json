@@ -3,6 +3,7 @@
     "files.associations": {
         "user.h": "c",
         "mesinkata.h": "c",
-        "list.h": "c"
+        "list.h": "c",
+        "mesinkarakter.h": "c"
     }
 }

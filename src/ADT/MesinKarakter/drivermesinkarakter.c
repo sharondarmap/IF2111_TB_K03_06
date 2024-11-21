@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "mesinkarakter.h"
 #include "mesinkarakter.c"
 
