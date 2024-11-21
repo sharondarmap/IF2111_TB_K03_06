@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "../src/ADT/Kustom/user.h"
-#include "../src/ADT/MesinKata/mesinkata.h"
+#include "../../ADT/Kustom/user.h"
+#include "../../ADT/MesinKata/mesinkata.h"
 
 // Main game function for Tebak Angka (Number Guessing Game)
 int TebakAngka();

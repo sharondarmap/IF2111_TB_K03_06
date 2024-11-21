@@ -1,8 +1,8 @@
 #ifndef WORDL3_H
 #define WORDL3_H
 
-#include "../src/ADT/Kustom/user.h"
-#include "../src/ADT/MesinKata/mesinkata.h"
+#include "../../ADT/Kustom/user.h"
+#include "../../ADT/MesinKata/mesinkata.h"
 
 // checks if a character exists in a Word
 boolean CharExist(char c, Word *wordAns);

@@ -3,7 +3,7 @@
 #include <time.h>
 #include "workchallenge.h"
 
-//gcc -o workceleng workchallenge/driverworkchallenge.c src/ADT/MesinKata/mesinkata.c src/ADT/MesinKarakter/mesinkarakter.c src/ADT/List/list.c workchallenge/tebakangka.c workchallenge/wordl3.c workchallenge/workchallenge.c
+//gcc -o workceleng src/SPESIFIKASI/workchallenge/driverworkchallenge.c src/ADT/MesinKata/mesinkata.c src/ADT/MesinKarakter/mesinkarakter.c src/ADT/List/list.c src/SPESIFIKASI/workchallenge/tebakangka.c src/SPESIFIKASI/workchallenge/wordl3.c src/SPESIFIKASI/workchallenge/workchallenge.c
 
 int main(){
 

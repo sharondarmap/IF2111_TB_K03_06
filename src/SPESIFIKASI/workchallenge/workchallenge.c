@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../src/ADT/Kustom/user.h"
-#include "../src/ADT/MesinKata/mesinkata.h"
-#include "../src/ADT/List/list.h"
+#include "../../ADT/Kustom/user.h"
+#include "../../ADT/MesinKata/mesinkata.h"
+#include "../../ADT/List/list.h"
 #include "wordl3.h"
 #include "tebakangka.h"
 

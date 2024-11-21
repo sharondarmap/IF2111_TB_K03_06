@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "../src/ADT/Kustom/user.h"
-#include "../src/ADT/MesinKata/mesinkata.h"
+#include "../../ADT/Kustom/user.h"
+#include "../../ADT/MesinKata/mesinkata.h"
 /* Library yang boleh digunakan hanya stdio.h, stdlib.h, time.h, dan math.h. */
 
 int TebakAngka() {
