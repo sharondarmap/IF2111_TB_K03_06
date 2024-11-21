@@ -35,7 +35,7 @@ void StoreRemove (ArrayDin *barangList) {
     printf("Nama barang yang akan dihapus:");
     boolean barangDitemukan = RemoveLogic(barangList,currentWord);
     if (barangDitemukan) {
-        prinf("Sticky Web Gun telah berhasil dihapus.");
+        prinf(" telah berhasil dihapus.");
     }
     else {
         printf("Toko tidak menjual ");

@@ -101,4 +101,14 @@ void PrintList(List L);
 /* I.S. L terdefinisi */
 /* F.S. Elemen-elemen dalam list dicetak ke layar dengan format [{name: ..., password: ..., money: ...}, ...] */
 
+void CopyWordToCharArray(Word src, char *dest);
+/* Menyalin isi Word ke array karakter
+   I.S. : src adalah Word yang valid, dest adalah array karakter yang cukup besar
+   F.S. : dest berisi salinan karakter dari src, diakhiri dengan null-terminator */
+
+int SearchUserIndex(List L, char *name);
+/* Mencari indeks user berdasarkan nama
+   I.S. : L terdefinisi, name adalah string yang valid
+   F.S. : Mengembalikan indeks user jika ditemukan, -1 jika tidak ditemukan */
+
 #endif
