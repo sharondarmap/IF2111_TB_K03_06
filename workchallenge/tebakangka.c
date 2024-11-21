@@ -5,32 +5,29 @@
 #include "../src/ADT/MesinKata/mesinkata.h"
 /* Library yang boleh digunakan hanya stdio.h, stdlib.h, time.h, dan math.h. */
 
-void TebakAngka() {
+int TebakAngka() {
     int r = rand() % 101; // Random number between 0–100
     int try = 0;
 
     while (try < 10) {
         printf("Tebak angka: ");
-        STARTWORD(); //setiap pengguna salah memasukkan angka, loop akan kembali ke STARTWORD
-
-        int guessedNumber = WordToInt(currentWord); //meng-convert word ke integer
-        printf("Angka yang dimasukkan: ");
-        PrintWord(currentWord);
+        STARTWORD(); // Start capturing user input
+        int guessedNumber = WordToInt(currentWord);
 
         if (guessedNumber == r) {
             printf("\nSelamat! Anda berhasil menebak angka: %d\n", r);
-            break;
+            return try + 1; // Return the number of tries used
         } else if (guessedNumber < r) {
             printf("\nTerlalu kecil!\n");
         } else {
             printf("\nTerlalu besar!\n");
         }
-
+        
         try++;
-        printf("Sisa percobaan: %d\n\n", 11 - try);
+        printf("Sisa percobaan: %d\n\n", 10 - try);
     }
 
-    if (try == 10) {
-        printf("Sayang sekali! Angka yang benar adalah: %d\n", r);
-    }
+    // If the loop ends, the user failed to guess the number
+    printf("Sayang sekali! Angka yang benar adalah: %d\n", r);
+    return 11; // Return 11 to indicate failure
 }
