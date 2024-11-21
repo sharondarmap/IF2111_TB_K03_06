@@ -1,8 +1,9 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "..\..\boolean.h"
-#include "..\Kustom\user.h"
+#include "../../boolean.h"
+#include "../Kustom/user.h"
+#include "../MesinKata/mesinkata.h"
 
 /* Definisi ukuran maksimum elemen dalam list */
 #define MaxEl 100
