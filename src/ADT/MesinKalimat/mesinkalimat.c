@@ -120,9 +120,30 @@ void ParseUser(Kalimat line, int *uang, char *nama, char *password) {
     password[j] = '\0'; // Null-terminate
 }
 
+void STARTKALIMATFILE(char *filename) {
+    char baseDir[] = "../../DATA/"; // Direktori default tempat file berada
+    char fullPath[200];            // Buffer untuk menyimpan path lengkap
+    int i = 0, j = 0;
 
-void STARTKALIMATFILE(char filename[]) {
-    STARTFILE(filename);
+    // Gabungkan baseDir dan filename secara manual
+    while (baseDir[i] != '\0') {       // Salin baseDir ke fullPath
+        fullPath[i] = baseDir[i];
+        i++;
+    }
+    while (filename[j] != '\0') {     // Tambahkan filename ke fullPath
+        fullPath[i] = filename[j];
+        i++;
+        j++;
+    }
+    fullPath[i] = '\0';               // Null-terminate string
+
+    // // Debug: Cek path lengkap
+    // printf("DEBUG: Full path file = '%s'\n", fullPath);
+
+    // Buka file menggunakan STARTFILE
+    STARTFILE(fullPath);
+
+    // Proses seperti sebelumnya
     IgnoreNewline();
     if (currentChar == MARK2) {
         EndKalimat = true;
@@ -130,6 +151,8 @@ void STARTKALIMATFILE(char filename[]) {
         EndKalimat = false;
         SalinKalimat();
     }
+
+    // Debug untuk memastikan baris pertama terbaca
     // printf("DEBUG: Baris pertama yang dibaca = '%s'\n", CLine.TabLine);
 }
 
