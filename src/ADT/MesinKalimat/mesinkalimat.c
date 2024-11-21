@@ -167,3 +167,40 @@ void ADVSATUKATA() {
         SalinSatuKata();
     }
 }
+
+void STARTWRITEKALIMATFILE(FILE **file, char filename[]) {
+    char path[255]; // Buffer untuk menyimpan path lengkap
+
+    // Menambahkan prefix "DATA/" secara manual
+    int i = 0, j = 0;
+    char *folder = "../../DATA";
+    while (folder[i] != '\0') { // Salin "DATA/" ke path
+        path[j++] = folder[i++];
+    }
+    i = 0;
+    while (filename[i] != '\0') { // Salin nama file ke path
+        path[j++] = filename[i++];
+    }
+    path[j] = '\0'; // Null-terminator
+
+    // Membuka file untuk menulis
+    *file = fopen(path, "w");
+    if (*file == NULL) {
+        printf("Gagal membuka file untuk menulis: %s\n", path);
+    }
+}
+
+void WRITELINEFILE(FILE *file, Kalimat K) {
+    if (file != NULL) {
+        for (int i = 0; i < K.Length; i++) {
+            fputc(K.TabLine[i], file);
+        }
+        fputc('\n', file); // Tambahkan newline
+    }
+}
+
+void CLOSEWRITEKALIMATFILE(FILE *file) {
+    if (file != NULL) {
+        fclose(file);
+    }
+}
