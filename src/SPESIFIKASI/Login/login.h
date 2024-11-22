@@ -1,5 +1,5 @@
-#ifndef __LOAD_H__
-#define __LOAD_H__
+#ifndef __LOGIN_H__
+#define __LOGIN_H__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +11,6 @@
 #include "../../ADT/List/list.h"
 #include "../../ADT/MesinKalimat/mesinkalimat.h"
 
-void Load(char *filename, ArrayDin *daftarBarang, List *userList);
+void Login(List *userList, int *currentIndex);
 
 #endif

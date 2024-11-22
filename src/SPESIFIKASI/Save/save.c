@@ -1,39 +1,9 @@
-// #include "save.h"
-
-// static FILE *pita;
-
-// void Save(ArrayDin *barang, List *userList, Word fileName) {
-//     // Membuat path ke direktori ../DATA
-//     const char *parent_dir = "../DATA";
-//     char path[255];
-//     snprintf(path, sizeof(path), "%s/%s", parent_dir, fileName.TabWord);
-
-//     // Membuka file untuk menulis
-//     pita = fopen(path, "w");
-//     if (pita == NULL) {
-//         printf("\nGAGAL MENYIMPAN FILE\n\n");
-//         return;
-//     }
-
-//     // Menulis jumlah barang
-//     fprintf(pita, "%d\n", Length(*barang));
-//     for (int i = 0; i < Length(*barang); i++) {
-//         Barang b = Get(*barang, i);
-//         fprintf(pita, "%d %s\n", b.price, b.name);
-//     }
-
-//     // Menulis jumlah pengguna
-//     fprintf(pita, "%d\n", LengthList(*userList));
-//     for (int i = 0; i < LengthList(*userList); i++) {
-//         User u = GetList(*userList, i);
-//         fprintf(pita, "%d %s %s\n", u.money, u.name, u.password);
-//     }
-
-//     fclose(pita);
-//     printf("Data berhasil disimpan ke '%s'.\n", path);
-// }
-
 #include "save.h"
+
+boolean EndKalimat;  // Deklarasi variabel global
+Kalimat CLine;
+Kalimat CInput;
+Kalimat CCommand;
 
 void Save(ArrayDin *barang, List *userList, char *filename) {
     FILE *file;

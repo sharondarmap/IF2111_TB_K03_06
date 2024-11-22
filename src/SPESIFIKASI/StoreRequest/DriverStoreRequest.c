@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include "StoreRequest.h"
-#include "StoreRequest.c"
-#include "../../ADT/List/arraydin.h"
-#include "../../ADT/Queue/queue.h"
 
 int main() {
     Queue barangQueue;

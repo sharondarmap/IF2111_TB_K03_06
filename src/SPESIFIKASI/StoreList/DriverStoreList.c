@@ -1,5 +1,4 @@
 #include "StoreList.h"
-#include "StoreList.c"
 
 int main() {
     ArrayDin barangList = MakeArrayDin();

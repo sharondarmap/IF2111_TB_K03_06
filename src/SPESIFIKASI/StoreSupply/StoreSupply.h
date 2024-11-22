@@ -4,6 +4,8 @@
 #include "../../boolean.h"
 #include "../../ADT/List/arraydin.h"
 #include "../../ADT/MesinKata/mesinkata.h"
+#include "../../ADT/MesinKarakter/mesinkarakter.h"
+#include "../../ADT/Kustom/barang.h"
 #include "../../ADT/Queue/queue.h"
 
 void StoreSupply(Queue *barangQueue, ArrayDin *barangList);

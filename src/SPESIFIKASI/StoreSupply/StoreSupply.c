@@ -1,10 +1,5 @@
 #include <stdio.h>
 #include "StoreSupply.h"
-#include "../../ADT/List/arraydin.h"
-#include "../../ADT/MesinKata/mesinkata.h"
-#include "../../ADT/MesinKarakter/mesinkarakter.h"
-#include "../../ADT/Queue/queue.h"
-#include "../../boolean.h"
 
 
 void StoreSupply(Queue *barangQueue, ArrayDin *barangList) {
