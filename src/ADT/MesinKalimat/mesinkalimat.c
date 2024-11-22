@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "mesinkalimat.h"
 
+  boolean EndKalimat;  // Deklarasi variabel global
+  Kalimat CLine;
+  Kalimat CInput;
+  Kalimat CCommand;
+  
 void ResetKalimat() {
     for (int i = 0; i < sizeof(CLine.TabLine); i++) {
         CLine.TabLine[i] = '\0';
