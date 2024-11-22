@@ -173,7 +173,7 @@ void STARTWRITEKALIMATFILE(FILE **file, char filename[]) {
 
     // Menambahkan prefix "DATA/" secara manual
     int i = 0, j = 0;
-    char *folder = "../../DATA";
+    char *folder = "../../DATA/";
     while (folder[i] != '\0') { // Salin "DATA/" ke path
         path[j++] = folder[i++];
     }
