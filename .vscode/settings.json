@@ -4,6 +4,7 @@
         "user.h": "c",
         "mesinkata.h": "c",
         "list.h": "c",
-        "mesinkarakter.h": "c"
+        "mesinkarakter.h": "c",
+        "workchallenge.h": "c"
     }
 }
