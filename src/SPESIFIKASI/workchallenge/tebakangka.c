@@ -3,11 +3,14 @@
 #include <stdlib.h>
 #include "../../ADT/Kustom/user.h"
 #include "../../ADT/MesinKata/mesinkata.h"
+#include "wordl3.h"
 /* Library yang boleh digunakan hanya stdio.h, stdlib.h, time.h, dan math.h. */
 
 int TebakAngka() {
-    srand(time(NULL));
-    int r = rand() % 101; // Random number between 0–100
+    unsigned long long seed;
+    seed = (unsigned long long)time(NULL);
+    int batas = 101;
+    int r = randomnumbergen(batas, seed);
     int try = 0;
 
     while (try < 10) {

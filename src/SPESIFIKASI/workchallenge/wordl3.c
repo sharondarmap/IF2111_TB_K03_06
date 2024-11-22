@@ -1,9 +1,18 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <math.h>
 #include "../../ADT/Kustom/user.h"
 #include "../../ADT/MesinKata/mesinkata.h"
 /* Library yang boleh digunakan hanya stdio.h, stdlib.h, time.h, dan math.h. */
+
+int randomnumbergen(int batas, unsigned long long seed) {
+    unsigned long long a = 48271;
+    unsigned long long c = 0;
+    unsigned long long m = (1ULL << 31) - 1; // 2^31 - 1
+    unsigned long long rng = (a * seed + c) % m;
+    return (int)(rng % batas);
+}
 
 boolean CharExist(char c, Word *wordAns) {
     for (int i = 0; i < wordAns->Length; i++) {
@@ -41,8 +50,10 @@ void DisplayGrid(char grid[5][6]) {
 
 int WORDL3() {
     int chances = 0;
-    srand(time(NULL));
-    int r = rand() % 100;
+    unsigned long long seed;
+    seed = (unsigned long long)time(NULL);
+    int batas = 100;
+    int r = randomnumbergen(batas, seed);
     char answer[6]; // container for the answer string
 
     char solution[100][6] = {

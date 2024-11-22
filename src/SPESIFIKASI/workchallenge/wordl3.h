@@ -4,6 +4,9 @@
 #include "../../ADT/Kustom/user.h"
 #include "../../ADT/MesinKata/mesinkata.h"
 
+//random number generator
+int randomnumbergen(int batas, unsigned long long seed);
+
 // checks if a character exists in a Word
 boolean CharExist(char c, Word *wordAns);
 
