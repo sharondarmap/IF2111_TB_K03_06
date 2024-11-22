@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "arraydin.h"
-#include "arraydin.c"
+//gcc drivearraydin.c arraydin.c -o driverarraydin
 
 int main() {
     printf("=== DRIVER ARRAYDIN ===\n\n");

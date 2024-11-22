@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mesinkarakter.h"
-#include "mesinkarakter.c"
+// #include "mesinkarakter.c"
 
 int main() {
     printf("=== DRIVER MESIN KARAKTER ===\n\n");
@@ -27,3 +27,5 @@ int main() {
 
     return 0;
 }
+
+//gcc -o drivermesinkarakter drivermesinkarakter.c mesinkarakter.c

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "list.h"
-#include "list.c"
+//gcc driverlist.c list.c -o driverlist
 
 int main() {
     printf("=== DRIVER LIST ===\n\n");
