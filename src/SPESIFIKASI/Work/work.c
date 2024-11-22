@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "work.h" 
-#include <unistd.h> 
+#include <time.h> 
 
 void Work(List *userList, IdxType idxUser) {
     Job WorkList[] = {
@@ -43,8 +43,9 @@ void Work(List *userList, IdxType idxUser) {
 
             int durasi = WorkList[i].durasi;
             for (int j = 0; j < durasi; j++) {
-                sleep(1);  // Tunggu selama 1 detik
-                printf(".", durasi - j - 1);  
+                time_t start_time = time(NULL);
+                while (time(NULL) - start_time < 1);
+                printf(".");  
             }
 
             userList->A[idxUser].money += WorkList[i].pendapatan;
