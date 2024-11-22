@@ -1,10 +1,5 @@
 #include "save.h"
 
-boolean EndKalimat;  // Deklarasi variabel global
-Kalimat CLine;
-Kalimat CInput;
-Kalimat CCommand;
-
 void Save(ArrayDin *barang, List *userList, char *filename) {
     FILE *file;
     STARTWRITEKALIMATFILE(&file, filename);

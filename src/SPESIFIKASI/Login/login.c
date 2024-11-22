@@ -1,10 +1,5 @@
 #include "login.h"
 
-boolean EndKalimat = 0;  // Definisi variabel
-Kalimat CLine;           // Definisi variabel
-Kalimat CInput;          // Definisi variabel
-Kalimat CCommand;        // Definisi variabel
-
 
 void Login(List *userList, int *currentIndex) {
     Word username, password;

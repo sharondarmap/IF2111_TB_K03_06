@@ -1,10 +1,5 @@
 #include "load.h"
 
-boolean EndKalimat;  // Deklarasi variabel global
-Kalimat CLine;
-Kalimat CInput;
-Kalimat CCommand;
-
 void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
     int jumlahBarang;
 
