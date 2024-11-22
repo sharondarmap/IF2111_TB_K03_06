@@ -3,6 +3,7 @@
 
 #include "../../boolean.h"
 #include "../../ADT/List/arraydin.h"
+#include "../../ADT/List/list.h"
 #include "../../ADT/MesinKata/mesinkata.h"
 #include "../../ADT/MesinKarakter/mesinkarakter.h"
 #include "../../ADT/Kustom/barang.h"
