@@ -28,10 +28,10 @@ void StoreRemove (ArrayDin *barangList) {
 
     if (RemoveLogic(barangList,currentWord)) {
         PrintWord (currentWord);
-        printf("telah berhasil dihapus.");
+        printf("telah berhasil dihapus\n");
     }
     else {
-        printf("Toko tidak menjual ");
+        printf("Toko tidak menjual\n");
         PrintWord (currentWord);
     }
 }

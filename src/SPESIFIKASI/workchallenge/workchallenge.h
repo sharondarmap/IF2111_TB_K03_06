@@ -3,6 +3,8 @@
 #define WORKCHALLENGE_H
 
 #include "../../ADT/List/list.h"
+#include "tebakangka.h"
+#include "wordl3.h"
 
 void WorkChallenge(List *userList, IdxType currentIndex);
 

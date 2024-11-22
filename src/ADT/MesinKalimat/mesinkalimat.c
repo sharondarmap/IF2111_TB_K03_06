@@ -126,7 +126,7 @@ void ParseUser(Kalimat line, int *uang, char *nama, char *password) {
 }
 
 void STARTKALIMATFILE(char *filename) {
-    char baseDir[] = "../../DATA/"; // Direktori default tempat file berada
+    char baseDir[] = "DATA/"; // Direktori default tempat file berada
     char fullPath[200];            // Buffer untuk menyimpan path lengkap
     int i = 0, j = 0;
 
