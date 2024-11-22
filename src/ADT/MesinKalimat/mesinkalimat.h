@@ -76,4 +76,19 @@ void ParseBarang(Kalimat line, int *angka, char *nama);
    F.S. : angka berisi nilai integer yang diparsing dari bagian awal kalimat,
           nama berisi string yang diparsing dari sisa kalimat setelah angka */
 
+void STARTWRITEKALIMATFILE(FILE **file, char filename[]);
+/* Membuka file untuk menulis
+   I.S. : filename valid
+   F.S. : File pointer disiapkan untuk menulis */
+
+void WRITELINEFILE(FILE *file, Kalimat K);
+/* Menulis satu kalimat ke file
+   I.S. : File telah dibuka untuk menulis
+   F.S. : Kalimat K ditulis ke file di baris baru */
+
+void CLOSEWRITEKALIMATFILE(FILE *file);
+/* Menutup file untuk menulis
+   I.S. : File telah dibuka untuk menulis
+   F.S. : File ditutup */
+
 #endif
