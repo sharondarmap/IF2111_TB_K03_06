@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "../MesinKarakter/mesinkarakter.h"
 #include "../../boolean.h"
+#include <stdlib.h>
 
 #define NMax 50
 #define BLANK ' '

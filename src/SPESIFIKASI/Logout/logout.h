@@ -1,5 +1,5 @@
-#ifndef __LOAD_H__
-#define __LOAD_H__
+#ifndef __LOGOUT_H__
+#define __LOGOUT_H__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +11,6 @@
 #include "../../ADT/List/list.h"
 #include "../../ADT/MesinKalimat/mesinkalimat.h"
 
-void Load(char *filename, ArrayDin *daftarBarang, List *userList);
+void Logout(int *currentIndex);
 
 #endif

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "work.h" 
-#include <unistd.h> 
+#include <time.h> 
 
-void Work(List *userList, User *currentUser) {
+void Work(List *userList, IdxType idxUser) {
     Job WorkList[] = {
         {"Evil Lab Assistant", 100, 14},
         {"OWCA Hiring Manager", 4200, 21},
@@ -20,12 +20,12 @@ void Work(List *userList, User *currentUser) {
     }
 
     printf("\nMasukkan nama pekerjaan yang dipilih: ");
-    STARTWORD(); 
+    STARTWORD();
 
     Word inputJob = currentWord; // Start input user
-    while (!isEndWord()) {     
-        ADVWORD();            
-        if (!isEndWord()) {     
+    while (!isEndWord()) {
+        ADVWORD();
+        if (!isEndWord()) {
             inputJob.TabWord[inputJob.Length++] = ' ';
             for (int i = 0; i < currentWord.Length; i++) {
                 inputJob.TabWord[inputJob.Length++] = currentWord.TabWord[i];
@@ -40,10 +40,16 @@ void Work(List *userList, User *currentUser) {
         if (IsWordEqual(inputJob, jobName)) {
             found = true;
             printf("Anda sedang bekerja sebagai %s... Harap tunggu selama %d detik.\n", WorkList[i].nama, WorkList[i].durasi);
-            sleep(WorkList[i].durasi);
 
-            currentUser->money += WorkList[i].pendapatan;
-            printf("Pekerjaan selesai. %d rupiah telah ditambahkan ke saldo Anda.\n", WorkList[i].pendapatan);
+            int durasi = WorkList[i].durasi;
+            for (int j = 0; j < durasi; j++) {
+                time_t start_time = time(NULL);
+                while (time(NULL) - start_time < 1);
+                printf(".");  
+            }
+
+            userList->A[idxUser].money += WorkList[i].pendapatan;
+            printf("\nPekerjaan selesai. %d rupiah telah ditambahkan ke saldo Anda.\n", WorkList[i].pendapatan);
             break;
         }
     }
@@ -52,4 +58,3 @@ void Work(List *userList, User *currentUser) {
         printf("Pekerjaan tidak valid. Silakan coba lagi.\n");
     }
 }
-

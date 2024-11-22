@@ -1,6 +1,5 @@
 #include "../MesinKata/mesinkata.h"
 #include "../../boolean.h"
-boolean EndKalimat;
 
 #ifndef __MESINKALIMAT_H__
 #define __MESINKALIMAT_H__
@@ -14,10 +13,10 @@ typedef struct {
   int Length;
 } Kalimat;
 
-boolean EndKalimat;
-Kalimat CLine;
-Kalimat CInput;
-Kalimat CCommand;
+ extern boolean EndKalimat;  // Deklarasi variabel global
+ extern Kalimat CLine;
+ extern Kalimat CInput;
+ extern Kalimat CCommand;
 
 void ResetKalimat();
 /* Mengosongkan isi CLine
@@ -70,10 +69,26 @@ void ParseBarang(Kalimat line, int *angka, char *nama);
    F.S. : angka berisi nilai integer yang diparsing dari bagian awal kalimat,
           nama berisi string yang diparsing dari sisa kalimat setelah angka */
 
-void ParseBarang(Kalimat line, int *angka, char *nama);
-/* Mem-parsing kalimat menjadi angka dan nama
+void ParseUser(Kalimat line, int *uang, char *nama, char *password);
+/* Mem-parsing kalimat menjadi uang, nama, dan password
    I.S. : line berisi kalimat yang valid
-   F.S. : angka berisi nilai integer yang diparsing dari bagian awal kalimat,
-          nama berisi string yang diparsing dari sisa kalimat setelah angka */
+   F.S. : uang berisi nilai integer yang diparsing dari bagian awal kalimat,
+          nama berisi string yang diparsing dari bagian tengah kalimat,
+          password berisi string yang diparsing dari bagian akhir kalimat */
+
+void STARTWRITEKALIMATFILE(FILE **file, char filename[]);
+/* Membuka file untuk menulis
+   I.S. : filename valid
+   F.S. : File pointer disiapkan untuk menulis */
+
+void WRITELINEFILE(FILE *file, Kalimat K);
+/* Menulis satu kalimat ke file
+   I.S. : File telah dibuka untuk menulis
+   F.S. : Kalimat K ditulis ke file di baris baru */
+
+void CLOSEWRITEKALIMATFILE(FILE *file);
+/* Menutup file untuk menulis
+   I.S. : File telah dibuka untuk menulis
+   F.S. : File ditutup */
 
 #endif

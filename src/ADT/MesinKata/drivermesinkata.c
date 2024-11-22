@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "mesinkata.c"
-#include "../MesinKarakter/mesinkarakter.c"
+#include "mesinkata.h"
+//gcc -o drivermesinkarakter drivermesinkarakter.c mesinkarakter.c mesinkata.c
 
 int main() {
     printf("=== DRIVER MESIN KATA ===\n");
@@ -11,7 +11,7 @@ int main() {
     printf("Masukkan input: ");
     STARTWORD();
 
-    while (!isEndWord) {
+    while (!isEndWord()) {
         printf("Kata yang dibaca: ");
         PrintWord(currentWord); // Cetak kata yang dibaca
         printf("\nPanjang kata: %d\n", currentWord.Length); // Tampilkan panjang kata

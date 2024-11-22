@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "queue.h"
-#include "queue.c"
+//gcc driverqueue.c queue.c -o driverqueue
 
 int main() {
     Queue q;
