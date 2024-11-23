@@ -77,37 +77,44 @@ void CopyWord()
     }
 }
 
-boolean isEndWord() {
+boolean isEndWord()
+{
     return endWord;
 }
 
-int WordToInt(Word w) {
+int WordToInt(Word w)
+{
     int result = 0;
-    for (int i = 0; i < w.Length; i++) {
+    for (int i = 0; i < w.Length; i++)
+    {
         result = result * 10 + (w.TabWord[i] - '0');
     }
     return result;
 }
 
-Word IntToWord(int num) {
+Word IntToWord(int num)
+{
     Word w;
     w.Length = 0;
 
     char temp[NMax];
     int i = 0;
 
-    if (num == 0) {
+    if (num == 0)
+    {
         w.TabWord[0] = '0';
         w.Length = 1;
         return w;
     }
 
-    while (num > 0) {
+    while (num > 0)
+    {
         temp[i++] = '0' + (num % 10);
         num /= 10;
     }
 
-    for (int j = 0; j < i; j++) {
+    for (int j = 0; j < i; j++)
+    {
         w.TabWord[j] = temp[i - j - 1];
     }
     w.Length = i;
@@ -115,11 +122,13 @@ Word IntToWord(int num) {
     return w;
 }
 
-Word StringToWord(char *str) {
+Word StringToWord(char *str)
+{
     Word w;
     int i = 0;
 
-    while (str[i] != '\0' && i < NMax) {
+    while (str[i] != '\0' && i < NMax)
+    {
         w.TabWord[i] = str[i];
         i++;
     }
@@ -128,38 +137,57 @@ Word StringToWord(char *str) {
     return w;
 }
 
-char* WordToString(Word w) {
+char *WordToString(Word w)
+{
     char *str = malloc((w.Length + 1) * sizeof(char)); // +1 untuk null-terminator
-    for (int i = 0; i < w.Length; i++) {
+    for (int i = 0; i < w.Length; i++)
+    {
         str[i] = w.TabWord[i];
     }
     str[w.Length] = '\0';
     return str;
 }
 
-void PrintWord(Word w) {
-    for (int i = 0; i < w.Length; i++) {
+void PrintWord(Word w)
+{
+    for (int i = 0; i < w.Length; i++)
+    {
         printf("%c", w.TabWord[i]);
     }
     printf("\n");
 }
 
-boolean IsWordEqual(Word w1, Word w2) {
-    if (w1.Length != w2.Length) {
+boolean IsWordEqual(Word w1, Word w2)
+{
+    if (w1.Length != w2.Length)
+    {
         return false;
     }
-    for (int i = 0; i < w1.Length; i++) {
-        if (w1.TabWord[i] != w2.TabWord[i]) {
+    for (int i = 0; i < w1.Length; i++)
+    {
+        if (w1.TabWord[i] != w2.TabWord[i])
+        {
             return false;
         }
     }
     return true;
 }
-
-Word TrimWord(Word w) {
+Word TrimWord(Word w)
+{
     // Hapus karakter kosong di akhir string
-    while (w.Length > 0 && (w.TabWord[w.Length - 1] == ' ' || w.TabWord[w.Length - 1] == '\n')) {
+    while (w.Length > 0 && (w.TabWord[w.Length - 1] == ' ' || w.TabWord[w.Length - 1] == '\n'))
+    {
         w.Length--;
     }
     return w;
+}
+
+// Fungsi tambahan untuk mereset state mesin kata
+void ResetWord(Word *w)
+{
+    w->Length = 0;
+    for (int i = 0; i < NMax; i++)
+    {
+        w->TabWord[i] = '\0';
+    }
 }
