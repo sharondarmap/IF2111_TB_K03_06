@@ -155,3 +155,11 @@ boolean IsWordEqual(Word w1, Word w2) {
     }
     return true;
 }
+
+// Fungsi tambahan untuk mereset state mesin kata
+void ResetWord(Word *w) {
+    w->Length = 0;
+    for (int i = 0; i < NMax; i++) {
+        w->TabWord[i] = '\0';
+    }
+}

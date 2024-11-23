@@ -80,5 +80,7 @@ boolean IsWordEqual(Word w1, Word w2);
    I.S. : Dua Word valid
    F.S. : Mengembalikan true jika kedua Word sama */
 
+void ResetWord(Word *w);
+
    
 #endif
