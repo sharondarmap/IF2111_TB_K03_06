@@ -20,6 +20,7 @@ void RegisterUser() {
     } while (username.Length == 0);
 
     // Loop untuk validasi input password
+
     do {
         printf("Masukkan password: ");
         STARTWORD(); // Baca password
@@ -42,18 +43,9 @@ void RegisterUser() {
 
     // Inisialisasi atribut user lainnya
     newUser.money = 0; // Default uang awal adalah 0
-
+    
     // Tambahkan ke list
     InsertLastList(&userList, newUser);
     printf("Akun dengan username %s telah berhasil dibuat. Silakan LOGIN untuk melanjutkan.\n", newUser.name);
 }
 
-int main() {
-    // Inisialisasi list pengguna
-    userList = MakeList();
-
-    printf("=== Program REGISTER ===\n");
-    RegisterUser();
-
-    return 0;
-}
