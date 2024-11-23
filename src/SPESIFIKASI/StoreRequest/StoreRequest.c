@@ -2,11 +2,17 @@
 #include "StoreRequest.h"
 #include "../../boolean.h"
 
-
 void StoreRequest(Queue *barangQueue, ArrayDin *barangList) {
     printf("Nama barang yang diminta: ");
-    STARTWORD(); 
-    Word namaBarang = currentWord; 
+    STARTKALIMAT();
+    Word namaBarang = TrimWord(StringToWord(CLine.TabLine)); 
+
+    // Validasi input kosong
+    if (namaBarang.Length == 0) {
+        printf("Nama barang tidak boleh kosong!\n");
+        return; // Kembali tanpa memproses lebih lanjut
+    }
+
     boolean isInStore = false; 
     boolean isInQueue = false; 
 
