@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "boolean.h"
 
-//ASUMSI MAIN.C ADA DI DALAM SRC//
+// ASUMSI MAIN.C ADA DI DALAM SRC//
 
 /*---------------HEADER ADT---------------*/
 #include "ADT/Kustom/barang.h"
@@ -31,6 +31,8 @@
 #include "SPESIFIKASI/Load/load.h"
 #include "SPESIFIKASI/Save/save.h"
 #include "SPESIFIKASI/Login/login.h"
+#include "SPESIFIKASI/Register/register.h"
+#include "SPESIFIKASI/Help/help.h"
 #include "SPESIFIKASI/StoreList/StoreList.h"
 #include "SPESIFIKASI/StoreRemove/StoreRemove.h"
 #include "SPESIFIKASI/StoreRequest/StoreRequest.h"
@@ -73,65 +75,80 @@
 // #include "src/SPESIFIKASI/workchallenge/wordl3.h"
 // #include "boolean.h"
 
-void StartCommand() {
+void StartCommand()
+{
     printf("START Command executed (Stub).\n");
 }
 
-void LoadCommand(Word filename) {
+void LoadCommand(Word filename)
+{
     printf("LOAD Command executed with file: ");
     PrintWord(filename);
     printf(" (Stub).\n");
 }
 
-void LoginCommand() {
+void LoginCommand()
+{
     printf("LOGIN Command executed (Stub).\n");
 }
 
-void HelpCommand() {
+void HelpCommand()
+{
     printf("HELP Command executed (Stub): Menampilkan daftar perintah yang tersedia.\n");
 }
 
-void QuitCommand() {
+void QuitCommand()
+{
     printf("QUIT Command executed (Stub).\n");
 }
 
-void RegisterCommand() {
+void RegisterCommand()
+{
     printf("REGISTER Command executed (Stub): Mendaftarkan akun baru.\n");
 }
 
-void WorkCommand() {
+void WorkCommand()
+{
     printf("WORK Command executed (Stub): Bekerja untuk mendapatkan uang.\n");
 }
 
-void WorkChallengeCommand() {
+void WorkChallengeCommand()
+{
     printf("WORK CHALLENGE Command executed (Stub): Mengikuti tantangan untuk mendapatkan uang.\n");
 }
 
-void StoreListCommand() {
+void StoreListCommand()
+{
     printf("STORE LIST Command executed (Stub): Menampilkan daftar barang di toko.\n");
 }
 
-void StoreRequestCommand() {
+void StoreRequestCommand()
+{
     printf("STORE REQUEST Command executed (Stub): Meminta penambahan barang ke toko.\n");
 }
 
-void StoreSupplyCommand() {
+void StoreSupplyCommand()
+{
     printf("STORE SUPPLY Command executed (Stub): Menambahkan barang dari permintaan ke toko.\n");
 }
 
-void StoreRemoveCommand() {
+void StoreRemoveCommand()
+{
     printf("STORE REMOVE Command executed (Stub): Menghapus barang dari toko.\n");
 }
 
-void LogoutCommand() {
+void LogoutCommand()
+{
     printf("LOGOUT Command executed (Stub): Keluar dari sesi dan kembali ke menu login.\n");
 }
 
-void SaveCommand() {
+void SaveCommand()
+{
     printf("SAVE Command executed (Stub): Menyimpan state aplikasi saat ini ke file.\n");
 }
 
-void printClosing() {
+void printClosing()
+{
     printf("=========================================================\n");
     printf("  _____ _                 _     __   __          _   \n");
     printf(" |_   _| |__   __ _ _ __ | | __ \\ \\ / ___  _   _| |  \n");
@@ -144,7 +161,8 @@ void printClosing() {
     printf("=========================================================\n");
 }
 
-void printPurrmart() {
+void printPurrmart()
+{
     printf("  ____  _   _ ____  ____  __  __    _    ____ _____ \n");
     printf(" |  _ \\| | | |  _ \\|  _ \\|  \\/  |  / \\  |  _ \\_   _|\n");
     printf(" | |_) | | | | |_) | |_) | |\\/| | / _ \\ | |_) || |  \n");
@@ -153,8 +171,8 @@ void printPurrmart() {
     printf("                                                    \n");
 }
 
-
-void PrintLevel1Menu() {
+void PrintLevel1Menu()
+{
     printf("==============================================\n");
     printf("|             WELCOME TO PURRMART            |\n");
     printf("|--------------------------------------------|\n");
@@ -167,7 +185,8 @@ void PrintLevel1Menu() {
     printf("Silakan pilih perintah: ");
 }
 
-void PrintLevel2Menu() {
+void PrintLevel2Menu()
+{
     printf("==============================================\n");
     printf("|             AUTENTIKASI PENGGUNA           |\n");
     printf("|--------------------------------------------|\n");
@@ -180,7 +199,8 @@ void PrintLevel2Menu() {
     printf("Silakan pilih perintah: ");
 }
 
-void PrintLevel3Menu() {
+void PrintLevel3Menu()
+{
     printf("============================================================\n");
     printf("|                   PURRMART - MAIN MENU                   |\n");
     printf("|----------------------------------------------------------|\n");
@@ -198,11 +218,12 @@ void PrintLevel3Menu() {
     printf("Silakan pilih perintah: ");
 }
 
-int main() {
+int main()
+{
 
     // INISIALISASI STRUKTUR DATA
-    IdxType currentIndex = IDX_UNDEF; //bukan tipe pointer ke iny tapi ke tipenya integer krn gabisa assign idx_undef ke pointer
-    char filename[MAX_LEN]; //untuk menge-load file data
+    IdxType currentIndex = IDX_UNDEF; // bukan tipe pointer ke iny tapi ke tipenya integer krn gabisa assign idx_undef ke pointer
+    char filename[MAX_LEN];           // untuk menge-load file data
 
     List userList = MakeList();
     ArrayDin barangList = MakeArrayDin();
@@ -235,7 +256,7 @@ int main() {
     // enqueue(&barangQueue, barang1);
     // InsertFirst(&barangList, barang1);
     // InsertFirstList(&userList, u1);
-    
+
     // ALGORITMA
 
     int level = 1;
@@ -255,7 +276,7 @@ int main() {
     // PrintList(userList);
     // printf("\n");
     
-    printPurrmart();
+    // printPurrmart();
     
     while (isRunning) { //mulai looping while isRunning (kondisi isRunning true, berhenti jika false)
         if (level == 1) {
@@ -264,110 +285,163 @@ int main() {
             STARTWORD();
 
             // Tingkatan 1: START, LOAD, HELP, QUIT
-            if (IsWordEqual(currentWord, StringToWord("START"))) {
+            if (IsWordEqual(currentWord, StringToWord("START")))
+            {
                 char defaultFilename[] = "default.txt"; // File default untuk START
                 Load(defaultFilename, &barangList, &userList);
-                level = 2; //masuk ke menu level 2 (Autentikasi)
-            } else if (IsWordEqual(currentWord, StringToWord("LOAD"))) {
+                level = 2; // masuk ke menu level 2 (Autentikasi)
+            }
+            else if (IsWordEqual(currentWord, StringToWord("LOAD")))
+            {
                 printf("Nama File (.txt): ");
                 printf("\n> ");
                 STARTWORD();
-                for (int i = 0; i < currentWord.Length; i++) {
+                for (int i = 0; i < currentWord.Length; i++)
+                {
                     filename[i] = currentWord.TabWord[i];
                 }
                 filename[currentWord.Length] = '\0'; // Tambahkan null-terminator
 
                 Load(filename, &barangList, &userList);
-                            // Validasi setelah Load
-                if (!EndKalimat) { // Jika file valid
+                // Validasi setelah Load
+                if (!EndKalimat)
+                { // Jika file valid
                     printf("File berhasil dimuat. Masuk ke autentikasi pengguna.\n");
                     level = 2; // Masuk ke menu level 2
-                } else { // Jika file salah
+                }
+                else
+                { // Jika file salah
                     printf("Gagal memuat file.\n");
                 }
-                
-            } else if (IsWordEqual(currentWord, StringToWord("HELP"))) {
-                HelpCommand();
-            } else if (IsWordEqual(currentWord, StringToWord("QUIT"))) {
+            }
+            else if (IsWordEqual(currentWord, StringToWord("HELP")))
+            {
+                DisplayHelp();
+            }
+            else if (IsWordEqual(currentWord, StringToWord("QUIT")))
+            {
                 QuitCommand();
                 isRunning = false;
-            } else {
+            }
+            else
+            {
                 printf("Command tidak dikenal. Silakan masukkan command yang valid.\n");
             }
-        } else if (level == 2) { //Autentikasi Pengguna
+        }
+        else if (level == 2)
+        { // Autentikasi Pengguna
             PrintLevel2Menu();
             printf("\n> ");
             STARTWORD();
 
             // Tingkatan 2: LOGIN, REGISTER, HELP, QUIT
-            if (IsWordEqual(currentWord, StringToWord("LOGIN"))) {
-                Login(&userList, &currentIndex);;
-                level = 3; //Main Menu PURRMART
-            } else if (IsWordEqual(currentWord, StringToWord("REGISTER"))) {
-                RegisterCommand();
-            } else if (IsWordEqual(currentWord, StringToWord("HELP"))) {
-                HelpCommand();
-            } else if (IsWordEqual(currentWord, StringToWord("QUIT"))) {
+            if (IsWordEqual(currentWord, StringToWord("LOGIN")))
+            {
+                Login(&userList, &currentIndex);
+                ;
+                level = 3; // Main Menu PURRMART
+            }
+            else if (IsWordEqual(currentWord, StringToWord("REGISTER")))
+            {
+                RegisterUser(&userList);
+            }
+            else if (IsWordEqual(currentWord, StringToWord("HELP")))
+            {
+                DisplayHelp();
+            }
+            else if (IsWordEqual(currentWord, StringToWord("QUIT")))
+            {
                 QuitCommand();
-                isRunning = false; //Keluar looping
-            } else {
+                isRunning = false; // Keluar looping
+            }
+            else
+            {
                 printf("Command tidak dikenal. Silakan masukkan command yang valid.\n");
             }
-        } else if (level == 3) { //Main Menu PURRMART
+        }
+        else if (level == 3)
+        { // Main Menu PURRMART
             PrintLevel3Menu();
             printf("\n> ");
             STARTWORD();
 
             // Tingkatan 3: WORK, STORE, LOGOUT, SAVE, QUIT
-            if (IsWordEqual(currentWord, StringToWord("WORK"))) {
+            if (IsWordEqual(currentWord, StringToWord("WORK")))
+            {
                 ADVWORD();
-                if (IsWordEqual(currentWord, StringToWord("CHALLENGE"))) {
-                    WorkChallenge(&userList, currentIndex); //Done testing
-                } else {
+                if (IsWordEqual(currentWord, StringToWord("CHALLENGE")))
+                {
+                    WorkChallenge(&userList, currentIndex); // Done testing
+                }
+                else
+                {
                     Work(&userList, currentIndex);
                 }
-            } else if (IsWordEqual(currentWord, StringToWord("STORE"))) {
+            }
+            else if (IsWordEqual(currentWord, StringToWord("STORE")))
+            {
                 ADVWORD();
-                if (IsWordEqual(currentWord, StringToWord("LIST"))) {
+                if (IsWordEqual(currentWord, StringToWord("LIST")))
+                {
                     StoreList(&barangList);
-                } else if (IsWordEqual(currentWord, StringToWord("REQUEST"))) {
+                }
+                else if (IsWordEqual(currentWord, StringToWord("REQUEST")))
+                {
                     StoreRequest(&barangQueue, &barangList);
-                } else if (IsWordEqual(currentWord, StringToWord("SUPPLY"))) {
+                }
+                else if (IsWordEqual(currentWord, StringToWord("SUPPLY")))
+                {
                     StoreSupply(&barangQueue, &barangList);
-                } else if (IsWordEqual(currentWord, StringToWord("REMOVE"))) {
+                }
+                else if (IsWordEqual(currentWord, StringToWord("REMOVE")))
+                {
                     StoreRemove(&barangList);
-                } else {
+                }
+                else
+                {
                     printf("Command tidak dikenal.\n");
                 }
-            } else if (IsWordEqual(currentWord, StringToWord("LOGOUT"))) {
+            }
+            else if (IsWordEqual(currentWord, StringToWord("LOGOUT")))
+            {
                 LogoutCommand();
                 level = 2;
-            } else if (IsWordEqual(currentWord, StringToWord("SAVE"))) {
+            }
+            else if (IsWordEqual(currentWord, StringToWord("SAVE")))
+            {
                 Save(&barangList, &userList, filename);
                 printf("Berhasil menyimpan data!");
-            } else if (IsWordEqual(currentWord, StringToWord("QUIT"))) {
+            }
+            else if (IsWordEqual(currentWord, StringToWord("QUIT")))
+            {
                 printf("Apakah Anda ingin menyimpan sesi ini? (Y/N)\n");
                 boolean quit = false;
-                while(!quit){
+                while (!quit)
+                {
                     printf("> ");
                     STARTWORD();
-                    if(IsWordEqual(currentWord, StringToWord("Y"))){
+                    if (IsWordEqual(currentWord, StringToWord("Y")))
+                    {
                         Save(&barangList, &userList, filename);
                         printf("Berhasil menyimpan data!");
                         QuitCommand();
                         quit = true;
                     }
-                    else if(IsWordEqual(currentWord, StringToWord("N"))){
+                    else if (IsWordEqual(currentWord, StringToWord("N")))
+                    {
                         QuitCommand();
                         quit = true;
                     }
-                    else{
+                    else
+                    {
                         printf("Command tidak dikenal. Silakan masukkan command yang valid.\n");
                         printf("Apakah Anda ingin menyimpan sesi ini? (Y/N)\n");
                     }
                     isRunning = false;
                 }
-            } else {
+            }
+            else
+            {
                 printf("Command tidak dikenal. Silakan masukkan command yang valid.\n");
             }
         }

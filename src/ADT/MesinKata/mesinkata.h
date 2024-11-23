@@ -65,7 +65,7 @@ Word StringToWord(char *str);
    I.S. : String valid
    F.S. : Mengembalikan Word yang merepresentasikan string */
 
-char* WordToString(Word w);
+char *WordToString(Word w);
 /* Mengonversi Word menjadi string
    I.S. : Word valid
    F.S. : Mengembalikan string yang merepresentasikan Word */
@@ -84,5 +84,7 @@ Word TrimWord(Word w);
 /* Menghapus karakter kosong di akhir string
    I.S. : w adalah Word yang valid
    F.S. : w adalah Word yang sama tanpa karakter kosong di akhir string */
-   
+
+void ResetWord(Word *w);
+
 #endif
