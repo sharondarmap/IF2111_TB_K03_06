@@ -1,10 +1,11 @@
 {
-    "C_Cpp.errorSquiggles": "disabled",
-    "files.associations": {
-        "user.h": "c",
-        "mesinkata.h": "c",
-        "list.h": "c",
-        "mesinkarakter.h": "c",
-        "workchallenge.h": "c"
-    }
+  "C_Cpp.errorSquiggles": "disabled",
+  "files.associations": {
+    "user.h": "c",
+    "mesinkata.h": "c",
+    "list.h": "c",
+    "mesinkarakter.h": "c",
+    "workchallenge.h": "c"
+  },
+  "C_Cpp_Runner.msvcBatchPath": ""
 }

@@ -7,7 +7,7 @@
 #include "../../ADT/Kustom/user.h"
 
 // Deklarasi fungsi untuk REGISTER
-void RegisterUser();
+void RegisterUser(List *userList);
 /* Fungsi untuk melakukan registrasi pengguna baru.
    I.S. : List pengguna sudah terdefinisi (userList).
    F.S. : Jika username valid dan belum ada dalam list, pengguna baru ditambahkan ke userList.

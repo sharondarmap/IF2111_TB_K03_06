@@ -347,7 +347,7 @@ int main()
             }
             else if (IsWordEqual(currentWord, StringToWord("REGISTER")))
             {
-                RegisterUser();
+                RegisterUser(&userList);
             }
             else if (IsWordEqual(currentWord, StringToWord("HELP")))
             {
