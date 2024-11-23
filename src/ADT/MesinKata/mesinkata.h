@@ -19,7 +19,7 @@ typedef struct
 } Word;
 
 /* State Mesin Kata */
-extern boolean EndWord;
+extern boolean endWord;
 extern Word currentWord;
 
 void IgnoreBlanks();
@@ -80,5 +80,9 @@ boolean IsWordEqual(Word w1, Word w2);
    I.S. : Dua Word valid
    F.S. : Mengembalikan true jika kedua Word sama */
 
+Word TrimWord(Word w);
+/* Menghapus karakter kosong di akhir string
+   I.S. : w adalah Word yang valid
+   F.S. : w adalah Word yang sama tanpa karakter kosong di akhir string */
    
 #endif

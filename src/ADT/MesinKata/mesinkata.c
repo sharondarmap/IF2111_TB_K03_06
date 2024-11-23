@@ -155,3 +155,11 @@ boolean IsWordEqual(Word w1, Word w2) {
     }
     return true;
 }
+
+Word TrimWord(Word w) {
+    // Hapus karakter kosong di akhir string
+    while (w.Length > 0 && (w.TabWord[w.Length - 1] == ' ' || w.TabWord[w.Length - 1] == '\n')) {
+        w.Length--;
+    }
+    return w;
+}
