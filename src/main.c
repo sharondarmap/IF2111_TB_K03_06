@@ -41,6 +41,7 @@
 #include "SPESIFIKASI/StoreSupply/StoreSupply.h"
 #include "SPESIFIKASI/Work/work.h"
 #include "SPESIFIKASI/workchallenge/workchallenge.h"
+#include "SPESIFIKASI/StoreRequestBioWeapon/StoreRequestBioWeapon.h"
 
 #include "SPESIFIKASI/StoreList/StoreList.c"
 #include "SPESIFIKASI/StoreRemove/StoreRemove.c"
@@ -50,6 +51,7 @@
 #include "SPESIFIKASI/workchallenge/workchallenge.c"
 #include "SPESIFIKASI/workchallenge/tebakangka.c"
 #include "SPESIFIKASI/workchallenge/wordl3.c"
+#include "SPESIFIKASI/StoreRequestBioWeapon/StoreRequestBioWeapon.c"
 
 // boolean EndKalimat = 0;  // Deklarasi variabel global
 // Kalimat CLine;
@@ -211,11 +213,12 @@ void PrintLevel3Menu()
     printf("|  2. WORK CHALLENGE     - Ikuti tantangan untuk hadiah    |\n");
     printf("|  3. STORE LIST         - Lihat barang di toko            |\n");
     printf("|  4. STORE REQUEST      - Minta barang baru ke toko       |\n");
-    printf("|  5. STORE SUPPLY       - Tambahkan barang dari permintaan|\n");
-    printf("|  6. STORE REMOVE       - Hapus barang dari toko          |\n");
-    printf("|  7. LOGOUT             - Keluar dari sesi pengguna       |\n");
-    printf("|  8. SAVE               - Simpan progres saat ini         |\n");
-    printf("|  9. QUIT               - Keluar dari program             |\n");
+    printf("|  5. STORE REQUEST BIO WEAPON - Minta senjata bio ke toko |\n");
+    printf("|  6. STORE SUPPLY       - Tambahkan barang dari permintaan|\n");
+    printf("|  7. STORE REMOVE       - Hapus barang dari toko          |\n");
+    printf("|  8. LOGOUT             - Keluar dari sesi pengguna       |\n");
+    printf("|  9. SAVE               - Simpan progres saat ini         |\n");
+    printf("| 10. QUIT               - Keluar dari program             |\n");
     printf("============================================================\n");
     printf("Silakan pilih perintah: ");
 }
@@ -391,7 +394,23 @@ int main()
                 }
                 else if (IsWordEqual(currentWord, StringToWord("REQUEST")))
                 {
-                    StoreRequest(&barangQueue, &barangList);
+                    ADVWORD();
+                    if (IsWordEqual(currentWord, StringToWord("BIO")))
+                    {
+                        ADVWORD();
+                        if (IsWordEqual(currentWord, StringToWord("WEAPON")))
+                        {
+                            StoreRequestBioWeapon(&barangQueue, &barangList);
+                        }
+                        else
+                        {
+                            printf("Command tidak dikenal.\n");
+                        }
+                    }
+                    else
+                    {
+                        StoreRequest(&barangQueue, &barangList);
+                    }
                 }
                 else if (IsWordEqual(currentWord, StringToWord("SUPPLY")))
                 {
@@ -405,6 +424,10 @@ int main()
                 {
                     printf("Command tidak dikenal.\n");
                 }
+            }
+            else if (IsWordEqual(currentWord, StringToWord("BIOWEAPON")))
+            {
+                StoreRequestBioWeapon(&barangQueue, &barangList);
             }
             else if (IsWordEqual(currentWord, StringToWord("LOGOUT")))
             {
