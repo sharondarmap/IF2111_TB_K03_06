@@ -39,7 +39,8 @@ void ADVFILE();
    F.S. : currentChar adalah karakter berikutnya dari file
           Jika currentChar adalah karakter terakhir dari file, pita ditutup */
 
-void STARTFILE(char filename[]);
+boolean STARTFILE(char filename[]);
+// void STARTFILE(char filename[]);
 /* Memulai pembacaan karakter dari file
    I.S. : filename adalah nama file yang valid
    F.S. : pita dibuka untuk membaca, currentChar adalah karakter pertama dari file

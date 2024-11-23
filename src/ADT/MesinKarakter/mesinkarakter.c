@@ -43,12 +43,13 @@ void ADVFILE() {
     }
 }
 
-void STARTFILE(char filename[]) {
-    pita = fopen(filename, "r");
+boolean STARTFILE(char filename[]) {
+
+    pita = fopen(filename, "r"); // Membuka file
     if (pita != NULL) {
-        ADVFILE();
+        ADVFILE(); // Lanjutkan membaca karakter pertama
+        return true; // Indikasi file berhasil dibuka
     } else {
-        printf("\nERROR: File tidak ditemukan!\n\n");
-        exit(0);
+        return false; // Indikasi file tidak ditemukan
     }
 }
