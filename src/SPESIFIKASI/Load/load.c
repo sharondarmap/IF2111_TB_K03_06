@@ -1,12 +1,18 @@
 #include "load.h"
 
 void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
-    int jumlahBarang;
-
     // Buka file dan baca jumlah barang
     STARTKALIMATFILE(filename);
-    jumlahBarang = atoi(CLine.TabLine);
-    // printf("DEBUG: Jumlah barang yang akan dibaca = %d\n", jumlahBarang);
+
+    // Cek apakah file berhasil dibuka
+    if (EndKalimat) { // Jika file tidak valid
+        // printf("Gagal membuka file. Pastikan file tersedia dan formatnya benar.\n");
+        return; // Keluar dari fungsi jika file tidak valid
+    }
+
+    // Baca jumlah barang dari file
+    int jumlahBarang = atoi(CLine.TabLine); // Konversi string ke integer
+    // printf("[DEBUG] Jumlah barang yang akan dibaca: %d\n", jumlahBarang);
 
     // Inisialisasi arrayDin dan ListUser
     *daftarBarang = MakeArrayDin();
@@ -15,19 +21,17 @@ void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
     // Pindah ke baris pertama barang
     ADVKALIMAT();
 
-    // Step 3: Loop untuk membaca barang
+    // Loop untuk membaca barang
     for (int i = 0; i < jumlahBarang; i++) {
-        // printf("\nDEBUG: Iterasi %d - Sebelum ADVKALIMAT\n", i + 1);
-
-        // Debug baris yang akan diproses
-        // printf("DEBUG: Baris yang akan diproses = '%s'\n", CLine.TabLine);
+        if (EndKalimat) { // Jika EOF tercapai lebih awal
+            // printf("ERROR: Data barang tidak lengkap.\n");
+            return; // Keluar dari fungsi jika data barang tidak lengkap
+        }
 
         // Parsing harga dan nama barang
         int harga;
         char nama[MAX_LEN];
         ParseBarang(CLine, &harga, nama);
-        // printf("DEBUG: Harga barang = %d\n", harga);
-        // printf("DEBUG: Nama barang = '%s'\n", nama);
 
         // Membuat elemen barang
         ElType2 barang;
@@ -39,33 +43,30 @@ void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
 
         // Tambahkan ke arrayDin
         InsertLast(daftarBarang, barang);
-        // printf("DEBUG: Barang berhasil ditambahkan: {%s, %d}\n", barang.name, barang.price);
+        printf("[DEBUG] Barang ke-%d berhasil ditambahkan: {Nama: %s, Harga: %d}\n", i + 1, barang.name, barang.price);
 
         // Pindah ke baris berikutnya
         ADVKALIMAT();
-        // if (!EndKalimat) {
-        //     printf("DEBUG: Baris berikutnya yang dibaca = '%s'\n", CLine.TabLine);
-        // }
     }
 
-    // Step 4: Membaca jumlah user
-    // printf("\nDEBUG: Membaca jumlah user...\n");
+    // Membaca jumlah user dari file
     int jumlahUser = atoi(CLine.TabLine); // Konversi string ke integer
-    // printf("DEBUG: Jumlah user yang akan dibaca = %d\n", jumlahUser);
+    // printf("[DEBUG] Jumlah user yang akan dibaca: %d\n", jumlahUser);
 
-    // Step 5: Membaca detail user
-    // printf("\nDEBUG: Membaca detail user...\n");
-
+    // Loop untuk membaca detail user
     for (int i = 0; i < jumlahUser; i++) {
         ADVKALIMAT(); // Pindah ke baris berikutnya untuk setiap user
+
+        if (EndKalimat) { // Jika EOF tercapai lebih awal
+            // printf("ERROR: Data pengguna tidak lengkap.\n");
+            return; // Keluar dari fungsi jika data pengguna tidak lengkap
+        }
 
         // Parsing jumlah uang, nama user, dan password
         int jumlahUang;
         char namaUser[MAX_LEN];
         char password[MAX_LEN];
         ParseUser(CLine, &jumlahUang, namaUser, password);
-
-        // printf("DEBUG: Jumlah uang = %d, Nama user = '%s', Password = '%s'\n", jumlahUang, namaUser, password);
 
         // Membuat elemen user
         User user;
@@ -79,7 +80,8 @@ void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
 
         // Tambahkan ke List User
         InsertLastList(userList, user);
-        // printf("DEBUG: User berhasil ditambahkan: {Nama: %s, Uang: %d, Password: %s}\n", user.name, user.money, user.password);
-        
+        printf("[DEBUG] User ke-%d berhasil ditambahkan: {Nama: %s, Uang: %d, Password: %s}\n", i + 1, user.name, user.money, password);
     }
+
+    // printf("[DEBUG] File berhasil dimuat: %s\n", filename);
 }
