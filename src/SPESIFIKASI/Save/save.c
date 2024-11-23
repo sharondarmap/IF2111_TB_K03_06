@@ -1,6 +1,56 @@
 #include "save.h"
 
 void Save(ArrayDin *barang, List *userList, char *filename) {
+    // Meminta input nama file dari pengguna
+    boolean valid = false;
+    while (!valid) {
+        printf("Masukkan nama file untuk menyimpan data (harus .txt dan tidak berawalan 'default'): ");
+        STARTWORD(); // Gunakan mesin kata untuk membaca nama file
+        for (int i = 0; i < currentWord.Length; i++) {
+            filename[i] = currentWord.TabWord[i];
+        }
+        filename[currentWord.Length] = '\0'; // Null-terminate string
+
+        // Validasi nama file
+        valid = true;
+
+        // Periksa apakah nama file berakhiran .txt
+        int len = currentWord.Length;
+        if (!(len > 4 &&
+              filename[len - 4] == '.' &&
+              filename[len - 3] == 't' &&
+              filename[len - 2] == 'x' &&
+              filename[len - 1] == 't')) {
+            printf("Nama file harus berakhiran .txt!\n");
+            valid = false;
+        }
+
+        // Periksa apakah nama file berawalan default
+        char defaultPrefix[] = "default";
+        int prefixLength = 7; // Panjang "default"
+        boolean isDefaultPrefix = true;
+
+        if (len >= prefixLength) { // Hanya periksa jika panjang mencukupi
+            for (int i = 0; i < prefixLength; i++) {
+                if (filename[i] != defaultPrefix[i]) {
+                    isDefaultPrefix = false;
+                    break;
+                }
+            }
+        } else {
+            isDefaultPrefix = false; // Jika panjang kurang dari 7, pasti bukan prefix
+        }
+
+        if (isDefaultPrefix) {
+            printf("Nama file tidak boleh berawalan 'default'!\n");
+            valid = false;
+        }
+
+        if (!valid) {
+            printf("Silakan coba lagi.\n");
+        }
+    }
+
     FILE *file;
     STARTWRITEKALIMATFILE(&file, filename);
 
@@ -71,5 +121,4 @@ void Save(ArrayDin *barang, List *userList, char *filename) {
     }
 
     CLOSEWRITEKALIMATFILE(file);
-    printf("Data berhasil disimpan ke '%s'.\n", filename);
 }
