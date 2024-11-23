@@ -127,39 +127,38 @@ void ParseUser(Kalimat line, int *uang, char *nama, char *password) {
 
 void STARTKALIMATFILE(char *filename) {
     char baseDir[] = "DATA/"; // Direktori default tempat file berada
-    char fullPath[200];            // Buffer untuk menyimpan path lengkap
+    char fullPath[200];
     int i = 0, j = 0;
 
-    // Gabungkan baseDir dan filename secara manual
-    while (baseDir[i] != '\0') {       // Salin baseDir ke fullPath
+    // Gabungkan baseDir dengan filename
+    while (baseDir[i] != '\0') {
         fullPath[i] = baseDir[i];
         i++;
     }
-    while (filename[j] != '\0') {     // Tambahkan filename ke fullPath
+    while (filename[j] != '\0') {
         fullPath[i] = filename[j];
         i++;
         j++;
     }
-    fullPath[i] = '\0';               // Null-terminate string
+    fullPath[i] = '\0'; // Null-terminate string
 
-    // // Debug: Cek path lengkap
-    // printf("DEBUG: Full path file = '%s'\n", fullPath);
-
-    // Buka file menggunakan STARTFILE
-    STARTFILE(fullPath);
-
-    // Proses seperti sebelumnya
-    IgnoreNewline();
-    if (currentChar == MARK2) {
-        EndKalimat = true;
-    } else {
-        EndKalimat = false;
-        SalinKalimat();
+    // Gunakan STARTFILE untuk membuka file
+    boolean success = STARTFILE(fullPath);
+    if (!success) { // Jika gagal membuka file
+        EndKalimat = true; // Tandai bahwa file tidak valid
+        return;
     }
-
-    // Debug untuk memastikan baris pertama terbaca
-    // printf("DEBUG: Baris pertama yang dibaca = '%s'\n", CLine.TabLine);
+    else{
+        IgnoreNewline();
+        if (currentChar == MARK2) {
+            EndKalimat = true;
+        } else {
+            EndKalimat = false;
+            SalinKalimat();
+        }
+    }
 }
+
 
 
 void ADVSATUKATA() {
@@ -178,7 +177,7 @@ void STARTWRITEKALIMATFILE(FILE **file, char filename[]) {
 
     // Menambahkan prefix "DATA/" secara manual
     int i = 0, j = 0;
-    char *folder = "../../DATA/";
+    char *folder = "DATA/";
     while (folder[i] != '\0') { // Salin "DATA/" ke path
         path[j++] = folder[i++];
     }
@@ -208,4 +207,29 @@ void CLOSEWRITEKALIMATFILE(FILE *file) {
     if (file != NULL) {
         fclose(file);
     }
+}
+
+void STARTKALIMAT() {
+    STARTWORD(); // Memulai mesin kata untuk membaca kata pertama
+
+    // Inisialisasi kalimat kosong
+    CLine.Length = 0;
+
+    while (!endWord) {
+        // Tambahkan kata ke kalimat
+        for (int i = 0; i < currentWord.Length; i++) {
+            CLine.TabLine[CLine.Length++] = currentWord.TabWord[i];
+        }
+
+        // Tambahkan spasi antara kata, kecuali setelah kata terakhir
+        if (!endWord) {
+            CLine.TabLine[CLine.Length++] = ' ';
+        }
+
+        // Baca kata berikutnya
+        ADVWORD();
+    }
+
+    // Null-terminate string
+    CLine.TabLine[CLine.Length] = '\0';
 }

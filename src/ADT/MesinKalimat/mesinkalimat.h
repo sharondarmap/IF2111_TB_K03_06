@@ -17,6 +17,7 @@ typedef struct {
  extern Kalimat CLine;
  extern Kalimat CInput;
  extern Kalimat CCommand;
+ extern boolean endWord;
 
 void ResetKalimat();
 /* Mengosongkan isi CLine
@@ -90,5 +91,11 @@ void CLOSEWRITEKALIMATFILE(FILE *file);
 /* Menutup file untuk menulis
    I.S. : File telah dibuka untuk menulis
    F.S. : File ditutup */
+
+void STARTKALIMAT();
+/* Memulai pembacaan kalimat dari input
+   I.S. : currentChar sembarang
+   F.S. : CLine berisi kalimat yang sudah diakuisisi;
+          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi */
 
 #endif
