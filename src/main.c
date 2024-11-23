@@ -15,17 +15,17 @@
 #include "ADT/MesinKalimat/mesinkalimat.h"
 
 /*---------------C FILE ADT---------------*/
-#include "ADT/MesinKarakter/mesinkarakter.c"
-#include "ADT/MesinKata/mesinkata.c"
-#include "ADT/Queue/queue.c"
-#include "ADT/List/arraydin.c"
-#include "ADT/List/list.c"
-#include "ADT/MesinKalimat/mesinkalimat.c"
+// #include "ADT/MesinKarakter/mesinkarakter.c"
+// #include "ADT/MesinKata/mesinkata.c"
+// #include "ADT/Queue/queue.c"
+// #include "ADT/List/arraydin.c"
+// #include "ADT/List/list.c"
+// #include "ADT/MesinKalimat/mesinkalimat.c"
 
-#include "SPESIFIKASI/Load/load.c"
-#include "SPESIFIKASI/Login/login.c"
-#include "SPESIFIKASI/Logout/logout.c"
-#include "SPESIFIKASI/Save/save.c"
+// #include "SPESIFIKASI/Load/load.c"
+// #include "SPESIFIKASI/Login/login.c"
+// #include "SPESIFIKASI/Logout/logout.c"
+// #include "SPESIFIKASI/Save/save.c"
 
 /*---------------HEADER SPESIFIKASI---------------*/
 #include "SPESIFIKASI/Load/load.h"
@@ -38,14 +38,14 @@
 #include "SPESIFIKASI/Work/work.h"
 #include "SPESIFIKASI/workchallenge/workchallenge.h"
 
-#include "SPESIFIKASI/StoreList/StoreList.c"
-#include "SPESIFIKASI/StoreRemove/StoreRemove.c"
-#include "SPESIFIKASI/StoreRequest/StoreRequest.c"
-#include "SPESIFIKASI/StoreSupply/StoreSupply.c"
-#include "SPESIFIKASI/Work/work.c"
-#include "SPESIFIKASI/workchallenge/workchallenge.c"
-#include "SPESIFIKASI/workchallenge/tebakangka.c"
-#include "SPESIFIKASI/workchallenge/wordl3.c"
+// #include "SPESIFIKASI/StoreList/StoreList.c"
+// #include "SPESIFIKASI/StoreRemove/StoreRemove.c"
+// #include "SPESIFIKASI/StoreRequest/StoreRequest.c"
+// #include "SPESIFIKASI/StoreSupply/StoreSupply.c"
+// #include "SPESIFIKASI/Work/work.c"
+// #include "SPESIFIKASI/workchallenge/workchallenge.c"
+// #include "SPESIFIKASI/workchallenge/tebakangka.c"
+// #include "SPESIFIKASI/workchallenge/wordl3.c"
 
 // boolean EndKalimat = 0;  // Deklarasi variabel global
 // Kalimat CLine;
@@ -255,7 +255,7 @@ int main() {
     // PrintList(userList);
     // printf("\n");
     
-    // printPurrmart();
+    printPurrmart();
     
     while (isRunning) { //mulai looping while isRunning (kondisi isRunning true, berhenti jika false)
         if (level == 1) {
