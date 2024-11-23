@@ -25,9 +25,11 @@
 #include "SPESIFIKASI/Load/load.c"
 #include "SPESIFIKASI/Login/login.c"
 #include "SPESIFIKASI/Logout/logout.c"
+#include "SPESIFIKASI/Save/save.c"
 
 /*---------------HEADER SPESIFIKASI---------------*/
 #include "SPESIFIKASI/Load/load.h"
+#include "SPESIFIKASI/Save/save.h"
 #include "SPESIFIKASI/Login/login.h"
 #include "SPESIFIKASI/StoreList/StoreList.h"
 #include "SPESIFIKASI/StoreRemove/StoreRemove.h"
@@ -263,7 +265,8 @@ int main() {
 
             // Tingkatan 1: START, LOAD, HELP, QUIT
             if (IsWordEqual(currentWord, StringToWord("START"))) {
-                StartCommand();
+                char defaultFilename[] = "default.txt"; // File default untuk START
+                Load(defaultFilename, &barangList, &userList);
                 level = 2; //masuk ke menu level 2 (Autentikasi)
             } else if (IsWordEqual(currentWord, StringToWord("LOAD"))) {
                 printf("Nama File (.txt): ");
@@ -275,7 +278,13 @@ int main() {
                 filename[currentWord.Length] = '\0'; // Tambahkan null-terminator
 
                 Load(filename, &barangList, &userList);
-                level = 2; //masuk ke menu level 2 (Autentikasi)
+                            // Validasi setelah Load
+                if (!EndKalimat) { // Jika file valid
+                    printf("File berhasil dimuat. Masuk ke autentikasi pengguna.\n");
+                    level = 2; // Masuk ke menu level 2
+                } else { // Jika file salah
+                    printf("Gagal memuat file.\n");
+                }
                 
             } else if (IsWordEqual(currentWord, StringToWord("HELP"))) {
                 HelpCommand();
@@ -328,13 +337,14 @@ int main() {
                 } else if (IsWordEqual(currentWord, StringToWord("REMOVE"))) {
                     StoreRemove(&barangList);
                 } else {
-                    printf("Command STORE tidak dikenal.\n");
+                    printf("Command tidak dikenal.\n");
                 }
             } else if (IsWordEqual(currentWord, StringToWord("LOGOUT"))) {
                 LogoutCommand();
                 level = 2;
             } else if (IsWordEqual(currentWord, StringToWord("SAVE"))) {
-                SaveCommand();
+                Save(&barangList, &userList, filename);
+                printf("Berhasil menyimpan data!");
             } else if (IsWordEqual(currentWord, StringToWord("QUIT"))) {
                 printf("Apakah Anda ingin menyimpan sesi ini? (Y/N)\n");
                 boolean quit = false;
@@ -342,7 +352,8 @@ int main() {
                     printf("> ");
                     STARTWORD();
                     if(IsWordEqual(currentWord, StringToWord("Y"))){
-                        SaveCommand();
+                        Save(&barangList, &userList, filename);
+                        printf("Berhasil menyimpan data!");
                         QuitCommand();
                         quit = true;
                     }
