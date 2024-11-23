@@ -10,7 +10,7 @@ boolean RemoveLogic(ArrayDin *barangList, Word barangHapus) {
 
     for (int i = 0; i < barangList->Neff; i++) {
         // Membandingkan barang dalam daftar dengan barang yang akan dihapus
-        if (IsWordEqual(StringToWord(barangList->A[i].name), barangHapus)) {
+        if (IsWordEqual(TrimWord(StringToWord(barangList->A[i].name)), barangHapus)) {
             // Jika ditemukan, hapus barang
             DeleteAt(barangList, i);
             barangDitemukan = true;
@@ -24,14 +24,14 @@ boolean RemoveLogic(ArrayDin *barangList, Word barangHapus) {
 }
 void StoreRemove (ArrayDin *barangList) {
     printf("Nama barang yang akan dihapus: ");
-    STARTWORD();
+    STARTKALIMAT();
 
-    if (RemoveLogic(barangList,currentWord)) {
-        PrintWord (currentWord);
+    if (RemoveLogic(barangList,TrimWord(StringToWord(CLine.TabLine)))) {
+        PrintWord (StringToWord(CLine.TabLine));
         printf("telah berhasil dihapus\n");
     }
     else {
-        printf("Toko tidak menjual\n");
-        PrintWord (currentWord);
+        printf("Toko tidak menjual: ");
+        PrintWord (StringToWord(CLine.TabLine));
     }
 }
