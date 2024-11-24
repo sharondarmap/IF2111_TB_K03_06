@@ -1,1 +1,1 @@
-gcc driverhelp.c help.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKata/mesinkata.c ../../ADT/List/list.c ../../ADT/List/arraydin.c ../../ADT/Queue/queue.c -o driverhelp
+gcc driverhelp.c help.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKata/mesinkata.c ../../ADT/List/list.c ../../ADT/List Dinamis/arraydin.c ../../ADT/Queue/queue.c -o driverhelp

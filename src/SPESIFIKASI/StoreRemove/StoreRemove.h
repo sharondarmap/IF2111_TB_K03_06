@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include "../../boolean.h"
-#include "../../ADT/List/arraydin.h"
+#include "../../ADT/ListDinamis/arraydin.h"
 #include "../../ADT/MesinKata/mesinkata.h"
 #include "../../ADT/MesinKarakter/mesinkarakter.h"
 #include "../../ADT/MesinKalimat/mesinkalimat.h"

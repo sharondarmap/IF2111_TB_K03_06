@@ -43,7 +43,7 @@ void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
 
         // Tambahkan ke arrayDin
         InsertLast(daftarBarang, barang);
-        printf("[DEBUG] Barang ke-%d berhasil ditambahkan: {Nama: %s, Harga: %d}\n", i + 1, barang.name, barang.price);
+        // printf("[DEBUG] Barang ke-%d berhasil ditambahkan: {Nama: %s, Harga: %d}\n", i + 1, barang.name, barang.price);
 
         // Pindah ke baris berikutnya
         ADVKALIMAT();
@@ -80,7 +80,7 @@ void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
 
         // Tambahkan ke List User
         InsertLastList(userList, user);
-        printf("[DEBUG] User ke-%d berhasil ditambahkan: {Nama: %s, Uang: %d, Password: %s}\n", i + 1, user.name, user.money, password);
+        // printf("[DEBUG] User ke-%d berhasil ditambahkan: {Nama: %s, Uang: %d, Password: %s}\n", i + 1, user.name, user.money, password);
     }
 
     // printf("[DEBUG] File berhasil dimuat: %s\n", filename);
