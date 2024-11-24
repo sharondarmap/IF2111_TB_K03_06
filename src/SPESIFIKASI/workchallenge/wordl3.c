@@ -116,7 +116,7 @@ int WORDL3() {
         guess[currentWord.Length] = '\0'; // null-terminate the string
 
         if (currentWord.Length != 5) {
-            printf("Invalid guess. Please enter exactly 5 letters.\n");
+            printf("Tebakan invalid. Silakan masukkan kata dengan 5 karakter.\n");
             continue;
         }
 
