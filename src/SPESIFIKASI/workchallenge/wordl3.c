@@ -24,7 +24,7 @@ boolean CharExist(char c, Word *wordAns) {
 }
 
 void TandaTebakan(char *guess, Word *wordAns, char grid[5][6], int attempt, char answer[6]) {
-    // Change answer to char[6], not a single character
+    
     for (int i = 0; i < 5; i++) {
         if (guess[i] == answer[i]) {
             grid[attempt][i] = guess[i]; //huruf benar di posisi yang benar
@@ -54,7 +54,7 @@ int WORDL3() {
     seed = (unsigned long long)time(NULL);
     int batas = 100;
     int r = randomnumbergen(batas, seed);
-    char answer[6]; // container for the answer string
+    char answer[6]; 
 
     char solution[100][6] = {
         "actor", "amber", "angel", "apple", "baker", "beach", 
@@ -79,7 +79,7 @@ int WORDL3() {
     }
     answer[5] = '\0';
 
-    Word wordAns = StringToWord(answer); // convert the answer string to a Word
+    Word wordAns = StringToWord(answer);
 
     printf("WELCOME TO W0RDL3, YOU HAVE 5 CHANCES TO ANSWER BEFORE YOU LOSE!\n");
     printf(" \n");
@@ -108,7 +108,7 @@ int WORDL3() {
         DisplayGrid(grid);
 
         printf("Masukkan kata tebakan Anda: ");
-        STARTWORD(); // capture user input using mesinkata
+        STARTWORD(); 
         char guess[6];
         for (int i = 0; i < currentWord.Length; i++) {
             guess[i] = currentWord.TabWord[i];
@@ -120,12 +120,12 @@ int WORDL3() {
             continue;
         }
 
-        // update the answer grid
+        // update grid
         TandaTebakan(guess, &wordAns, grid, chances, answer);
 
         if (IsWordEqual(currentWord, wordAns)) {
             printf("SELAMAT, ANDA MENEBAK KATA: %s\n", answer);
-            return chances + 1; // Return the number of chances used
+            return chances + 1; 
         }
 
         chances++;
@@ -133,5 +133,5 @@ int WORDL3() {
 
     DisplayGrid(grid);
     printf("OH TIDAK Anda kehabisan kesempatan! Jawaban yang benar adalah: %s\n", answer);
-    return 6; // Return 6 to indicate failure
+    return 6; //gagal menebak kata
 }
