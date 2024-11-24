@@ -7,10 +7,10 @@
 #include "../../ADT/Kustom/barang.h"
 #include "../../ADT/Kustom/user.h"
 #include "../../ADT/Queue/queue.h"
-#include "../../ADT/List/arraydin.h"
+#include "../../ADT/ListDinamis/arraydin.h"
 #include "../../ADT/List/list.h"
 #include "../../ADT/MesinKalimat/mesinkalimat.h"
 
-void Logout(int *currentIndex);
+void Logout(int currentIndex);
 
 #endif

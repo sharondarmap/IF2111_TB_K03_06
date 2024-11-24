@@ -1,1 +1,1 @@
-gcc driverwork.c work.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKata/mesinkata.c  ../../ADT/List/list.c ../../ADT/List/arraydin.c ../../ADT/Queue/queue.c -o driverwork
+gcc driverwork.c work.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKata/mesinkata.c  ../../ADT/List/list.c ../../ADT/List Dinamis/arraydin.c ../../ADT/Queue/queue.c -o driverwork

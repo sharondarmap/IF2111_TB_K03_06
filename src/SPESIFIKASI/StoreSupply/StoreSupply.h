@@ -2,7 +2,7 @@
 #define STORE_SUPPLY_H
 
 #include "../../boolean.h"
-#include "../../ADT/List/arraydin.h"
+#include "../../ADT/ListDinamis/arraydin.h"
 #include "../../ADT/List/list.h"
 #include "../../ADT/MesinKata/mesinkata.h"
 #include "../../ADT/MesinKarakter/mesinkarakter.h"
