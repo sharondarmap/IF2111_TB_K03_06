@@ -31,6 +31,7 @@
 
 int main()
 {
+    printPurrmart();
 
     // INISIALISASI STRUKTUR DATA
     IdxType currentIndex = IDX_UNDEF;
