@@ -48,8 +48,9 @@ void DisplayHelp3(){
 
     // WORK
     printf("3. WORK\n");
-    printf("   Fungsi: Menjalankan simulasi pekerjaan berdasarkan data permintaan.\n");
-    printf("   Sistem akan memproses pekerjaan yang ada pada daftar kerja.\n");
+    printf("   Fungsi: Memulai pekerjaan untuk mendapatkan uang.\n");
+    printf("   Sistem akan memberikan daftar pekerjaan dengan\n");
+    printf("   durasi dan pendapatan yang berbeda.\n")
     printf("   Contoh: Ketik WORK untuk memulai simulasi kerja.\n");
 
     // STORELIST
@@ -75,17 +76,54 @@ void DisplayHelp3(){
 
     // WORK CHALLENGE
     printf("8. WORK CHALLENGE\n");
-    printf("   Fungsi: Menghadapi tantangan kerja dalam sistem simulasi.\n");
+    printf("   Fungsi: Menyelesaikan tantangan berbasis game untuk mendapatkan uang.\n");
+    printf("   Pilihan Tantangan:\n");
+    printf("     a) Tebak Angka (biaya=200)\n");
+    printf("        Anda memiliki 10 kesempatan untuk menebak angka.\n");
+    printf("        Feedback: Lebih kecil, lebih besar, atau tepat.\n");
+    printf("        Jumlah kesempatan yang tersisa akan memengaruhi hadiah.\n");
+    printf("     b) W0RDL3 (biaya=500)\n");
+    printf("        Permainan tebak kata lima huruf dengan 5 peluang.\n");
+    printf("        Kata valid harus diakui oleh sistem.\n");
+    printf("        Huruf dengan posisi benar: ditampilkan biasa.\n");
+    printf("        Huruf benar tapi posisi salah: diberi tanda *.\n");
+    printf("        Huruf salah: diberi tanda %.\n");
     printf("   Contoh: WORK CHALLENGE\n");
 
     // WORLD33
-    printf("9. WORLD33\n");
-    printf("    Fungsi: Memulai eksplorasi dunia tertentu dalam sistem simulasi.\n");
-    printf("    Contoh: WORLD33\n");
+    printf("9. WORLD3\n");
+    printf("   Fungsi: Permainan tebak kata lima huruf dengan hadiah uang.\n");
+    printf("   Biaya: 500 rupiah.\n");
+    printf("   Anda memiliki 5 peluang untuk menebak kata yang benar.\n");
+    printf("   Feedback berdasarkan huruf:\n");
+    printf("     - Huruf dengan posisi benar: ditampilkan biasa.\n");
+    printf("     - Huruf benar tapi posisi salah: diberi tanda '*'.\n");
+    printf("     - Huruf salah: diberi tanda '%%'.\n");
+    printf("   Contoh: W0RDL3\n");
+    printf("     Tebak kata: SMART\n");
+    printf("     Feedback: S M A * R\n");
+    printf("     Tebak kata: START\n");
+    printf("     Feedback: S T A R T\n");
+    printf("     Anda menang! +1000 rupiah telah ditambahkan ke akun anda.\n");
+
 
     // TEBAK ANGKA
     printf("10. TEBAK ANGKA\n");
-    printf("    Fungsi: Bermain game tebak angka sederhana.\n");
-    printf("    Sistem akan meminta Anda menebak angka dari 1 sampai 100.\n");
-    printf("    Contoh: TEBAK ANGKA\n");
+    printf("   Fungsi: Permainan tebak angka dengan hadiah uang.\n");
+    printf("   Biaya: 200 rupiah.\n");
+    printf("   Anda memiliki 10 kesempatan untuk menebak angka.\n");
+    printf("   Feedback: Lebih kecil, lebih besar, atau tepat.\n");
+    printf("   Hadiah tergantung pada jumlah kesempatan tersisa.\n");
+    printf("   Contoh: TEBAK ANGKA\n");
+    printf("     Tebak angka: 50\n");
+    printf("     Tebakanmu lebih kecil!\n");
+    printf("     Tebak angka: 62\n");
+    printf("     Tebakanmu benar! +350 rupiah telah ditambahkan ke akun anda.\n");
+
+    // BIO WEAPON
+    printf("11. BIO WEAPON\n");
+    printf("   Fungsi: Menambahkan senjata biologis ke sistem PURRMART.\n");
+    printf("   Pemain diminta memasukkan DNA dan kode rahasia.\n");
+    printf("   Jika valid, barang masuk ke antrian sistem; jika tidak, barang ditolak.\n");
+    printf("   Contoh: BIO WEAPON\n");
 }
