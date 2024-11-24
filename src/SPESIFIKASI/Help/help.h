@@ -10,6 +10,9 @@
 #include "../../ADT/List/list.h"
 #include "../../ADT/MesinKalimat/mesinkalimat.h"
 
-void DisplayHelp();
+void DisplayHelp1();
 
+void DisplayHelp2();
+
+void DisplayHelp3();
 #endif

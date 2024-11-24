@@ -27,7 +27,15 @@ int main() {
 
         // Periksa apakah input adalah "HELP"
         if (CompareWord(currentWord, "HELP")) {
-            DisplayHelp();
+            DisplayHelp1();
+        }
+
+        else if (CompareWord(currentWord, "HELP2")) {
+            DisplayHelp2();
+        }
+
+        else if (CompareWord(currentWord, "HELP3")) {
+            DisplayHelp3();
         }
         // Periksa apakah input adalah "EXIT"
         else if (CompareWord(currentWord, "EXIT")) {

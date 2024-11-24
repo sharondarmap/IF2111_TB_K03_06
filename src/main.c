@@ -323,7 +323,7 @@ int main()
             }
             else if (IsWordEqual(currentWord, StringToWord("HELP")))
             {
-                DisplayHelp();
+                DisplayHelp1();
             }
             else if (IsWordEqual(currentWord, StringToWord("QUIT")))
             {
@@ -354,7 +354,7 @@ int main()
             }
             else if (IsWordEqual(currentWord, StringToWord("HELP")))
             {
-                DisplayHelp();
+                DisplayHelp2();
             }
             else if (IsWordEqual(currentWord, StringToWord("QUIT")))
             {
