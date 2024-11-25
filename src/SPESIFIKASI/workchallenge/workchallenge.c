@@ -6,6 +6,7 @@
 #include "../../ADT/List/list.h"
 #include "wordl3.h"
 #include "tebakangka.h"
+#include "quantumwordl3.h"
 
 /* Library yang boleh digunakan hanya stdio.h, stdlib.h, time.h, dan math.h. */
 
@@ -18,7 +19,8 @@ void WorkChallenge(List *userList, IdxType currentIndex) {
         printf("Daftar challenge yang tersedia:\n"
                "1. Tebak Angka (biaya main=200)\n"
                "2. W0RDL3 (biaya main=500)\n"
-               "3. Keluar dari work challenge (quit)\n");
+               "3. Quantum W0RDL3 (biaya main=1000)\n"
+               "4. Keluar dari work challenge (quit)\n");
         printf("Saldo Anda saat ini: %d\n", currentUser->money);
         printf(">> ");
 
@@ -55,7 +57,22 @@ void WorkChallenge(List *userList, IdxType currentIndex) {
             } else {
                 printf("Uang Anda tidak cukup untuk memainkan game ini.\n");
             }
-        } else if (pilihan == 3) { //quit
+        } else if (pilihan == 3) { // QUANTUM W0RDL3
+            if (currentUser->money >= 1000) { 
+                currentUser->money -= 1000; // Mengurangi saldo seharga game
+
+                int chancesUsed = QuantumWORDL3(); // Memanggil QuantumWORDL3
+                if (chancesUsed <= 9) {
+                    int reward = 5000; 
+                    currentUser->money += reward;
+                    printf("Selamat! Anda berhasil menebak semua kata dan mendapatkan %d rupiah!\n", reward);
+                } else { 
+                    printf("Sayang sekali, Anda tidak mendapatkan hadiah. Coba lagi!\n");
+                }
+            } else {
+                printf("Uang Anda tidak cukup untuk memainkan game ini.\n");
+            }
+        } else if (pilihan == 4) { //quit
             printf("Terima kasih telah mencoba Work Challenge!\n");
             mulaichallenge = 0; //exit loop
         } else { //invalid input
