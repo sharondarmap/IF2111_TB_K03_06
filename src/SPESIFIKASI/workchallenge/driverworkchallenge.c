@@ -12,7 +12,7 @@ int main(){
     User u1 = {"Izhar", "pass123", 500};
     User u2 = {"Harfhan", "secure456", 1000};
     User u3 = {"Sharon", "mypassword", 750};
-    User u4 = {"Gita", "hello789", 600};
+    User u4 = {"Gita", "hello789", 6000};
     int currentIndex = 0;
 
     InsertFirstList(&L1, u1);
