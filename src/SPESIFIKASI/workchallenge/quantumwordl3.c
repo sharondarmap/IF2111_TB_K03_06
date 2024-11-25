@@ -98,7 +98,6 @@ int QuantumWORDL3() {
             }
         }
 
-
         // Input tebakan menggunakan ADT Word
         printf("\nMasukkan kata tebakan Anda: ");
         STARTWORD();
@@ -109,7 +108,15 @@ int QuantumWORDL3() {
         for (int i = 0; i < 4; i++) {
             if (!is_correct[i]) { // Periksa hanya kata yang belum benar
                 TandaTebakanQuantum(guess.TabWord, &wordAnswers[i], grid[i], attempts);
-                if (IsWordEqual(guess, wordAnswers[i])) {
+                
+                int is_match = 1;
+                for (int j = 0; j < 5; j++) {
+                    if (guess.TabWord[j] != wordAnswers[i].TabWord[j]) {
+                        is_match = 0;
+                        break;
+                    }
+                }
+                if (is_match) {
                     is_correct[i] = 1; // Tandai kata ini sudah benar
                 }
             }
@@ -117,7 +124,6 @@ int QuantumWORDL3() {
                 all_correct = 0; // Set ke false jika ada kata yang belum benar
             }
         }
-
         // Jika semua kata benar
         if (all_correct) {
             printf("\n==================================================================\n");
