@@ -24,7 +24,21 @@ int QuantumWORDL3() {
     int is_correct[4] = {0, 0, 0, 0}; // Status benar untuk setiap kata target (0: belum benar, 1: benar)
     char answers[4][6];   // Empat kata target
     char solution[100][6] = {
-        "youth", "zebra", "zesty", "zonal"
+        "actor", "amber", "angel", "apple", "baker", "beach", 
+        "blend", "brisk", "candy", "charm", "clear", "crane", 
+        "dense", "delta", "dodge", "dream", "eager", "eagle", 
+        "elder", "ethic", "fable", "flame", "flute", "frost", 
+        "giant", "glare", "globe", "grain", "heist", "honey", 
+        "house", "hover", "image", "index", "input", "ivory", 
+        "jewel", "joker", "jolly", "jumpy", "kinky", "knife", 
+        "knock", "kneel", "layer", "latch", "lemon", "lofty", 
+        "mango", "march", "mirth", "nylon", "noble", "north", 
+        "ocean", "oasis", "orbit", "pearl", "pivot", "plant", 
+        "queen", "query", "quake", "raven", "rider", "rocky", 
+        "snake", "silly", "stone", "tears", "toast", "trump", 
+        "ultra", "union", "urban", "valve", "vivid", "vocal", 
+        "wagon", "whale", "witty", "xenon", "xerox", "xylos", 
+        "yacht", "yummy", "youth", "zebra", "zesty", "zonal"
     };
 
     // Pilih empat kata target secara acak
@@ -34,7 +48,7 @@ int QuantumWORDL3() {
         int new_index;
         int is_unique;
         do {
-            new_index = randomnumbergen(4, seed + i); // Seed berbeda untuk tiap kata
+            new_index = randomnumbergen(100, seed + i); // Seed berbeda untuk tiap kata
             is_unique = 1; // Asumsikan unik
             for (int j = 0; j < i; j++) {
                 if (new_index == chosen_indices[j]) {
