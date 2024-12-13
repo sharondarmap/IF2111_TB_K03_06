@@ -5,6 +5,7 @@
 #define MAX_LEN 100
 
 #include "../Stack/stack.h"
+#include "../Setmap/setmap.h"
 
 typedef struct {
   char name[MAX_LEN];
@@ -12,7 +13,6 @@ typedef struct {
   int money;
   Map keranjang;
   Stack riwayat_pembelian;
-  Linkedlist wishlist;
 } User;
 
 #endif

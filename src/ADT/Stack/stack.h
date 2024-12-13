@@ -60,5 +60,6 @@ void Pop(Stack * S, infotype* X);
 
 void DisplayStack(Stack S);
 /*Menuliskan isi Stack yang berisi barang*/
+/*Untuk keperluan HISTORY bisa dimodifikasi, DisplayStack disini hanya untuk driver*/
 
 #endif
