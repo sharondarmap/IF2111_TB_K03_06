@@ -103,10 +103,23 @@ void TampilkanKeranjang(Map M) {
         printf("Keranjang kosong.\n");
         return;
     }
-    printf("Isi Keranjang:\n");
-    printf("Kuantitas  Nama       Total\n");
+
+    // Top border
+    printf("+------------+-----------------+------------+\n");
+    printf("| Kuantitas  | Nama Barang     | Total      |\n");
+    printf("+------------+-----------------+------------+\n");
+
+    // Items
+    int totalHarga = 0;
     for (int i = 0; i < M.Count; i++) {
-        printf("%d          %s     %d\n", M.Elements[i].Quantity, M.Elements[i].Key.name, M.Elements[i].Key.price);
+        int subtotal = M.Elements[i].Quantity * M.Elements[i].Key.price;
+        totalHarga += subtotal;
+        
+        printf("| %-10d | %-15s | %-10d |\n", 
+               M.Elements[i].Quantity, 
+               M.Elements[i].Key.name, 
+               subtotal);
     }
-    printf("Total Harga: %d\n", HitungTotalHargaKeranjang(M));
+    printf("+------------+-----------------+------------+\n");
 }
+    
