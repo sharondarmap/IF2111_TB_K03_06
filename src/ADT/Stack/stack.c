@@ -43,7 +43,6 @@ void DisplayStack(Stack S) {
         printf("\n");
         return;
     }
-    printf("Stack contents (from top to bottom):\n");
     for (int i = S.TOP; i >= 0; i--) {
         printf("%d\n", S.TOP - i + 1);
         printf("Name: %s\n", S.T[i].name);
