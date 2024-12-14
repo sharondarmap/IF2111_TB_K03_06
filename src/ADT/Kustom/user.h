@@ -4,10 +4,15 @@
 /* Kamus Umum */
 #define MAX_LEN 100
 
+#include "../Stack/stack.h"
+#include "../Setmap/setmap.h"
+
 typedef struct {
   char name[MAX_LEN];
   char password[MAX_LEN];
   int money;
+  Map keranjang;
+  Stack riwayat_pembelian;
 } User;
 
 #endif

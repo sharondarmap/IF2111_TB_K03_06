@@ -31,6 +31,7 @@
 
 int main()
 {
+    printPurrmart();
 
     // INISIALISASI STRUKTUR DATA
     IdxType currentIndex = IDX_UNDEF;
@@ -153,17 +154,8 @@ int main()
                 else if (IsWordEqual(currentWord, StringToWord("REQUEST")))
                 {
                     ADVWORD();
-                    if (IsWordEqual(currentWord, StringToWord("BIO")))
-                    {
-                        ADVWORD();
-                        if (IsWordEqual(currentWord, StringToWord("WEAPON")))
-                        {
-                            StoreRequestBioWeapon(&barangQueue, &barangList);
-                        }
-                        else
-                        {
-                            printf("Command tidak dikenal.\n");
-                        }
+                    if (IsWordEqual(currentWord, StringToWord("BIOWEAPON"))){
+                        StoreRequestBioWeapon(&barangQueue, &barangList);
                     }
                     else if (endWord)
                     {
@@ -185,10 +177,6 @@ int main()
                 {
                     printf("Command tidak dikenal.\n");
                 }
-            }
-            else if (IsWordEqual(currentWord, StringToWord("BIOWEAPON")))
-            {
-                StoreRequestBioWeapon(&barangQueue, &barangList);
             }
             else if (IsWordEqual(currentWord, StringToWord("LOGOUT")))
             {
