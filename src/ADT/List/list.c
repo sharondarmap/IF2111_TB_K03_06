@@ -29,6 +29,10 @@ List MakeList() {
         L.A[i].name[0] = '\0';
         L.A[i].password[0] = '\0';
         L.A[i].money = -1;
+        
+        CreateEmptyKeranjang(&L.A[i].keranjang);
+        CreateEmptyStack(&L.A[i].riwayat_pembelian);
+        CreateEmptyWishlist(&L.A[i].wishList);
     }
     return L;
 }
@@ -90,6 +94,7 @@ boolean SearchList(List L, char *name) {
 
 void InsertFirstList(List *L, User u) {
     IdxType i = LastIdxList(*L);
+
     while (i >= FirstIdxList(*L)) {
         SetList(L, i + 1, GetList(*L, i));
         i--;

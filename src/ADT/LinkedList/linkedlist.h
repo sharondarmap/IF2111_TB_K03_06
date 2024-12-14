@@ -4,6 +4,7 @@
 #include "../../boolean.h"
 #include "../Kustom/barang.h"
 
+
 #define NIL NULL
 
 typedef struct tElmtlist *addr_listdp;

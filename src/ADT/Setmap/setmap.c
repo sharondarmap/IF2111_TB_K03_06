@@ -1,17 +1,6 @@
 #include "setmap.h"
 #include "../List/list.h"
 
-int CompareStrings(char *str1, char *str2) {
-    int i = 0;
-    while (str1[i] != '\0' && str2[i] != '\0') {
-        if (str1[i] != str2[i]) {
-            return 0;
-        }
-        i++;
-    }
-    return (str1[i] == '\0' && str2[i] == '\0');
-}
-
 void CreateEmptyKeranjang(Map *M) {
     M->Count = 0;
 }
@@ -31,6 +20,15 @@ boolean IsItemInKeranjang(Map M, Barang barang) {
         }
     }
     return false;
+}
+
+int GetItemIndex(Map *M, Barang barang) {
+    for (int i = 0; i < M->Count; i++) {
+        if (CompareStrings(M->Elements[i].Key.name, barang.name)) {
+            return i;  // Return the index if item exists
+        }
+    }
+    return -1;  // Return -1 if item not found
 }
 
 int GetItemQuantity(Map M, Barang barang) {

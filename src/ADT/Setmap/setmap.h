@@ -28,6 +28,8 @@ boolean IsKeranjangFull(Map M);
 
 boolean IsItemInKeranjang(Map M, Barang barang);
 
+int GetItemIndex(Map *M, Barang barang);
+
 int GetItemQuantity(Map M, Barang barang);
 
 void AddToKeranjang(Map *M, Barang barang, int quantity);

@@ -20,6 +20,10 @@ typedef struct {
     ElType A[MaxEl];
 } List;
 
+int CompareStrings(char *str1, char *str2);
+
+void CopyString(char *dest, char *src);
+
 /* ********* KONSTRUKTOR ********* */
 /* Membuat list kosong */
 List MakeList();
