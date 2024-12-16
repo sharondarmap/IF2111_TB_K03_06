@@ -6,7 +6,7 @@ int main() {
 
     CreateEmptyWishlist(&wishList);
 
-    WishlistIsEmpty(wishList)
+    WishlistIsEmpty(wishList);
 
     return 0;
 }
