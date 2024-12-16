@@ -1,8 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "setmap.h"
-#include "../List/list.h"
-#include <stdlib.h> 
 
-int CompareStrings(char *str1, char *str2) {
+// Function to compare two strings
+int CompareStringsSetmap(char *str1, char *str2) {
     int i = 0;
     while (str1[i] != '\0' && str2[i] != '\0') {
         if (str1[i] != str2[i]) {
@@ -13,72 +14,69 @@ int CompareStrings(char *str1, char *str2) {
     return (str1[i] == '\0' && str2[i] == '\0');
 }
 
+// Initialize an empty cart
 void CreateEmptyKeranjang(Map *M) {
-    M->Elements = (item*) malloc(MaxEl * sizeof(item));  // Allocate memory for Elements dynamically
+    M->Count = 0;
+    M->Elements = (item*) malloc(MaxEl * sizeof(item));  // Dynamically allocate memory for Elements
     if (M->Elements == NULL) {
         printf("Memory allocation failed!\n");
         exit(1);  // Exit if memory allocation fails
     }
-    M->Count = 0;
 }
 
-// Check if the Keranjang (Cart) is empty
+// Check if the cart is empty
 boolean IsKeranjangEmpty(Map M) {
     return M.Count == 0;
 }
 
-// Check if the Keranjang (Cart) is full
+// Check if the cart is full
 boolean IsKeranjangFull(Map M) {
     return M.Count == MaxEl;
 }
 
-// Check if the item is in the Keranjang (Cart)
+// Check if the item exists in the cart
 boolean IsItemInKeranjang(Map M, Barang barang) {
     for (int i = 0; i < M.Count; i++) {
-        if (CompareStrings(M.Elements[i].Key.name, barang.name)) {
+        if (CompareStringsSetmap(M.Elements[i].Key.name, barang.name)) {
             return true;
         }
     }
     return false;
 }
 
-// Get the quantity of an item in the Keranjang (Cart)
+// Get the quantity of an item in the cart
 int GetItemQuantity(Map M, Barang barang) {
     for (int i = 0; i < M.Count; i++) {
-        if (CompareStrings(M.Elements[i].Key.name, barang.name)) {
+        if (CompareStringsSetmap(M.Elements[i].Key.name, barang.name)) {
             return M.Elements[i].Quantity;
         }
     }
     return 0;
 }
 
-// Add an item to the Keranjang (Cart)
+// Add an item to the cart
 void AddToKeranjang(Map *M, Barang barang, int quantity) {
-    // If cart is full, can't add more items
     if (IsKeranjangFull(*M)) {
         printf("Keranjang penuh! Tidak bisa menambah barang.\n");
         return;
     }
 
-    // Check if item already exists
     for (int i = 0; i < M->Count; i++) {
-        if (CompareStrings(M->Elements[i].Key.name, barang.name)) {
-            // Item exists, increase quantity
+        if (CompareStringsSetmap(M->Elements[i].Key.name, barang.name)) {
             M->Elements[i].Quantity += quantity;
             return;
         }
     }
 
-    // If item doesn't exist, add new item
     M->Elements[M->Count].Key = barang;
     M->Elements[M->Count].Quantity = quantity;
     M->Count++;
 }
 
-// Remove an item from the Keranjang (Cart)
+// Remove an item from the cart
 void RemoveFromKeranjang(Map *M, Barang barang) {
     for (int i = 0; i < M->Count; i++) {
-        if (CompareStrings(M->Elements[i].Key.name, barang.name)) {
+        if (CompareStringsSetmap(M->Elements[i].Key.name, barang.name)) {
             for (int j = i; j < M->Count - 1; j++) {
                 M->Elements[j] = M->Elements[j + 1];
             }
@@ -88,11 +86,11 @@ void RemoveFromKeranjang(Map *M, Barang barang) {
     }
 }
 
-// Update the quantity of an item in the Keranjang (Cart)
+// Update the quantity of an item in the cart
 void UpdateKeranjangItemQuantity(Map *M, Barang barang, int newQuantity) {
     for (int i = 0; i < M->Count; i++) {
-        if (CompareStrings(M->Elements[i].Key.name, barang.name)) {
-            if (newQuantity <= 0) { //mengurangi Jumlah
+        if (CompareStringsSetmap(M->Elements[i].Key.name, barang.name)) {
+            if (newQuantity <= 0) {
                 RemoveFromKeranjang(M, barang);
             } else {
                 M->Elements[i].Quantity = newQuantity;
@@ -102,7 +100,7 @@ void UpdateKeranjangItemQuantity(Map *M, Barang barang, int newQuantity) {
     }
 }
 
-// Calculate the total price of items in the Keranjang (Cart)
+// Calculate the total price of items in the cart
 int HitungTotalHargaKeranjang(Map M) {
     int totalHarga = 0;
     for (int i = 0; i < M.Count; i++) {
@@ -111,19 +109,17 @@ int HitungTotalHargaKeranjang(Map M) {
     return totalHarga;
 }
 
-// Display the contents of the Keranjang (Cart)
+// Display the items in the cart
 void TampilkanKeranjang(Map M) {
     if (IsKeranjangEmpty(M)) {
         printf("Keranjang kosong.\n");
         return;
     }
 
-    // Top border
     printf("+------------+-----------------+------------+\n");
     printf("| Kuantitas  | Nama Barang     | Total      |\n");
     printf("+------------+-----------------+------------+\n");
 
-    // Items
     int totalHarga = 0;
     for (int i = 0; i < M.Count; i++) {
         int subtotal = M.Elements[i].Quantity * M.Elements[i].Key.price;
@@ -137,7 +133,7 @@ void TampilkanKeranjang(Map M) {
     printf("+------------+-----------------+------------+\n");
 }
 
-// Free dynamically allocated memory for Map
+// Free dynamically allocated memory
 void FreeKeranjang(Map *M) {
-    free(M->Elements);  // Free the dynamically allocated memory
+    free(M->Elements);  // Free the allocated memory
 }
