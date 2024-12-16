@@ -10,7 +10,7 @@ boolean IsKeranjangEmpty(Map M) {
 }
 
 boolean IsKeranjangFull(Map M) {
-    return M.Count == MaxEl;
+    return M.Count == MaxElem;
 }
 
 boolean IsItemInKeranjang(Map M, Barang barang) {

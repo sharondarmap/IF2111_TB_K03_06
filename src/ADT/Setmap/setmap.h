@@ -4,7 +4,7 @@
 #include "../../boolean.h"
 #include "../Kustom/barang.h"
 
-#define MaxEl 100
+#define MaxElem 10
 #define Undefined -999
 
 typedef struct {
@@ -13,7 +13,7 @@ typedef struct {
 } item;
 
 typedef struct {
-    item Elements[MaxEl];
+    item Elements[MaxElem];
     int Count;
 } Map;
 
