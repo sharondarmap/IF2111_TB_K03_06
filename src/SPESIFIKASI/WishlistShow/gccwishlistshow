@@ -1,0 +1,3 @@
+gcc wishlistshow.c driverwishlistshow.c ../../ADT/LinkedList/linkedlist.h -o driver
+
+./driver
