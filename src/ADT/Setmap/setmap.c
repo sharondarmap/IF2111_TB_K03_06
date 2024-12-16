@@ -116,21 +116,21 @@ void TampilkanKeranjang(Map M) {
         return;
     }
 
-    printf("+------------+-----------------+------------+\n");
-    printf("| Kuantitas  | Nama Barang     | Total      |\n");
-    printf("+------------+-----------------+------------+\n");
+    printf("+------------+-----------------------+------------+\n");
+    printf("| Kuantitas  | Nama Barang           | Total      |\n");
+    printf("+------------+-----------------------+------------+\n");
 
     int totalHarga = 0;
     for (int i = 0; i < M.Count; i++) {
         int subtotal = M.Elements[i].Quantity * M.Elements[i].Key.price;
         totalHarga += subtotal;
         
-        printf("| %-10d | %-15s | %-10d |\n", 
+        printf("| %-10d | %-21s | %-10d |\n", 
                M.Elements[i].Quantity, 
                M.Elements[i].Key.name, 
                subtotal);
     }
-    printf("+------------+-----------------+------------+\n");
+    printf("+------------+-----------------------+------------+\n");
 }
 
 // Free dynamically allocated memory
