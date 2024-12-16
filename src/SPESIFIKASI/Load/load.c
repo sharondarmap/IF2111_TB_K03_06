@@ -1,87 +1,164 @@
 #include "load.h"
 
 void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
-    // Buka file dan baca jumlah barang
+
     STARTKALIMATFILE(filename);
 
-    // Cek apakah file berhasil dibuka
-    if (EndKalimat) { // Jika file tidak valid
-        // printf("Gagal membuka file. Pastikan file tersedia dan formatnya benar.\n");
-        return; // Keluar dari fungsi jika file tidak valid
+    if (EndKalimat) {
+        printf("ERROR: File tidak valid atau tidak ditemukan.\n");
+        return;
     }
 
-    // Baca jumlah barang dari file
-    int jumlahBarang = atoi(CLine.TabLine); // Konversi string ke integer
-    // printf("[DEBUG] Jumlah barang yang akan dibaca: %d\n", jumlahBarang);
+    /** TAHAP 1: MEMBACA DATA BARANG **/
+    // Membaca jumlah barang
+    int jumlahBarang = atoi(CLine.TabLine);
+    // printf("[DEBUG] Jumlah barang: %d\n", jumlahBarang);
 
-    // Inisialisasi arrayDin dan ListUser
+    // Inisialisasi array dinamis
     *daftarBarang = MakeArrayDin();
-    *userList = MakeList();
 
-    // Pindah ke baris pertama barang
-    ADVKALIMAT();
-
-    // Loop untuk membaca barang
+    // Membaca barang satu per satu
     for (int i = 0; i < jumlahBarang; i++) {
-        if (EndKalimat) { // Jika EOF tercapai lebih awal
-            // printf("ERROR: Data barang tidak lengkap.\n");
-            return; // Keluar dari fungsi jika data barang tidak lengkap
+        ADVKALIMAT();
+        if (EndKalimat) {
+            printf("ERROR: Data barang tidak lengkap.\n");
+            return;
         }
 
-        // Parsing harga dan nama barang
+        // Parsing data barang
         int harga;
         char nama[MAX_LEN];
         ParseBarang(CLine, &harga, nama);
 
         // Membuat elemen barang
-        ElType2 barang;
+        Barang barang;
         barang.price = harga;
+        CopyWordToCharArray(StringToWord(nama), barang.name);
 
-        // Salin nama ke barang.name
-        Word namaWord = StringToWord(nama);
-        CopyWordToCharArray(namaWord, barang.name);
-
-        // Tambahkan ke arrayDin
+        // Menambahkan barang ke ArrayDin
         InsertLast(daftarBarang, barang);
-        // printf("[DEBUG] Barang ke-%d berhasil ditambahkan: {Nama: %s, Harga: %d}\n", i + 1, barang.name, barang.price);
 
-        // Pindah ke baris berikutnya
-        ADVKALIMAT();
+        // Debugging informasi barang
+        // printf("[DEBUG] Barang ke-%d: {Harga: %d, Nama: %s}\n", i + 1, barang.price, barang.name);
     }
 
-    // Membaca jumlah user dari file
-    int jumlahUser = atoi(CLine.TabLine); // Konversi string ke integer
-    // printf("[DEBUG] Jumlah user yang akan dibaca: %d\n", jumlahUser);
+    /** TAHAP 2: MEMBACA DATA PENGGUNA **/
+    ADVKALIMAT(); // Pindah ke baris jumlah pengguna
+    if (EndKalimat) {
+        printf("ERROR: Data pengguna tidak ditemukan.\n");
+        return;
+    }
 
-    // Loop untuk membaca detail user
+    // Membaca jumlah pengguna
+    int jumlahUser = atoi(CLine.TabLine);
+    // printf("[DEBUG] Jumlah pengguna: %d\n", jumlahUser);
+
+    // Inisialisasi list pengguna
+    *userList = MakeList();
+
+    // Membaca data setiap pengguna
     for (int i = 0; i < jumlahUser; i++) {
-        ADVKALIMAT(); // Pindah ke baris berikutnya untuk setiap user
-
-        if (EndKalimat) { // Jika EOF tercapai lebih awal
-            // printf("ERROR: Data pengguna tidak lengkap.\n");
-            return; // Keluar dari fungsi jika data pengguna tidak lengkap
+        ADVKALIMAT(); // Pindah ke baris data pengguna
+        if (EndKalimat) {
+            printf("ERROR: Data pengguna tidak lengkap.\n");
+            return;
         }
 
-        // Parsing jumlah uang, nama user, dan password
-        int jumlahUang;
-        char namaUser[MAX_LEN];
+        // Parsing data pengguna
+        int uang;
+        char nama[MAX_LEN];
         char password[MAX_LEN];
-        ParseUser(CLine, &jumlahUang, namaUser, password);
+        ParseUser(CLine, &uang, nama, password);
 
-        // Membuat elemen user
+        // Membuat elemen pengguna
         User user;
-        user.money = jumlahUang;
+        user.money = uang;
+        CopyWordToCharArray(StringToWord(nama), user.name);
+        CopyWordToCharArray(StringToWord(password), user.password);
 
-        // Salin nama user dan password
-        Word namaUserWord = StringToWord(namaUser);
-        Word passwordWord = StringToWord(password);
-        CopyWordToCharArray(namaUserWord, user.name);
-        CopyWordToCharArray(passwordWord, user.password);
+        // Debugging informasi pengguna
+        // printf("[DEBUG] Pengguna ke-%d: {Nama: %s, Password: %s, Uang: %d}\n", i + 1, user.name, user.password, user.money);
+        CreateEmptyStack(&user.riwayat_pembelian); // Untuk riwayat pembelian
+        CreateEmptyWishlist(&user.wishList);      // Untuk wishlist
 
-        // Tambahkan ke List User
+        /** MEMBACA RIWAYAT PEMBELIAN **/
+        ADVKALIMAT(); // Pindah ke baris jumlah riwayat pembelian
+        int jumlahRiwayat = atoi(CLine.TabLine);
+        // printf("[DEBUG] Jumlah riwayat pembelian pengguna '%s': %d\n", user.name, jumlahRiwayat);
+
+        for (int j = 0; j < jumlahRiwayat; j++) {
+            ADVKALIMAT(); // Pindah ke baris riwayat berikutnya
+            if (EndKalimat) {
+                printf("ERROR: Data riwayat pembelian tidak lengkap untuk pengguna '%s'.\n", user.name);
+                return;
+            }
+
+            // Debug baris yang sedang diproses
+            // printf("[DEBUG] Membaca riwayat pembelian ke-%d untuk '%s': %s\n", j + 1, user.name, CLine.TabLine);
+
+            // Parsing data riwayat
+            int biaya;
+            char barang[MAX_LEN];
+            ParseBarang(CLine, &biaya, barang);
+
+            // Debug hasil parsing
+            // printf("[DEBUG] Parsed riwayat: {Biaya: %d, Barang: %s}\n", biaya, barang);
+
+            // Validasi hasil parsing
+            if (biaya <= 0 || barang[0] == '\0') {
+                printf("ERROR: Data riwayat pembelian tidak valid: {Biaya: %d, Barang: %s}\n", biaya, barang);
+                return;
+            }
+
+            // Tambahkan ke stack riwayat pembelian
+            Barang riwayatBarang;
+            riwayatBarang.price = biaya;
+            CopyWordToCharArray(StringToWord(barang), riwayatBarang.name);
+
+            // Debug sebelum push
+            // printf("[DEBUG] Menambahkan ke stack: {Biaya: %d, Barang: %s}\n", riwayatBarang.price, riwayatBarang.name);
+
+            // Push elemen ke stack
+            PushToStack(&user.riwayat_pembelian, riwayatBarang);
+
+            // Debug setelah push
+            // printf("[DEBUG] Riwayat ke-%d ditambahkan: {Biaya: %d, Barang: %s}\n", j + 1, riwayatBarang.price, riwayatBarang.name);
+        }
+
+        /** MEMBACA WISHLIST **/
+        ADVKALIMAT(); // Pindah ke baris jumlah wishlist
+
+        int jumlahWishlist = atoi(CLine.TabLine);
+        // printf("[DEBUG] Jumlah wishlist pengguna '%s': %d\n", user.name, jumlahWishlist);
+
+        for (int j = 0; j < jumlahWishlist; j++) {
+            ADVKALIMAT();
+            if (EndKalimat) {
+                printf("ERROR: EOF tercapai saat membaca wishlist pengguna '%s'.\n", user.name);
+                return;
+            }
+
+            // Parsing wishlist
+            char wishlistBarang[MAX_LEN];
+            CopyWordToCharArray(StringToWord(CLine.TabLine), wishlistBarang);
+
+            if (wishlistBarang[0] == '\0') {
+                printf("ERROR: Data wishlist tidak valid untuk pengguna '%s'.\n", user.name);
+                return;
+            }
+
+            // Tambahkan ke wishlist
+            Barang wishlistItem;
+            CopyWordToCharArray(StringToWord(wishlistBarang), wishlistItem.name);
+            InsertLastWishlist(&user.wishList, wishlistItem);
+
+            // Debug setelah menambahkan wishlist
+            // printf("[DEBUG] Wishlist ke-%d ditambahkan: %s\n", j + 1, wishlistItem.name);
+        }
+
+        // Tambahkan pengguna ke List
         InsertLastList(userList, user);
-        // printf("[DEBUG] User ke-%d berhasil ditambahkan: {Nama: %s, Uang: %d, Password: %s}\n", i + 1, user.name, user.money, password);
     }
-
-    // printf("[DEBUG] File berhasil dimuat: %s\n", filename);
+    // printf("[DEBUG] Semua pengguna berhasil dimuat ke dalam List.\n\n");
 }
+

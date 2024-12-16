@@ -1,0 +1,1 @@
+gcc driverload.c load.c ../../ADT/Queue/queue.c ../../ADT/ListDinamis/arraydin.c ../../ADT/List/list.c ../../ADT/MesinKalimat/mesinkalimat.c ../../ADT/MesinKata/mesinkata.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/Stack/stack.c ../../ADT/Setmap/setmap.c ../../ADT/LinkedList/linkedlist.c -o driverload
