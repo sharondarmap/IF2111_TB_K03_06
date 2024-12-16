@@ -1,65 +1,25 @@
-/* File : stack.h */
-/* deklarasi stack yang diimplementasi dengan tabel kontigu dan ukuran sama */
-/* TOP adalah alamat elemen puncak */
-/* Implementasi dalam bahasa C dengan alokasi statik */
+#include "../../boolean.h"
 #include "../Kustom/barang.h"
 
-#ifndef stackt_H
-#define stackt_H
+#ifndef STACK_H
+#define STACK_H
 
-#include "../../boolean.h"
+#define MaxEl 100
 
-#define Nil -1
-#define MaxElem 10
-/* Nil adalah stack dengan elemen kosong . */
+typedef Barang infotype;  // Change to the appropriate type for stack elements
 
-typedef Barang infotype;
-typedef int address;   /* indeks tabel */
-
-/* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
-/* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
-typedef struct { 
-  infotype T[MaxElem]; /* tabel penyimpan elemen */
-  address TOP;  /* alamat TOP: elemen puncak */
+typedef struct {
+    infotype *T;   // Dynamically allocated array for stack elements
+    int TOP;       // Index of the top element in the stack
 } Stack;
-/* Definisi stack S kosong : S.TOP = Nil */
-/* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxEl-1] */
-/* Jika S adalah Stack maka akses elemen : */
-   /* S.T[(S.TOP)] untuk mengakses elemen TOP */
-   /* S.TOP adalah alamat elemen TOP */
 
-/* Definisi akses dengan Selektor : Set dan Get */
-#define Top(S) (S).TOP
-#define InfoTop(S) (S).T[(S).TOP]
-
-/* ************ Prototype ************ */
-/* *** Konstruktor/Kreator *** */
+// Function declarations
 void CreateEmptyStack(Stack *S);
-/* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 0.. MaxEl */
-/* Ciri stack kosong : TOP bernilai Nil */
-
-/* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsEmptyStack(Stack S);
-/* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFullStackk(Stack S);
-/* Mengirim true jika tabel penampung nilai elemen stack penuh */
-
-/* ************ Menambahkan sebuah elemen ke Stack ************ */
-void PushToStack(Stack * S, infotype X);
-/* Menambahkan X sebagai elemen Stack S. */
-/* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
-/* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
-
-/* ************ Menghapus sebuah elemen Stack ************ */
-void PopFromStack(Stack * S, infotype* X);
-/* Menghapus X dari Stack S. */
-/* I.S. S  tidak mungkin kosong */
-/* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
-
+boolean IsFullStack(Stack S);
+void PushToStack(Stack *S, infotype X);
+void PopFromStack(Stack *S, infotype *X);
 void DisplayStack(Stack S);
-/*Menuliskan isi Stack yang berisi barang*/
-/*Untuk keperluan HISTORY bisa dimodifikasi, DisplayStack disini hanya untuk driver*/
+void FreeStack(Stack *S); // Free dynamically allocated memory for stack
 
 #endif
