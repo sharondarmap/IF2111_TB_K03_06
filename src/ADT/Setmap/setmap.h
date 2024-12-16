@@ -40,4 +40,6 @@ int HitungTotalHargaKeranjang(Map M);
 
 void TampilkanKeranjang(Map M);
 
+void FreeKeranjang(Map *M);
+
 #endif
