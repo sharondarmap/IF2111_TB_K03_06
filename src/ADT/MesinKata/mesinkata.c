@@ -191,3 +191,12 @@ void ResetWord(Word *w)
         w->TabWord[i] = '\0';
     }
 }
+
+boolean IsWordNumeric(Word W) {
+    for (int i = 0; i < W.Length; i++) {
+        if (W.TabWord[i] < '0' || W.TabWord[i] > '9') {
+            return false;
+        }
+    }
+    return true;
+}
