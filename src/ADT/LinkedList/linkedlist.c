@@ -43,3 +43,19 @@ boolean WishlistIsEmpty(Linkedlist L)
 {
     return First(L) == NIL;
 }
+
+void AddLastWishlist(Linkedlist *L, Barang X) {
+    addr_listdp newNode = AlokasiWishList(X);
+    if (newNode != NIL) {
+        if (WishlistIsEmpty(*L)) {
+            First(*L) = newNode;
+            Last(*L) = newNode;
+        } else {
+            Next(Last(*L)) = newNode;
+            Prev(newNode) = Last(*L);
+            Last(*L) = newNode;
+        }
+        Count(*L)++;
+    }
+}
+

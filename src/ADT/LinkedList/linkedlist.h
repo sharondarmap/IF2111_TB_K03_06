@@ -39,4 +39,6 @@ addr_listdp AlokasiWishList(Barang X);
 
 void DealokasiWishList(addr_listdp P);
 
+void AddLastWishlist(Linkedlist *L, Barang X);
+
 #endif

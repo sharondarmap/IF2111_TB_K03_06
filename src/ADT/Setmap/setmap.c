@@ -70,6 +70,7 @@ void AddToKeranjang(Map *M, Barang barang, int quantity) {
 
     M->Elements[M->Count].Key = barang;
     M->Elements[M->Count].Quantity = quantity;
+    M->Elements[M->Count].Key.price = barang.price;
     M->Count++;
 }
 
