@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "save.h"
 
 void Save(ArrayDin *barang, List *userList, char *filename) {
@@ -62,7 +61,7 @@ void Save(ArrayDin *barang, List *userList, char *filename) {
 
     Kalimat kalimat;
 
-    /** Menulis jumlah barang **/
+    // Menulis jumlah barang
     kalimat.Length = 0;
     Word jumlahBarangWord = IntToWord(Length(*barang));
     for (int i = 0; i < jumlahBarangWord.Length; i++) {
@@ -71,7 +70,7 @@ void Save(ArrayDin *barang, List *userList, char *filename) {
     kalimat.TabLine[kalimat.Length] = '\0';
     WRITELINEFILE(file, kalimat);
 
-    /** Menulis data barang **/
+    // Menulis data barang
     for (int i = 0; i < Length(*barang); i++) {
         Barang b = Get(*barang, i);
 
@@ -80,7 +79,7 @@ void Save(ArrayDin *barang, List *userList, char *filename) {
         for (int j = 0; j < hargaWord.Length; j++) {
             kalimat.TabLine[kalimat.Length++] = hargaWord.TabWord[j];
         }
-        kalimat.TabLine[kalimat.Length++] = ' ';
+        kalimat.TabLine[kalimat.Length++] = ' '; // Tambahkan spasi
         Word namaWord = StringToWord(b.name);
         for (int j = 0; j < namaWord.Length; j++) {
             kalimat.TabLine[kalimat.Length++] = namaWord.TabWord[j];
@@ -89,7 +88,7 @@ void Save(ArrayDin *barang, List *userList, char *filename) {
         WRITELINEFILE(file, kalimat);
     }
 
-    /** Menulis jumlah pengguna **/
+    // Menulis jumlah pengguna
     kalimat.Length = 0;
     Word jumlahUserWord = IntToWord(LengthList(*userList));
     for (int i = 0; i < jumlahUserWord.Length; i++) {
@@ -98,75 +97,28 @@ void Save(ArrayDin *barang, List *userList, char *filename) {
     kalimat.TabLine[kalimat.Length] = '\0';
     WRITELINEFILE(file, kalimat);
 
-    /** Menulis data pengguna **/
+    // Menulis data pengguna
     for (int i = 0; i < LengthList(*userList); i++) {
         User u = GetList(*userList, i);
 
-        // Menulis data utama pengguna
         kalimat.Length = 0;
         Word uangWord = IntToWord(u.money);
         for (int j = 0; j < uangWord.Length; j++) {
             kalimat.TabLine[kalimat.Length++] = uangWord.TabWord[j];
         }
-        kalimat.TabLine[kalimat.Length++] = ' ';
+        kalimat.TabLine[kalimat.Length++] = ' '; // Tambahkan spasi
         Word namaWord = StringToWord(u.name);
         for (int j = 0; j < namaWord.Length; j++) {
             kalimat.TabLine[kalimat.Length++] = namaWord.TabWord[j];
         }
-        kalimat.TabLine[kalimat.Length++] = ' ';
+        kalimat.TabLine[kalimat.Length++] = ' '; // Tambahkan spasi
         Word passwordWord = StringToWord(u.password);
         for (int j = 0; j < passwordWord.Length; j++) {
             kalimat.TabLine[kalimat.Length++] = passwordWord.TabWord[j];
         }
         kalimat.TabLine[kalimat.Length] = '\0';
         WRITELINEFILE(file, kalimat);
-
-        // Menulis riwayat pembelian
-        kalimat.Length = 0;
-        Word jumlahRiwayat = IntToWord(u.riwayat_pembelian.TOP + 1);
-        for (int j = 0; j < jumlahRiwayat.Length; j++) {
-            kalimat.TabLine[kalimat.Length++] = jumlahRiwayat.TabWord[j];
-        }
-        kalimat.TabLine[kalimat.Length] = '\0';
-        WRITELINEFILE(file, kalimat);
-
-        for (int j = u.riwayat_pembelian.TOP; j >= 0; j--) {
-            kalimat.Length = 0;
-            Word harga = IntToWord(u.riwayat_pembelian.T[j].price);
-            for (int k = 0; k < harga.Length; k++) {
-                kalimat.TabLine[kalimat.Length++] = harga.TabWord[k];
-            }
-            kalimat.TabLine[kalimat.Length++] = ' ';
-            Word namaBarang = StringToWord(u.riwayat_pembelian.T[j].name);
-            for (int k = 0; k < namaBarang.Length; k++) {
-                kalimat.TabLine[kalimat.Length++] = namaBarang.TabWord[k];
-            }
-            kalimat.TabLine[kalimat.Length] = '\0';
-            WRITELINEFILE(file, kalimat);
-        }
-
-        // Menulis wishlist
-        kalimat.Length = 0;
-        Word jumlahWishlist = IntToWord(u.wishList.count);
-        for (int j = 0; j < jumlahWishlist.Length; j++) {
-            kalimat.TabLine[kalimat.Length++] = jumlahWishlist.TabWord[j];
-        }
-        kalimat.TabLine[kalimat.Length] = '\0';
-        WRITELINEFILE(file, kalimat);
-
-        addr_listdp P = First(u.wishList);
-        while (P != NIL) {
-            kalimat.Length = 0;
-            Word namaBarang = StringToWord(Wish(P).name);
-            for (int j = 0; j < namaBarang.Length; j++) {
-                kalimat.TabLine[kalimat.Length++] = namaBarang.TabWord[j];
-            }
-            kalimat.TabLine[kalimat.Length] = '\0';
-            WRITELINEFILE(file, kalimat);
-            P = Next(P);
-        }
     }
 
     CLOSEWRITEKALIMATFILE(file);
-    printf("Save file berhasil disimpan pada %s\n", filename);
 }
