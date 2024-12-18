@@ -41,5 +41,6 @@ void WishlistRemoveIdx(Linkedlist *L, int i) {
         DealokasiWishList(P);
         Count(*L)--;
         printf("Berhasil menghapus barang posisi ke-%d dari wishlist!\n", i);
+    
     }
 }
