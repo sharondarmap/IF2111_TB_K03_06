@@ -4,9 +4,10 @@
 /* Kamus Umum */
 #define MAX_LEN 100
 
+#include "../LinkedList/linkedlist.h"
 #include "../Stack/stack.h"
 #include "../Setmap/setmap.h"
-#include "../LinkedList/linkedlist.h"
+
 
 typedef struct {
   char name[MAX_LEN];

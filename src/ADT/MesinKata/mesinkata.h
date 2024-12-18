@@ -87,4 +87,7 @@ Word TrimWord(Word w);
 
 void ResetWord(Word *w);
 
+boolean IsWordNumeric(Word W);
+/* mengembalikan apakah kata berupa integer atau bukan */
+
 #endif

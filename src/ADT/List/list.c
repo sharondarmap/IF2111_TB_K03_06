@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "list.h"
 
+// String Comparison
 int CompareStrings(char *str1, char *str2) {
     int i = 0;
     while (str1[i] != '\0' && str2[i] != '\0') {
@@ -12,6 +13,7 @@ int CompareStrings(char *str1, char *str2) {
     return (str1[i] == '\0' && str2[i] == '\0');
 }
 
+// String Copy
 void CopyString(char *dest, char *src) {
     int i = 0;
     while (src[i] != '\0') {
@@ -21,7 +23,7 @@ void CopyString(char *dest, char *src) {
     dest[i] = '\0';
 }
 
-// Konstruktor
+// Constructor
 List MakeList() {
     List L;
     IdxType i;
@@ -29,14 +31,21 @@ List MakeList() {
         L.A[i].name[0] = '\0';
         L.A[i].password[0] = '\0';
         L.A[i].money = -1;
+
+        // Assume auxiliary functions are implemented in list.h
+        CreateEmptyKeranjang(&L.A[i].keranjang);
+        CreateEmptyStack(&L.A[i].riwayat_pembelian);
+        CreateEmptyWishlist(&L.A[i].wishList);
     }
     return L;
 }
 
+// Check if List is Empty
 boolean IsEmptyList(List L) {
-    return (L.A[0].money == -1);
+    return (LengthList(L) == 0);
 }
 
+// List Length
 int LengthList(List L) {
     int i = 0;
     while (i < MaxEl && L.A[i].money != -1) {
@@ -45,24 +54,31 @@ int LengthList(List L) {
     return i;
 }
 
-User GetList(List L, IdxType i) {
-    if (i < FirstIdxList(L) || i > LastIdxList(L)) {
-        printf("Error: Indeks tidak valid.\n");
-        exit(1); // Menghentikan program jika indeks tidak valid
+// Get and Set Elements
+ElType GetList(List L, IdxType i) {
+    if (i < 0 || i >= MaxEl || L.A[i].money == -1) {
+        printf("Error: Invalid index %d.\n", i);
+        return L.A[0]; // Return a default value in case of error
     }
     return L.A[i];
 }
 
-void SetList(List *L, IdxType i, User u) {
-    (*L).A[i] = u;
+void SetList(List *L, IdxType i, ElType v) {
+    if (i < 0 || i >= MaxEl) {
+        printf("Error: Invalid index %d.\n", i);
+        return;
+    }
+    (*L).A[i] = v;
 }
 
+// Index Operations
 IdxType FirstIdxList(List L) {
     return 0;
 }
 
 IdxType LastIdxList(List L) {
-    return LengthList(L) - 1;
+    int len = LengthList(L);
+    return (len > 0) ? len - 1 : -1; // Return -1 if the list is empty
 }
 
 boolean IsIdxValidList(List L, IdxType i) {
@@ -73,40 +89,41 @@ boolean IsIdxEffList(List L, IdxType i) {
     return (i >= FirstIdxList(L) && i <= LastIdxList(L));
 }
 
+// Search for a User by Name
 boolean SearchList(List L, char *name) {
     if (name == NULL) {
-        return false; // Nama tidak valid
+        return 0; // Name is invalid
     }
-    int i = FirstIdxList(L);
-    boolean found = false;
-    while (i <= LastIdxList(L) && !found) {
-        if (CompareStrings(L.A[i].name, name)) { // Membandingkan nama
-            found = true;
+    for (int i = FirstIdxList(L); i <= LastIdxList(L); i++) {
+        if (CompareStrings(L.A[i].name, name)) {
+            return 1; // Found
         }
-        i++;
     }
-    return found;
+    return 0; // Not found
 }
 
-void InsertFirstList(List *L, User u) {
-    IdxType i = LastIdxList(*L);
-    while (i >= FirstIdxList(*L)) {
+// Insert Operations
+void InsertFirstList(List *L, ElType v) {
+    // Ensure the list is initialized and not full
+    if (L == NULL) {
+        printf("Error: List is uninitialized.\n");
+        return;
+    }
+    if (LengthList(*L) >= MaxEl) {
+        printf("Error: List is full.\n");
+        return;
+    }
+
+    // Shift elements to the right to make space for the new element
+    for (int i = LastIdxList(*L); i >= 0; i--) {
         SetList(L, i + 1, GetList(*L, i));
-        i--;
     }
-    SetList(L, FirstIdxList(*L), u);
+
+    // Insert the new element at the first position
+    SetList(L, 0, v);
 }
 
-void InsertAtList(List *L, User u, IdxType i) {
-    IdxType j = LastIdxList(*L);
-    while (j >= i) {
-        SetList(L, j + 1, GetList(*L, j));
-        j--;
-    }
-    SetList(L, i, u);
-}
-
-void InsertLastList(List *L, User u) {
+void InsertLastList(List *L, ElType u) {
     if (IsEmptyList(*L)) {
         InsertFirstList(L, u);
     } else {
@@ -114,66 +131,36 @@ void InsertLastList(List *L, User u) {
     }
 }
 
-void DeleteFirstList(List *L) {
-    IdxType i = FirstIdxList(*L);
-    while (i < LastIdxList(*L)) {
-        SetList(L, i, GetList(*L, i + 1));
-        i++;
+void InsertAtList(List *L, ElType u, IdxType i) {
+    if (i < 0 || i > LastIdxList(*L) + 1 || LengthList(*L) >= MaxEl) {
+        printf("Error: Invalid index or list is full.\n");
+        return;
     }
-    (*L).A[i].name[0] = '\0';
-    (*L).A[i].password[0] = '\0';
-    (*L).A[i].money = -1;
+    for (int j = LastIdxList(*L); j >= i; j--) {
+        SetList(L, j + 1, GetList(*L, j));
+    }
+    SetList(L, i, u);
+}
+
+// Delete Operations
+void DeleteFirstList(List *L) {
+    for (int i = FirstIdxList(*L); i < LastIdxList(*L); i++) {
+        SetList(L, i, GetList(*L, i + 1));
+    }
+    (*L).A[LastIdxList(*L)].money = -1;
 }
 
 void DeleteAtList(List *L, IdxType i) {
-    while (i < LastIdxList(*L)) {
-        SetList(L, i, GetList(*L, i + 1));
-        i++;
+    for (int j = i; j < LastIdxList(*L); j++) {
+        SetList(L, j, GetList(*L, j + 1));
     }
-    (*L).A[i].name[0] = '\0';
-    (*L).A[i].password[0] = '\0';
-    (*L).A[i].money = -1;
+    (*L).A[LastIdxList(*L)].money = -1;
 }
 
 void DeleteLastList(List *L) {
     if (!IsEmptyList(*L)) {
-        IdxType lastIdx = LastIdxList(*L);
-        (*L).A[lastIdx].name[0] = '\0';
-        (*L).A[lastIdx].password[0] = '\0';
-        (*L).A[lastIdx].money = -1;
+        (*L).A[LastIdxList(*L)].money = -1;
     }
-}
-
-List ConcatList(List L1, List L2) {
-    List L3 = MakeList();
-    int idx = 0;
-
-    // Tambahkan elemen dari L1
-    for (int i = FirstIdxList(L1); i <= LastIdxList(L1); i++) {
-        SetList(&L3, idx++, GetList(L1, i));
-    }
-
-    // Tambahkan elemen dari L2
-    for (int i = FirstIdxList(L2); i <= LastIdxList(L2); i++) {
-        SetList(&L3, idx++, GetList(L2, i));
-    }
-
-    return L3;
-}
-
-void PrintUser(User u) {
-    printf("{name: %s, password: %s, money: %d}", u.name, u.password, u.money);
-}
-
-void PrintList(List L) {
-    printf("[");
-    for (int i = FirstIdxList(L); i <= LastIdxList(L); i++) {
-        PrintUser(L.A[i]);
-        if (i < LastIdxList(L)) {
-            printf(", ");
-        }
-    }
-    printf("]\n");
 }
 
 void CopyWordToCharArray(Word src, char *dest) {
@@ -181,7 +168,7 @@ void CopyWordToCharArray(Word src, char *dest) {
     for (i = 0; i < src.Length && i < MAX_LEN - 1; i++) {
         dest[i] = src.TabWord[i];
     }
-    dest[i] = '\0'; // Tambahkan null-terminator
+    dest[i] = '\0'; // Add null-terminator
 }
 
 int SearchUserIndex(List L, char *name) {
@@ -196,4 +183,41 @@ int SearchUserIndex(List L, char *name) {
         i++;
     }
     return -1; // Tidak ditemukan
+}
+
+// Concatenate Two Lists
+List ConcatList(List L1, List L2) {
+    List L3 = MakeList();
+    int len1 = LengthList(L1);
+    int len2 = LengthList(L2);
+
+    if (len1 + len2 > MaxEl) {
+        printf("Error: Resultant list exceeds maximum size.\n");
+        return L3;
+    }
+
+    for (int i = 0; i < len1; i++) {
+        SetList(&L3, i, GetList(L1, i));
+    }
+    for (int j = 0; j < len2; j++) {
+        SetList(&L3, len1 + j, GetList(L2, j));
+    }
+    return L3;
+}
+
+// Print User
+void PrintUser(ElType u) {
+    printf("{name: %s, password: %s, money: %d}", u.name, u.password, u.money);
+}
+
+// Print List
+void PrintList(List L) {
+    printf("[");
+    for (int i = FirstIdxList(L); i <= LastIdxList(L); i++) {
+        PrintUser(L.A[i]);
+        if (i < LastIdxList(L)) {
+            printf(", ");
+        }
+    }
+    printf("]\n");
 }

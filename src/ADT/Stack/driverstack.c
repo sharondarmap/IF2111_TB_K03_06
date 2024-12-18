@@ -4,7 +4,7 @@
 int main() {
     Stack S;
 
-    CreateEmpty(&S);
+    CreateEmptyStack(&S);
 
     printf("=== DRIVER STACK ===\n\n");
 
@@ -15,16 +15,16 @@ int main() {
     Barang barang4 = {"Monitor", 15000};
 
     //masukkan barang ke stack
-    Push(&S, barang1);
-    Push(&S, barang2);
-    Push(&S, barang3);
-    Push(&S, barang4);
+    PushToStack(&S, barang1);
+    PushToStack(&S, barang2);
+    PushToStack(&S, barang3);
+    PushToStack(&S, barang4);
 
     //menampilkan isi stack sekarang
     DisplayStack(S);
 
     //mengeluarkan elemen paling atas (TOP)
-    Pop(&S, &barang4);
+    PopFromStack(&S, &barang4);
     DisplayStack(S);
 
     return 0;

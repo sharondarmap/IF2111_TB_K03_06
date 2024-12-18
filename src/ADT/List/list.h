@@ -4,6 +4,9 @@
 #include "../../boolean.h"
 #include "../Kustom/user.h"
 #include "../MesinKata/mesinkata.h"
+#include "../Stack/stack.h"
+#include "../LinkedList/linkedlist.h"
+#include "../Setmap/setmap.h"
 
 /* Definisi ukuran maksimum elemen dalam list */
 #define MaxEl 100
@@ -19,6 +22,10 @@ typedef User ElType;
 typedef struct {
     ElType A[MaxEl];
 } List;
+
+int CompareStrings(char *str1, char *str2);
+
+void CopyString(char *dest, char *src);
 
 /* ********* KONSTRUKTOR ********* */
 /* Membuat list kosong */
@@ -63,7 +70,7 @@ void InsertFirstList(List *L, ElType X);
 /* I.S. List terdefinisi, tidak penuh */
 /* F.S. Elemen baru ditambahkan di awal List, elemen lainnya bergeser */
 
-void InsertAtList(List *L, ElType X, IdxType i);
+void InsertFirstList(List *L, ElType u);
 /* Menambahkan elemen di indeks i */
 /* I.S. List terdefinisi, tidak penuh, dan indeks i valid */
 /* F.S. Elemen baru ditambahkan di indeks i, elemen lainnya bergeser */
@@ -94,7 +101,7 @@ List ConcatList(List L1, List L2);
 /* F.S. List baru yang berisi elemen dari L1 diikuti elemen dari L2 */
 
 /* Header untuk prosedur PrintUser dan PrintList */
-void PrintUser(User u);
+void PrintUser(ElType u);
 /* I.S. u terdefinisi */
 /* F.S. Informasi user dicetak ke layar dengan format {name: ..., password: ..., money: ...} */
 
