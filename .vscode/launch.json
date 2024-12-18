@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/mac/Praktikum/IF2111_TB_K03_06/src/SPESIFIKASI/Register",
-      "program": "/Users/mac/Praktikum/IF2111_TB_K03_06/src/SPESIFIKASI/Register/build/Debug/outDebug"
+      "cwd": "/Users/mac/Praktikum/IF2111_TB_K03_06/src/ADT/LinkedList",
+      "program": "/Users/mac/Praktikum/IF2111_TB_K03_06/src/ADT/LinkedList/build/Debug/outDebug"
     }
   ]
 }

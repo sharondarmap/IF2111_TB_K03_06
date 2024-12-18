@@ -37,17 +37,17 @@ void PopFromStack(Stack *S, infotype *X) {
     S->TOP--;
 }
 
-/*
+
 void DisplayStack(Stack S) {
     if (IsEmptyStack(S)) {
         printf("\nStack kosong.\n");
         return;
     }
     for (int i = S.TOP; i >= 0; i--) {
-        printf("%d\n", S.T[i]);
+        printf("Nama: %s, Harga: %d\n", S.T[i].name, S.T[i].price);
     }
 }
-*/
+
 
 // Free dynamically allocated memory for stack
 void FreeStack(Stack *S) {

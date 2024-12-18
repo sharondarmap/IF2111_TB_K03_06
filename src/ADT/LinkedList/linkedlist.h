@@ -40,4 +40,20 @@ addr_listdp AlokasiWishList(Barang X);
 
 void DealokasiWishList(addr_listdp P);
 
+void AddLastWishlist(Linkedlist *L, Barang X);
+
+void DealokasiWishList(addr_listdp P);
+
+/**
+ * IS: wishList terdefinisi
+ * FS: Semua elemen dalam wishList dicetak ke layar
+ */
+void PrintWishlist(Linkedlist wishList);
+
+/**
+ * IS: wishList terdefinisi, item terdefinisi
+ * FS: item ditambahkan ke akhir wishList
+ */
+void InsertLastWishlist(Linkedlist *wishList, Barang item);
+
 #endif
