@@ -1,1 +1,1 @@
-gcc DriverStoreList.c StoreList.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKata/mesinkata.c  ../../ADT/List/list.c ../../ADT/List Dinamis/arraydin.c ../../ADT/Queue/queue.c -o driverstorelist
+gcc DriverStoreList.c StoreList.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKata/mesinkata.c  ../../ADT/List/list.c ../../ADT/ListDinamis/arraydin.c ../../ADT/Queue/queue.c ../../ADT/Stack/stack.c ../../ADT/Setmap/setmap.c ../../ADT/LinkedList/linkedlist.c -o driverstorelist
