@@ -1,0 +1,2 @@
+
+./driverwishlistcleargcc -o driverwishlistclear driverwishlistclear.c wishlistclear.c ../../ADT/ListDinamis/arraydin.c ../../ADT/MesinKata/mesinkata.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKalimat/mesinkalimat.c ../../ADT/List/list.c ../../ADT/Setmap/setmap.c ../../ADT/Stack/Stack.c ../../ADT/LinkedList/linkedlist.c 
