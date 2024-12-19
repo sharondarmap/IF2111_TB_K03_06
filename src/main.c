@@ -27,7 +27,17 @@
 #include "SPESIFIKASI/Work/work.h"
 #include "SPESIFIKASI/workchallenge/workchallenge.h"
 #include "SPESIFIKASI/StoreRequestBioWeapon/StoreRequestBioWeapon.h"
-
+#include "SPESIFIKASI/CartAdd/cartadd.h"
+#include "SPESIFIKASI/CartPay/cartpay.h"
+#include "SPESIFIKASI/CartRemove/cartremove.h"
+#include "SPESIFIKASI/History/history.h"
+#include "SPESIFIKASI/WishlistAdd/wishlistadd.h"
+#include "SPESIFIKASI/WishlistClear/wishlistclear.h"
+#include "SPESIFIKASI/WishlistRemove/WishlistRemove.h"
+#include "SPESIFIKASI/WishlistRemoveIdx/WishlistRemoveIdx.h"
+#include "SPESIFIKASI/WishlistShow/wishlistshow.h"
+#include "SPESIFIKASI/WishlistSwap/WishlistSwap.h"
+#include "SPESIFIKASI/profile/profile.h"
 
 int main()
 {
@@ -131,7 +141,7 @@ int main()
             printf("\n> ");
             STARTWORD();
 
-            // Tingkatan 3: WORK, STORE, LOGOUT, SAVE, QUIT
+            // Tingkatan 3: WORK, STORE, CART, WISHLIST, LOGOUT, SAVE, QUIT
             if (IsWordEqual(currentWord, StringToWord("WORK")))
             {
                 ADVWORD();
@@ -178,6 +188,58 @@ int main()
                     printf("Command tidak dikenal.\n");
                 }
             }
+            else if (IsWordEqual(currentWord, StringToWord("CART")))
+            {
+                ADVWORD();
+                if (IsWordEqual(currentWord, StringToWord("ADD")))
+                /*{
+                    Barang *store; // should be ArrayDin?
+                    int storeCount = Length(barangList);
+                    CartAdd(&userList, currentIndex, &store, storeCount);
+                } */
+                else if (IsWordEqual(currentWord, StringToWord("PAY")))
+                {
+                    CartPay(&userList, currentIndex);
+                }
+                else if (IsWordEqual(currentWord, StringToWord("REMOVE")))
+                {
+                    CartRemove(&userList, currentIndex);
+                }
+            }
+            else if (IsWordEqual(currentWord, StringToWord("HISTORY")))
+            {
+                history(&userList, currentIndex);
+            }
+            /* else if (IsWordEqual(currentWord, StringToWord("WISHLIST")))
+            {
+                ADVWORD();
+                if (IsWordEqual(currentWord, StringToWord("ADD")))
+                {
+                    Barang *barangToko; 
+                    int jumlahBarangToo = Length(barangList);
+                    WishlistAdd(&user, Barang *barangToko, int jumlahBarangToko);
+                }
+                else if (IsWordEqual(currentWord, StringToWord("CLEAR")))
+                {
+                    CartPay(&userList, currentIndex);
+                }
+                else if (IsWordEqual(currentWord, StringToWord("REMOVE")))
+                {
+                    CartPay(&userList, currentIndex);
+                }
+                else if (IsWordEqual(currentWord, StringToWord("REMOVE IDX")))
+                {
+                    CartPay(&userList, currentIndex);
+                }
+                else if (IsWordEqual(currentWord, StringToWord("SHOW")))
+                {
+                    CartRemove(&userList, currentIndex);
+                }
+                else if (IsWordEqual(currentWord, StringToWord("SWAP")))
+                {
+                    CartPay(&userList, currentIndex);
+                }
+            } */
             else if (IsWordEqual(currentWord, StringToWord("LOGOUT")))
             {
                 Logout(currentIndex);
