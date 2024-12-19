@@ -56,6 +56,25 @@ void ADVWORD()
     }
 }
 
+void ADVWORDNotIgnore()
+{
+    /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
+       F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
+              currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
+              Jika currentChar = MARK, endWord = true.
+       Proses : Akuisisi kata menggunakan procedure CopyWord */
+    IgnoreBlanks();
+    if (currentChar == MARK)
+    {
+        endWord = true;
+    }
+    else
+    {
+        endWord = false;
+        CopyWord();
+    }
+}
+
 void CopyWord()
 {
     /* Mengakuisisi kata, menyimpan dalam currentWord
