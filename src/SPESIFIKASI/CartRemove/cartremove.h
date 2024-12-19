@@ -12,7 +12,7 @@
 #include "../../ADT/Kustom/user.h"
 #include "../../ADT/Setmap/setmap.h"
 
-void CartRemove(List *userList, IdxType currentIndex, Barang currentBarang, int jumlah);
+void CartRemove(List *userList, IdxType currentIndex);
 /* Prosedur untuk mengurangi barang dari keranjang atau menghapus barang dari keranjang */
 /*I.S. Keranjang tidak kosong*/
 /*F.S. Barang terhapus atau terkurangi*/

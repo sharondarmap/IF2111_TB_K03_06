@@ -12,7 +12,7 @@ int main() {
     CreateEmptyKeranjang(&Cart);
 
     Barang barang1 = {"Laptop", 10000};
-    Barang barang2 = {"Mouse", 5000};
+    Barang barang2 = {"Mouse 3000", 5000};
     Barang barang3 = {"Ayam Goreng Crisbar", 7500};
     Barang barang4 = {"Monitor", 15000};
 
@@ -41,45 +41,12 @@ int main() {
     STARTWORD();
 
     if (IsWordEqual(currentWord, StringToWord("CART"))) {
-        ADVWORD();
+        ADVWORDNotIgnore();
         if (IsWordEqual(currentWord, StringToWord("REMOVE"))) {
-            Barang currentBarang;
 
-        ADVWORD();
-        int idx = 0;
-
-        for (int i = 0; i < MAX_LEN; i++) {
-            currentBarang.name[i] = '\0';
-        }
-
-        while (true) {
-            for (int i = 0; i < currentWord.Length && idx < MAX_LEN - 1; i++) {
-                currentBarang.name[idx++] = currentWord.TabWord[i];
-            }
-
-            if (idx < MAX_LEN - 1) {
-                currentBarang.name[idx++] = ' ';
-            }
-
-            ADVWORD();
-
-            if (IsWordNumeric(currentWord)) {
-                break;
-            }
-        }
-
-        if (idx > 0 && currentBarang.name[idx - 1] == ' ') {
-            currentBarang.name[idx - 1] = '\0';
-        } else {
-            currentBarang.name[idx] = '\0';
-        }
-
-        int jumlah = WordToInt(currentWord);
-            CartRemove(&L1, 0, currentBarang, jumlah);
-
-            // Display the cart after removal
-            printf("\nCart after removal:\n");
+            CartRemove(&L1, 0);
             TampilkanKeranjang(L1.A[0].keranjang);
+ 
         } else {
             printf("Invalid sub-command. Only 'REMOVE' is supported.\n");
         }
