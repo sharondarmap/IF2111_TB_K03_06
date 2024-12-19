@@ -34,7 +34,7 @@ int main() {
     InitializeDummyUser(&userList);
 
     // Menampilkan riwayat pembelian untuk user pertama
-    history(&userList, 0, 10);  // Menampilkan 3 riwayat pembelian terbaru
+    history(&userList, 0);  // Menampilkan 3 riwayat pembelian terbaru
 
     return 0;
 }

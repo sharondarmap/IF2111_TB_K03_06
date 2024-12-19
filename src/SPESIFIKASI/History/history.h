@@ -13,6 +13,6 @@
 #include "../../ADT/Stack/stack.h"
 #include "../../ADT/Setmap/setmap.h"
 
-void history(List *userList, IdxType idxUser, int jml);
+void history(List *userList, IdxType idxUser);
 
 #endif
