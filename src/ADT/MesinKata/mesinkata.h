@@ -90,4 +90,5 @@ void ResetWord(Word *w);
 boolean IsWordNumeric(Word W);
 /* mengembalikan apakah kata berupa integer atau bukan */
 
+void ADVWORDNotIgnore();
 #endif
