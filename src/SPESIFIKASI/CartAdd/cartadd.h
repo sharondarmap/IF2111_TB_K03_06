@@ -12,7 +12,7 @@
 #include "../../ADT/Kustom/user.h"
 #include "../../ADT/Setmap/setmap.h"
 
-void CartAdd(List *userList, IdxType currentIndex, Barang *store, int storeCount);
+void CartAdd(List *userList, IdxType currentIndex, ArrayDin barangList);
 
 
 #endif

@@ -1,22 +1,33 @@
 #include <stdio.h>
 #include "cartadd.h"
 
-void CartAdd(List *userList, IdxType currentIndex, Barang *store, int storeCount) {
+void CartAdd(List *userList, IdxType currentIndex, ArrayDin barangList) {
     Barang currentBarang;
     int jumlah;
     User *currentUser = &userList->A[currentIndex];
+    // CreateEmptyKeranjang(&userList->A[currentIndex].keranjang);
 
-    ADVWORDNotIgnore();  // Pindah ke kata pertama setelah "ADD"
+    // Validasi keranjang pengguna
+    // printf("DEBUG: Validasi keranjang pengguna.\n");
+    // if (currentUser->keranjang.Elements == NULL) {
+    //     printf("DEBUG: Keranjang belum diinisialisasi. Menginisialisasi keranjang pengguna...\n");
+    //     CreateEmptyKeranjang(&(currentUser->keranjang));
+    //     printf("DEBUG: Keranjang berhasil diinisialisasi. Count: %d\n", currentUser->keranjang.Count);
+    // }
 
-    Word words[100]; // Menyimpan kata dalam bentuk array
+    PrintWord(currentWord);
+    printf("\n");
+    Word words[100];
     int wordCount = 0;
 
     // Simpan seluruh kata
     while (!endWord) {
         words[wordCount] = currentWord;
         wordCount++;
-        ADVWORDNotIgnore();
+        ADVWORD();
     }
+
+    PrintWord(*words);
 
     if (wordCount < 2) {
         printf("Format command tidak valid!\n");
@@ -32,7 +43,6 @@ void CartAdd(List *userList, IdxType currentIndex, Barang *store, int storeCount
         for (int j = 0; j < words[i].Length; j++) {
             namaBarang.TabWord[namaBarang.Length++] = words[i].TabWord[j];
         }
-        // Tambahkan spasi kecuali untuk kata terakhir
         if (i < wordCount - 2) {
             namaBarang.TabWord[namaBarang.Length++] = ' ';
         }
@@ -46,38 +56,68 @@ void CartAdd(List *userList, IdxType currentIndex, Barang *store, int storeCount
     PrintWord(namaBarang);
     printf("\n");
 
-    // Pencarian barang di store menggunakan Word
+        // Debugging barangList
+    printf("DEBUG: BarangList Neff: %d\n", barangList.Neff);
+    for (int i = 0; i < barangList.Neff; i++) {
+        printf("Barang %d: %s, Harga: %d\n", i + 1, barangList.A[i].name, barangList.A[i].price);
+    }
+
+    // Pencarian barang di barangList
     int found = 0;
-    for (int i = 0; i < storeCount; i++) {
-        Word storeItemName = StringToWord(store[i].name);
+    for (int i = 0; i < barangList.Neff; i++) {
+        Word storeItemName = StringToWord(barangList.A[i].name);
         if (IsWordEqual(namaBarang, storeItemName)) {
-            currentBarang.price = store[i].price;
+            currentBarang.price = barangList.A[i].price;
             found = 1;
             break;
         }
     }
 
-    if (!found) {
-        printf("Barang tidak ditemukan di toko!\n");
+    if (found) {
+        printf("DEBUG: Barang ditemukan: %s dengan harga %d\n", currentBarang.name, currentBarang.price);
+    } else {
+        printf("[ERROR] Barang '%s' tidak ditemukan di toko.\n", WordToString(namaBarang));
         return;
     }
 
     // Salin nama barang ke currentBarang.name
+    printf("DEBUG: Menyalin nama barang ke currentBarang.name.\n");
     CopyWordToCharArray(namaBarang, currentBarang.name);
+    printf("DEBUG: Nama barang berhasil disalin: %s\n", currentBarang.name);
+
+    // Validasi keranjang pengguna
+    printf("DEBUG: Validasi keranjang pengguna.\n");
+    printf("Keranjang count: %d\n", currentUser->keranjang.Count);
+    if (currentUser->keranjang.Count < 0 || currentUser->keranjang.Count > MaxEl) {
+        printf("[ERROR] Keranjang pengguna tidak valid atau belum diinisialisasi.\n");
+        return;
+    }
+    printf("DEBUG: Keranjang valid.\n");
 
     // Tambahkan barang ke keranjang
     if (IsItemInKeranjang(currentUser->keranjang, currentBarang)) {
+        printf("DEBUG: Barang sudah ada di keranjang.\n");
         int existingQuantity = GetItemQuantity(currentUser->keranjang, currentBarang);
         UpdateKeranjangItemQuantity(&(currentUser->keranjang), currentBarang, existingQuantity + jumlah);
     } else {
+        printf("DEBUG: Barang belum ada di keranjang.\n");
         if (IsKeranjangFull(currentUser->keranjang)) {
-            printf("Keranjang penuh! Tidak bisa menambah barang.\n");
+            printf("[ERROR] Keranjang penuh! Tidak bisa menambah barang.\n");
             return;
         }
+        printf("DEBUG: Keranjang belum penuh. Melanjutkan ke AddToKeranjang.\n");
+
+        printf("DEBUG: Memanggil AddToKeranjang.\n");
+        printf("Barang: %s, Harga: %d, Jumlah: %d\n", currentBarang.name, currentBarang.price, jumlah);
+
         AddToKeranjang(&(currentUser->keranjang), currentBarang, jumlah);
+
+        printf("DEBUG: AddToKeranjang selesai dipanggil.\n");
+
     }
 
     printf("Berhasil menambahkan %d ", jumlah);
     PrintWord(namaBarang);
     printf(" ke keranjang belanja!\n");
 }
+
