@@ -207,7 +207,7 @@ List ConcatList(List L1, List L2) {
 
 // Print User
 void PrintUser(ElType u) {
-    printf("{name: %s, password: %s, money: %d}", u.name, u.password, u.money);
+    printf("{name: %s, password: %s, money: %d}\n", u.name, u.password, u.money);
 }
 
 // Print List

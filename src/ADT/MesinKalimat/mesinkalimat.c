@@ -125,22 +125,22 @@ void ParseUser(Kalimat line, int *uang, char *nama, char *password) {
     password[j] = '\0'; // Null-terminate
 }
 
-void STARTKALIMATFILE(char *filename) {
-    char baseDir[] = ""; // Direktori default tempat file berada
-    char fullPath[200];
-    int i = 0, j = 0;
+void STARTKALIMATFILE(char *fullPath) {
+    // char baseDir[] = "DATA/"; // Direktori default tempat file berada
+    // char fullPath[200];
+    // int i = 0, j = 0;
 
-    // Gabungkan baseDir dengan filename
-    while (baseDir[i] != '\0') {
-        fullPath[i] = baseDir[i];
-        i++;
-    }
-    while (filename[j] != '\0') {
-        fullPath[i] = filename[j];
-        i++;
-        j++;
-    }
-    fullPath[i] = '\0'; // Null-terminate string
+    // // Gabungkan baseDir dengan filename
+    // while (baseDir[i] != '\0') {
+    //     fullPath[i] = baseDir[i];
+    //     i++;
+    // }
+    // while (filename[j] != '\0') {
+    //     fullPath[i] = filename[j];
+    //     i++;
+    //     j++;
+    // }
+    // fullPath[i] = '\0'; // Null-terminate string
 
     // Gunakan STARTFILE untuk membuka file
     boolean success = STARTFILE(fullPath);
