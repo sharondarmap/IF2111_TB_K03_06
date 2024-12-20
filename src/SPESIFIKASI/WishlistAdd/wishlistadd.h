@@ -37,6 +37,6 @@
    - Barang *barangToko: Array barang yang tersedia di toko.
    - int jumlahBarangToko: Jumlah barang di array barangToko.
 */
-void WishlistAdd(User *user, Barang *barangToko, int jumlahBarangToko);
+void WishlistAdd(List *userList, IdxType currentIndex, ArrayDin barangList);
 
 #endif
