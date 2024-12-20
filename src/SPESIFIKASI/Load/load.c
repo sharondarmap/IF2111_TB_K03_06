@@ -1,7 +1,21 @@
 #include "load.h"
 
 void Load(char *filename, ArrayDin *daftarBarang, List *userList) {
+    // char baseDir[] = "DATA/"; // Direktori default tempat file berada
+    // char fullPath[200];
+    // int i = 0, j = 0;
 
+    // // Gabungkan baseDir dengan filename
+    // while (baseDir[i] != '\0') {
+    //     fullPath[i] = baseDir[i];
+    //     i++;
+    // }
+    // while (filename[j] != '\0') {
+    //     fullPath[i] = filename[j];
+    //     i++;
+    //     j++;
+    // }
+    // fullPath[i] = '\0'; // Null-terminate string
     STARTKALIMATFILE(filename);
 
     if (EndKalimat) {
