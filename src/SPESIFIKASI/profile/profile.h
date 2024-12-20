@@ -13,7 +13,7 @@
 #include "../../ADT/Setmap/setmap.h"
 #include "../../SPESIFIKASI/Wishlistshow/wishlistshow.h"
 
-void showProfile(User user);
+void showProfile(List userList, int currentIndex);
 
 
 #endif

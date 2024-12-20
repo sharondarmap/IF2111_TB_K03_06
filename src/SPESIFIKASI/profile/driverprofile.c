@@ -1,18 +1,29 @@
 #include <stdio.h>
-#include <string.h>  // Untuk strcpy
 #include "profile.h"
 
 /*
  * Driver untuk menguji showProfile dan operasi wishlist serta keranjang
  */
 int main() {
+    // Inisialisasi List pengguna
+    List userList = MakeList();
+    int currentIndex = -1; // Menandakan tidak ada pengguna yang login
+
+    // Tambahkan pengguna ke List
+    User user1 = {"admin", "admin123", 10000};
+    User user2 = {"user", "user123", 5000};
+    InsertLastList(&userList, user1);
+    InsertLastList(&userList, user2);
+
+    // Tampilkan daftar pengguna
+    printf("Daftar Pengguna:\n");
+    PrintList(userList);
+
+    // Simulasi login dengan memilih indeks pengguna
+    printf("\nMasukkan indeks pengguna untuk login (0 atau 1): ");
+    scanf("%d", &currentIndex);
     // Membuat user dan menginisialisasi data
-    User loggedInUser;
-    
-    // Menginisialisasi data user
-    strcpy(loggedInUser.name, "Purry");
-    strcpy(loggedInUser.password, "meow123");
-    loggedInUser.money = 2000;
+    User loggedInUser = GetList(userList, currentIndex);
 
     // Inisialisasi wishlist dan keranjang
     CreateEmptyKeranjang(&loggedInUser.keranjang);       // Inisialisasi keranjang
@@ -29,7 +40,7 @@ int main() {
     InsertLastWishlist(&loggedInUser.wishList, item2);  // Menambahkan Platypus Laser ke wishlist
 
     // Menampilkan profil pengguna
-    showProfile(loggedInUser);
+    showProfile(userList, currentIndex);
 
     return 0;
 }

@@ -1,28 +1,25 @@
 #include <stdio.h>
 #include "profile.h"
 
-#include <stdio.h>
-#include "profile.h"
 
-
-void showProfile(User user) {
-    printf(">> PROFILE\n");
-    printf("Nama       : %s\n", user.name);
-    printf("Saldo      : %d\n\n", user.money);
+void showProfile(List userList, int currentIndex) {
+    User loggedInUser = GetList(userList, currentIndex);
+    PrintUser(loggedInUser);
+    printf("Nama       : %s\n", loggedInUser.name);
+    printf("Saldo      : %d\n\n", loggedInUser.money);
     
     // Menampilkan isi keranjang
     printf("Isi Keranjang:\n");
-    if (IsKeranjangEmpty(user.keranjang)) {  
+    if (IsKeranjangEmpty(loggedInUser.keranjang)) {  
         printf("Keranjang kosong.\n");
     } else {
-        TampilkanKeranjang(user.keranjang); 
-
+        TampilkanKeranjang(loggedInUser.keranjang); 
+    }
     // Menampilkan wishlist
     printf("\nWishlist:\n");
-    if (WishlistIsEmpty(user.wishList)) {  
+    if (WishlistIsEmpty(loggedInUser.wishList)) {  
         printf("Wishlist kosong.\n");
     } else {
-        PrintWishlist(user.wishList); 
+        PrintWishlist(loggedInUser.wishList); 
     }
-}
 }
