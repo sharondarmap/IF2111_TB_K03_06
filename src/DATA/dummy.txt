@@ -1,7 +1,0 @@
-3
-1500 Lalabu
-2000 AK47
-30000 Ayam Goreng Crisbar
-2
-50000 admin alstrukdatkeren
-30000 user praktikan123
