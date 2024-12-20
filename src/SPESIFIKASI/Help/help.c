@@ -134,6 +134,7 @@ void PrintLevel3Menu()
     printf("|                   PURRMART - MAIN MENU                   |\n");
     printf("|----------------------------------------------------------|\n");
     printf("| Commands:                                                |\n");
+    printf("|  >  PROFILE                                              |\n");
     printf("|  >  WORK                                                 |\n");
     printf("|  >  WORK CHALLENGE                                       |\n");
     printf("|  >  STORE LIST                                           |\n");
@@ -141,6 +142,17 @@ void PrintLevel3Menu()
     printf("|  >  STORE REQUEST BIOWEAPON                              |\n");
     printf("|  >  STORE SUPPLY                                         |\n");
     printf("|  >  STORE REMOVE                                         |\n");
+    printf("|  >  CART ADD                                             |\n");
+    printf("|  >  CART REMOVE                                          |\n");
+    printf("|  >  CART SHOW                                            |\n");
+    printf("|  >  CART PAY                                             |\n");
+    printf("|  >  HISTORY                                              |\n");
+    printf("|  >  WISHLIST ADD                                         |\n");
+    printf("|  >  WISHLIST SWAP <i>                                    |\n");
+    printf("|  >  WISHLIST REMOVE <i>                                  |\n");
+    printf("|  >  WISHLIST REMOVE                                      |\n");
+    printf("|  >  WISHLIST CLEAR                                       |\n");
+    printf("|  >  WISHLIST SHOW                                        |\n");
     printf("|  >  LOGOUT                                               |\n");
     printf("|  >  SAVE                                                 |\n");
     printf("|  >  HELP                                                 |\n");
