@@ -4,9 +4,6 @@
 void history(List *userList, IdxType idxUser) {
     User *currentUser = &userList->A[idxUser];
     Stack riwayat = currentUser->riwayat_pembelian;
-
-    printf("Masukkan jumlah history yang akan ditampilkan: ");
-    STARTWORD();
     int jumlah = WordToInt(currentWord);
 
     // Cek apakah stack kosong
