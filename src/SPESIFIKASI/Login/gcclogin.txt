@@ -1,1 +1,1 @@
-gcc driverlogin.c login.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKata/mesinkata.c ../../ADT/MesinKalimat/mesinkalimat.c ../../ADT/List/list.c ../../ADT/List Dinamis/arraydin.c ../../ADT/Queue/queue.c -o driverlogin
+gcc driverlogin.c login.c ../../ADT/MesinKarakter/mesinkarakter.c ../../ADT/MesinKata/mesinkata.c ../../ADT/MesinKalimat/mesinkalimat.c ../../ADT/List/list.c ../../ADT/ListDinamis/arraydin.c ../../ADT/Queue/queue.c -o driverlogin

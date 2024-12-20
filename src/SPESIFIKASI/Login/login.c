@@ -17,7 +17,6 @@ void Login(List *userList, int *currentIndex) {
             printf("Username tidak ditemukan. Coba lagi.\n");
             continue;
         }
-
         // Meminta input password
         printf("Masukkan Password: ");
         STARTWORD();
@@ -27,13 +26,17 @@ void Login(List *userList, int *currentIndex) {
         // Ambil data pengguna dari List
         User user = GetList(*userList, *currentIndex);
         Word userPassword = StringToWord(user.password);
-
+        
         // Validasi password
         if (IsWordEqual(password, userPassword)) {
             // Login berhasil
             printf("Login berhasil. Selamat datang, ");
             PrintWord(StringToWord(user.name));
             printf("!\n");
+            // Inisialisasi keranjang jika belum diinisialisasi
+            // Inisialisasi keranjang jika belum diinisialisasi
+            CreateEmptyKeranjang(&userList->A[*currentIndex].keranjang);
+            printf("DEBUG: Keranjang berhasil diinisialisasi untuk pengguna %s.\n", user.name);
             break;
         } else {
             printf("Password salah. Coba lagi.\n");
