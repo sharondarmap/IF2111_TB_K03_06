@@ -68,7 +68,25 @@ int main()
             if (IsWordEqual(currentWord, StringToWord("START")))
             {
                 char defaultFilename[] = "default.txt";
-                Load(defaultFilename, &barangList, &userList);
+                char baseDir[] = "DATA/"; // Direktori default tempat file berada
+                char fullPath[200];
+                int i = 0, j = 0;
+
+                // Gabungkan baseDir dengan defaultFilename
+                while (baseDir[i] != '\0') { // Salin baseDir ke fullPath
+                    fullPath[i] = baseDir[i];
+                    i++;
+                }
+                while (defaultFilename[j] != '\0') { // Salin defaultFilename ke fullPath setelah baseDir
+                    fullPath[i] = defaultFilename[j];
+                    i++;
+                    j++;
+                }
+                fullPath[i] = '\0'; // Null-terminate string
+
+                // Debugging: Tampilkan isi fullPath
+                printf("DEBUG: Full Path = %s\n", fullPath);
+                Load(fullPath, &barangList, &userList);
                 level = 2; 
             }
             else if (IsWordEqual(currentWord, StringToWord("LOAD")))
@@ -81,7 +99,25 @@ int main()
                     filename[i] = currentWord.TabWord[i];
                 }
                 filename[currentWord.Length] = '\0';
-                Load(filename, &barangList, &userList);
+
+                char baseDir[] = "DATA/"; // Direktori default tempat file berada
+                char fullPath[200];
+                int i = 0, j = 0;
+
+                // Gabungkan baseDir dengan filename
+                while (baseDir[i] != '\0') {
+                    fullPath[i] = baseDir[i];
+                    i++;
+                }
+                while (filename[j] != '\0') {
+                    fullPath[i] = filename[j];
+                    i++;
+                    j++;
+                }
+                fullPath[i] = '\0'; // Null-terminate string
+                printf("%s", fullPath);
+
+                Load(fullPath, &barangList, &userList);
                 if (!EndKalimat)
                 {
                     printf("File berhasil dimuat. Masuk ke autentikasi pengguna.\n");
@@ -191,12 +227,15 @@ int main()
             else if (IsWordEqual(currentWord, StringToWord("CART")))
             {
                 ADVWORD();
+                printf("DEBUG: Inside CART block. CurrentWord: ");
+                PrintWord(currentWord);
+                printf("\n");
                 if (IsWordEqual(currentWord, StringToWord("ADD")))
-                /*{
-                    Barang *store; // should be ArrayDin?
-                    int storeCount = Length(barangList);
-                    CartAdd(&userList, currentIndex, &store, storeCount);
-                } */
+                {
+                    printf("DEBUG: CART ADD detected.\n");
+                    ADVWORD();
+                    CartAdd(&userList, currentIndex, barangList);
+                }
                 else if (IsWordEqual(currentWord, StringToWord("PAY")))
                 {
                     CartPay(&userList, currentIndex);
@@ -205,41 +244,100 @@ int main()
                 {
                     CartRemove(&userList, currentIndex);
                 }
+                else if (IsWordEqual(currentWord, StringToWord("SHOW")))
+                {
+                    TampilkanKeranjang(userList.A[currentIndex].keranjang);
+                }
+                else
+                {
+                    printf("Command tidak dikenal.\n");
+                }
             }
-            else if (IsWordEqual(currentWord, StringToWord("HISTORY")))
-            {
-                history(&userList, currentIndex);
-            }
-            /* else if (IsWordEqual(currentWord, StringToWord("WISHLIST")))
+            else if (IsWordEqual(currentWord, StringToWord("WISHLIST")))
             {
                 ADVWORD();
+                printf("DEBUG: Inside CART block. CurrentWord: ");
+                PrintWord(currentWord);
+                printf("\n");
                 if (IsWordEqual(currentWord, StringToWord("ADD")))
                 {
-                    Barang *barangToko; 
-                    int jumlahBarangToo = Length(barangList);
-                    WishlistAdd(&user, Barang *barangToko, int jumlahBarangToko);
-                }
-                else if (IsWordEqual(currentWord, StringToWord("CLEAR")))
-                {
-                    CartPay(&userList, currentIndex);
-                }
-                else if (IsWordEqual(currentWord, StringToWord("REMOVE")))
-                {
-                    CartPay(&userList, currentIndex);
-                }
-                else if (IsWordEqual(currentWord, StringToWord("REMOVE IDX")))
-                {
-                    CartPay(&userList, currentIndex);
+                    printf("DEBUG: CART ADD detected.\n");
+                    ADVWORD();
+                    WishlistAdd(&userList, currentIndex, barangList);
                 }
                 else if (IsWordEqual(currentWord, StringToWord("SHOW")))
                 {
-                    CartRemove(&userList, currentIndex);
+                    wishlistShow(&userList.A[currentIndex].wishList);
+                }
+                else if (IsWordEqual(currentWord, StringToWord("CLEAR")))
+                {
+                    WishlistClear(&(userList.A[currentIndex].wishList));
+                }
+                else if (IsWordEqual(currentWord, StringToWord("REMOVE")))
+                {
+                    ADVWORD();
+                    if (!endWord){
+                        int idxToRemove = WordToInt(currentWord);
+                        WishlistRemoveIdx(&userList.A[currentIndex].wishList, idxToRemove);
+                    }
+                    else{
+                        printf("Masukkan nama barang yang akan dihapus: ");
+                        STARTWORD();
+                        Word words[100];
+                        int wordCount = 0;
+
+                        // Simpan seluruh kata
+                        while (!endWord) {
+                            words[wordCount] = currentWord;
+                            wordCount++;
+                            ADVWORD();
+                        }
+
+                        PrintWord(*words);
+
+                        if (wordCount < 1) {
+                            printf("Format command tidak valid!\n");
+                            return 0;
+                        }
+
+                        // Inisialisasi nama barang sebagai Word kosong
+                        Word namaBarang;
+                        ResetWord(&namaBarang);
+
+                        // Gabungkan semua kata kecuali kata terakhir untuk nama barang
+                        for (int i = 0; i < wordCount; i++) {
+                            for (int j = 0; j < words[i].Length; j++) {
+                                namaBarang.TabWord[namaBarang.Length++] = words[i].TabWord[j];
+                            }
+                            if (i < wordCount - 1) {
+                                namaBarang.TabWord[namaBarang.Length++] = ' ';
+                            }
+                        }
+                        WishlistRemove(&userList.A[currentIndex].wishList, namaBarang);
+                    }
                 }
                 else if (IsWordEqual(currentWord, StringToWord("SWAP")))
                 {
-                    CartPay(&userList, currentIndex);
+                    ADVWORD();
+                    int i = WordToInt(currentWord);
+                    ADVWORD();
+                    int j = WordToInt(currentWord);
+                    WishlistSwap(&(userList.A[currentIndex].wishList), i, j);
                 }
-            } */
+                    else
+                {
+                    printf("Command tidak dikenal.\n");
+                }
+            }
+            else if (IsWordEqual(currentWord, StringToWord("HISTORY")))
+            {
+                ADVWORD();
+                history(&userList, currentIndex);
+            }
+            else if (IsWordEqual(currentWord, StringToWord("PROFILE")))
+            {
+                showProfile(userList, currentIndex);
+            }
             else if (IsWordEqual(currentWord, StringToWord("LOGOUT")))
             {
                 Logout(currentIndex);
