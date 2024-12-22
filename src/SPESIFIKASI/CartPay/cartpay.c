@@ -42,9 +42,12 @@ void CartPay(List *userList, IdxType idxUser) {
                 Word namaBarangWord = StringToWord(usercart.Elements[i].Key.name);
                 Word namaTerbesarWord = StringToWord(barangTerbesar.name);
 
+                // Ambil huruf pertama dari nama barang
+                char hurufPertamaBarang = usercart.Elements[i].Key.name[0];
+                char hurufPertamaTerbesar = barangTerbesar.name[0];
                 // Jika total harga lebih besar atau total sama tetapi nama barang lebih besar leksikalnya
                 if (totalItem > totalTerbesar || 
-                    (totalItem == totalTerbesar && IsWordEqual(namaBarangWord, namaTerbesarWord) > 0)) {
+                    (totalItem == totalTerbesar && hurufPertamaBarang > hurufPertamaTerbesar)) {
                     totalTerbesar = totalItem;
                     barangTerbesar = usercart.Elements[i].Key;
                 }
@@ -54,8 +57,6 @@ void CartPay(List *userList, IdxType idxUser) {
 
             // Tambahkan barang terbesar ke riwayat pembelian
             PushToStack(&currentUser->riwayat_pembelian, barangTerbesar);
-            DisplayStack(currentUser->riwayat_pembelian); //cek
-
             // Kosongkan keranjang di userList
             CreateEmptyKeranjang(&currentUser->keranjang);
 

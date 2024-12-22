@@ -8,7 +8,7 @@ void InitializeDummyUser(List *userList) {
 
     // Membuat user dummy pertama
     User user1;
-    strcpy(user1.name, "Alice");
+    CopyString(user1.name, "Alice");
     user1.money = 50000;  // Saldo awal
 
     // Membuat keranjang untuk user1
