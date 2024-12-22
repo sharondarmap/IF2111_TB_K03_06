@@ -47,6 +47,10 @@ void CartRemove(List *userList, IdxType currentIndex) {
     
     //quantity diambil dari last word inputan user (ubah kata jadi integer)
     jumlah = WordToInt(words[wordCount - 1]);
+    if(jumlah < 1){
+        printf("INPUT Tidak Valid! Jumlah barang tidak boleh kurang dari 1!\n");
+        return ;
+    }
 
     // Debugging: mengecek currentBarang.name yang sudah dibentuk
     // printf("DEBUG: Constructed name: '%s'\n", currentBarang.name);
