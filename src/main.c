@@ -85,7 +85,7 @@ int main()
                 fullPath[i] = '\0'; // Null-terminate string
 
                 // Debugging: Tampilkan isi fullPath
-                printf("DEBUG: Full Path = %s\n", fullPath);
+                // printf("DEBUG: Full Path = %s\n", fullPath);
                 Load(fullPath, &barangList, &userList);
                 level = 2; 
             }
@@ -120,7 +120,7 @@ int main()
                 Load(fullPath, &barangList, &userList);
                 if (!EndKalimat)
                 {
-                    printf("File berhasil dimuat. Masuk ke autentikasi pengguna.\n");
+                    printf(" File berhasil dimuat. Masuk ke autentikasi pengguna.\n");
                     level = 2;
                 }
                 else
@@ -227,12 +227,8 @@ int main()
             else if (IsWordEqual(currentWord, StringToWord("CART")))
             {
                 ADVWORD();
-                printf("DEBUG: Inside CART block. CurrentWord: ");
-                PrintWord(currentWord);
-                printf("\n");
                 if (IsWordEqual(currentWord, StringToWord("ADD")))
                 {
-                    printf("DEBUG: CART ADD detected.\n");
                     ADVWORD();
                     CartAdd(&userList, currentIndex, barangList);
                 }
@@ -256,14 +252,15 @@ int main()
             else if (IsWordEqual(currentWord, StringToWord("WISHLIST")))
             {
                 ADVWORD();
-                printf("DEBUG: Inside CART block. CurrentWord: ");
-                PrintWord(currentWord);
-                printf("\n");
                 if (IsWordEqual(currentWord, StringToWord("ADD")))
                 {
-                    printf("DEBUG: CART ADD detected.\n");
                     ADVWORD();
-                    WishlistAdd(&userList, currentIndex, barangList);
+                    if (endWord){
+                        WishlistAdd(&userList, currentIndex, barangList);
+                    }
+                    else{
+                        printf("Command Tidak Valid!\n");
+                    }
                 }
                 else if (IsWordEqual(currentWord, StringToWord("SHOW")))
                 {
@@ -293,7 +290,7 @@ int main()
                             ADVWORD();
                         }
 
-                        PrintWord(*words);
+                        // PrintWord(*words);
 
                         if (wordCount < 1) {
                             printf("Format command tidak valid!\n");
@@ -346,7 +343,7 @@ int main()
             else if (IsWordEqual(currentWord, StringToWord("SAVE")))
             {
                 Save(&barangList, &userList, filename);
-                printf("Berhasil menyimpan data!");
+                printf("Berhasil menyimpan data!\n");
             }
             else if (IsWordEqual(currentWord, StringToWord("QUIT")))
             {
