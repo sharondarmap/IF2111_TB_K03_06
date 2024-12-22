@@ -4,8 +4,9 @@
 
 void showProfile(List userList, int currentIndex) {
     User loggedInUser = GetList(userList, currentIndex);
-    PrintUser(loggedInUser);
+
     printf("Nama       : %s\n", loggedInUser.name);
+    printf("Password   : %s\n", loggedInUser.password);
     printf("Saldo      : %d\n\n", loggedInUser.money);
     
     // Menampilkan isi keranjang
