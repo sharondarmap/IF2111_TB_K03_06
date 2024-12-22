@@ -22,7 +22,7 @@ void WorkChallenge(List *userList, IdxType currentIndex) {
                "3. Quantum W0RDL3 (biaya main=1000)\n"
                "4. Keluar dari work challenge (quit)\n");
         printf("Saldo Anda saat ini: %d\n", currentUser->money);
-        printf(">> ");
+        printf("\nPilih Angka: (1 / 2 / 3 / 4) >>  ");
 
         STARTWORD(); //input user
         int pilihan = WordToInt(currentWord); // Convert user input to integer
