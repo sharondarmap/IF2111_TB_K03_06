@@ -7,14 +7,14 @@
 100 admin alstrukdatkeren
 3
 30 Ayam Goreng Crisbar
-100 Lalabu
-40 AK47
+20 Lalabu
+10 AK47
 2
 Meong
 Lalabu
 999999 praktikan kerenbangetkak
 2
-10 Meong
-20 Ayam Goreng Crisbar
+50 Meong
+30 Ayam Goreng Crisbar
 1
 Lalabu
