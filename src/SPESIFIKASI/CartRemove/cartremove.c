@@ -49,7 +49,7 @@ void CartRemove(List *userList, IdxType currentIndex) {
     jumlah = WordToInt(words[wordCount - 1]);
 
     // Debugging: mengecek currentBarang.name yang sudah dibentuk
-    printf("DEBUG: Constructed name: '%s'\n", currentBarang.name);
+    // printf("DEBUG: Constructed name: '%s'\n", currentBarang.name);
 
     // Ambil quantity barang dengan currentBarang jika ada di keranjang
     itemQuantity = GetItemQuantity(currentUser->keranjang, currentBarang);
