@@ -97,7 +97,7 @@ void WishlistAdd(List *userList, IdxType currentIndex, ArrayDin barangList) {
         ADVWORD();
     }
 
-    PrintWord(*words);
+    // PrintWord(*words);
 
     if (wordCount < 1) {
         printf("Format command tidak valid!\n");
