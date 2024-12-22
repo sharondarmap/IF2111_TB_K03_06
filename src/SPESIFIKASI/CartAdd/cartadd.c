@@ -50,6 +50,10 @@ void CartAdd(List *userList, IdxType currentIndex, ArrayDin barangList) {
 
     // Kuantitas diambil dari kata terakhir input
     jumlah = WordToInt(words[wordCount - 1]);
+    if(jumlah < 1){
+        printf("INPUT Tidak Valid! Jumlah barang tidak boleh kurang dari 1!\n");
+        return ;
+    }
 
     // Debugging: Mengecek nama barang yang telah dibentuk
     // printf("DEBUG: Constructed name: ");
