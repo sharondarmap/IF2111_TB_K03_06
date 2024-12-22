@@ -124,13 +124,13 @@ void Save(ArrayDin *barang, List *userList, char *filename) {
         // Menulis riwayat pembelian
         kalimat.Length = 0;
         Word jumlahRiwayat = IntToWord(u.riwayat_pembelian.TOP + 1);
-        for (int j = 0; j < jumlahRiwayat.Length; j++) {
+        for (int j = jumlahRiwayat.Length - 1; j >= 0; j--) {
             kalimat.TabLine[kalimat.Length++] = jumlahRiwayat.TabWord[j];
         }
         kalimat.TabLine[kalimat.Length] = '\0';
         WRITELINEFILE(file, kalimat);
 
-        for (int j = u.riwayat_pembelian.TOP; j >= 0; j--) {
+        for (int j = 0; j <= u.riwayat_pembelian.TOP; j++) {
             kalimat.Length = 0;
             Word harga = IntToWord(u.riwayat_pembelian.T[j].price);
             for (int k = 0; k < harga.Length; k++) {
