@@ -6,10 +6,16 @@ void WishlistRemoveIdx(Linkedlist *L, int i) {
         printf("Penghapusan barang WISHLIST gagal dilakukan, WISHLIST kosong!\n");
         return;
     }
-    else if (i > Count(*L) || i < 1) {
+    else if (i > Count(*L) || i == 0) {
         printf("Penghapusan barang WISHLIST gagal dilakukan, Barang ke-%d tidak ada di WISHLIST!\n", i);
         return;
     }
+
+    else if (i == -1) { //membaca input selain 0-9 (karena di return -1)
+        printf("Command Tidak Valid!\n");
+        return;
+    }
+
     else {
         addr_listdp P = First(*L);
         int idx = 1;
@@ -42,4 +48,5 @@ void WishlistRemoveIdx(Linkedlist *L, int i) {
         Count(*L)--;
         printf("Berhasil menghapus barang posisi ke-%d dari wishlist!\n", i);
     }
+
 }
