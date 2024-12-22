@@ -38,7 +38,9 @@ int QuantumWORDL3() {
         "snake", "silly", "stone", "tears", "toast", "trump", 
         "ultra", "union", "urban", "valve", "vivid", "vocal", 
         "wagon", "whale", "witty", "xenon", "xerox", "xylos", 
-        "yacht", "yummy", "youth", "zebra", "zesty", "zonal"
+        "yacht", "yummy", "youth", "zebra", "zesty", "zonal",
+        "rapid", "grape", "scope", "blush", "swift", "rural", 
+        "pixel", "cabin", "spear", "moist"
     };
 
     // Pilih empat kata target secara acak
