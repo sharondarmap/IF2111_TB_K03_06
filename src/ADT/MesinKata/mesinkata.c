@@ -101,11 +101,16 @@ boolean isEndWord()
     return endWord;
 }
 
-int WordToInt(Word w)
+int WordToInt(Word w) //Hanya untuk 0-9
 {
     int result = 0;
     for (int i = 0; i < w.Length; i++)
     {
+        // Cek apakah karakter adalah angka
+        if (w.TabWord[i] < '0' || w.TabWord[i] > '9')
+        {
+            return -1; // Kembalikan -1 jika ada karakter non-angka
+        }
         result = result * 10 + (w.TabWord[i] - '0');
     }
     return result;
