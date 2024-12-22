@@ -36,7 +36,7 @@ void Login(List *userList, int *currentIndex) {
             // Inisialisasi keranjang jika belum diinisialisasi
             // Inisialisasi keranjang jika belum diinisialisasi
             CreateEmptyKeranjang(&userList->A[*currentIndex].keranjang);
-            printf("DEBUG: Keranjang berhasil diinisialisasi untuk pengguna %s.\n", user.name);
+            // printf("DEBUG: Keranjang berhasil diinisialisasi untuk pengguna %s.\n", user.name);
             break;
         } else {
             printf("Password salah. Coba lagi.\n");
