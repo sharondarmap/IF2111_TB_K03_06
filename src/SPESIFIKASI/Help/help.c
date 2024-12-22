@@ -89,72 +89,72 @@ void DisplayHelp3() {
     printf("   Contoh: Ketik WISHLIST SWAP <barang posisi ke-i> <barang posisis ke-j>\n");
 
     // WISHLIST REMOVE INDEKS KE I
-    printf("7. WISHLIST REMOVE Indeks\n");
+    printf("8. WISHLIST REMOVE Indeks\n");
     printf("   Fungsi: Untuk menghapus barang dengan posisi ke-i dari wishlist.\n");
     printf("   Contoh: Ketik WISHLIST REMOVE <barang posisi ke-i> untuk menghapus wishlist barang\n");
 
     // WISHLIST REMOVE
-    printf("7. WISHLIST REMOVE\n");
+    printf("9. WISHLIST REMOVE\n");
     printf("   Fungsi: Untuk menghapus barang dari wishlist berdasarkan nama barang yang dimasukkan pengguna.\n");
     printf("   Contoh: Ketik WISHLIST REMOVE untuk menghapus wishlist barang\n");
 
     // WISHLIST CLEAR
-    printf("8. WISHLIST CLEAR\n");
+    printf("10. WISHLIST CLEAR\n");
     printf("   Fungsi: Untuk menghapus semua barang yang terdapat di dalam wishlist.\n");
     printf("   Contoh: Ketik WISHLIST CLEAR untuk menghapus seluruh wishlist barang\n");
 
     // WISHLIST SHOW
-    printf("8. WISHLIST SHOW\n");
+    printf("11. WISHLIST SHOW\n");
     printf("   Fungsi: Untuk menunjukkan barang-barang yang sudah dimasukkan ke dalam wishlist.\n");
     printf("   Contoh: Ketik WISHLIST SHOW untuk menampilkan wishlist barang\n");
 
     // WORK
-    printf("9. WORK\n");
+    printf("12. WORK\n");
     printf("   Fungsi: Untuk bekerja.\n");
     printf("   Contoh: Ketik WORK untuk bekerja dan mendapatkan uang.\n");
 
     // WORK CHALLENGE
-    printf("10. WORK CHALLENGE\n");
+    printf("13. WORK CHALLENGE\n");
     printf("    Fungsi: Untuk mengerjakan challenge.\n");
     printf("    Contoh: Ketik WORK CHALLENGE untuk menyelesaikan tantangan dan mendapatkan uang.\n");
 
     // STORE LIST
-    printf("11. STORE LIST\n");
+    printf("14. STORE LIST\n");
     printf("    Fungsi: Untuk melihat barang-barang di toko.\n");
     printf("    Contoh: Ketik STORE LIST untuk menampilkan daftar barang di toko.\n");
 
     // STORE REQUEST
-    printf("12. STORE REQUEST\n");
+    printf("15. STORE REQUEST\n");
     printf("    Fungsi: Untuk meminta penambahan barang ke toko.\n");
     printf("    Contoh: Ketik STORE REQUEST untuk meminta barang\n");
 
     // STORE REQUEST BIOWEAPON
-    printf("13. STORE REQUEST BIOWEAPON\n");
+    printf("16. STORE REQUEST BIOWEAPON\n");
     printf("    Fungsi: Untuk meminta penambahan senjata biologis ke toko.\n");
     printf("    Contoh: Ketik STORE REQUEST BIOWEAPON untuk meminta senjata\n");
 
     // STORE SUPPLY
-    printf("14. STORE SUPPLY\n");
+    printf("17. STORE SUPPLY\n");
     printf("    Fungsi: Untuk menambahkan barang berdasarkan permintaan.\n");
     printf("    Contoh: Ketik STORE SUPPLY untuk menambahkan barang\n");
 
     // STORE REMOVE
-    printf("15. STORE REMOVE\n");
+    printf("18. STORE REMOVE\n");
     printf("    Fungsi: Untuk menghapus barang dari toko.\n");
     printf("    Contoh: Ketik STORE REMOVE untuk menghapus barang\n");
 
     // LOGOUT
-    printf("16. LOGOUT\n");
+    printf("19. LOGOUT\n");
     printf("    Fungsi: Untuk keluar dari sesi.\n");
     printf("    Contoh: Ketik LOGOUT untuk mengakhiri sesi.\n");
 
     // SAVE
-    printf("17. SAVE\n");
+    printf("20. SAVE\n");
     printf("    Fungsi: Untuk menyimpan state program ke dalam file.\n");
     printf("    Contoh: Ketik SAVE untuk menyimpan\n");
 
     // QUIT
-    printf("18. QUIT\n");
+    printf("21. QUIT\n");
     printf("    Fungsi: Keluar dari program.\n");
     printf("    Contoh: Ketik QUIT untuk mengakhiri program\n");
 }
@@ -201,8 +201,8 @@ void PrintLevel3Menu()
     printf("|  >  STORE REQUEST BIOWEAPON                              |\n");
     printf("|  >  STORE SUPPLY                                         |\n");
     printf("|  >  STORE REMOVE                                         |\n");
-    printf("|  >  CART ADD                                             |\n");
-    printf("|  >  CART REMOVE                                          |\n");
+    printf("|  >  CART ADD <nama barang> <kuantitas>                   |\n");
+    printf("|  >  CART REMOVE  <nama barang> <kuantitas>               |\n");
     printf("|  >  CART SHOW                                            |\n");
     printf("|  >  CART PAY                                             |\n");
     printf("|  >  HISTORY                                              |\n");
