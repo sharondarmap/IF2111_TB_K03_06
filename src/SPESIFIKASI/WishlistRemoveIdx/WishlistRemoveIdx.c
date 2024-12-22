@@ -12,7 +12,7 @@ void WishlistRemoveIdx(Linkedlist *L, int i) {
     }
 
     else if (i == -1) { //membaca input selain 0-9 (karena di return -1)
-        printf("Command Tidak Valid!\n");
+        printf("Penghapusan barang WISHLIST gagal dilakukan, command tidak valid!\n");
         return;
     }
 
